@@ -1,6 +1,6 @@
 # 🛡️ TryHackMe SOC Level 1 Cybersecurity Portfolio
 
-[![TryHackMe Badge](https://tryhackme.com/badge/image/5151353)](https://tryhackme.com/p/5151353)
+<iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=5151353" style='border:none;'></iframe>
 
 Welcome! This portfolio showcases my **hands-on cybersecurity skills** from **TryHackMe SOC Level 1**, covering **SOC analysis, incident response, endpoint monitoring, network defense, DFIR, phishing, and threat intelligence**.  
 
