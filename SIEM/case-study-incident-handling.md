@@ -92,3 +92,8 @@ Through this hands-on case study, I practiced:
 - Following the **Incident Handling lifecycle** from detection to remediation
 
 This exercise reinforced my ability to work with **Splunk and Suricata alerts** to investigate real-world security incidents.  
+
+---
+
+## 🔗 Navigation
+- Back to [SIEM Home](../SIEM/README.md)
