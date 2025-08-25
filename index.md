@@ -11,7 +11,7 @@ Welcome! This is my **hands-on cybersecurity portfolio**, documenting labs, inve
 
 ## 📂 Portfolio Sections
 
-### 1. [Security Information and Event Management](01-SIEM/README.md)
+### 1. [Security Information and Event Management](SIEM/README.md)
 - **Completed Modules:** Intro to SIEM, Investigating with ELK101, ItsyBitsy (Splunk), Splunk Basics, Incident Handling with Splunk, Investigating with Splunk, Benign  
 - **Case Studies:**  
   1. [Investigating with ELK 101](01-SIEM/case-study-elk.md) – Built queries and dashboards to analyze authentication logs and detect anomalies.  
