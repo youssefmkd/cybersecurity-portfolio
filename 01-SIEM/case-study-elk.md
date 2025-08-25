@@ -167,7 +167,20 @@ Visualizations transform log data into clear insights using tables, pie charts, 
 ---
 
 ### Task 8: Creating Dashboards
-Dashboards combine multiple visualizations and searches for an overview of VPN activity.  
+Dashboards combine multiple visualizations and searches for an overview of VPN activity.
+
+  I navigated to the **Dashboard** tab to create a dashboard containing all the visualizations that I had previously created and saved.  
+
+  - From the Dashboard tab:  
+  ![Dashboard Navigation](screenshots/T8.png)  
+
+  - I selected all the visualizations that were created and saved in this room. This displayed them together in one dashboard.  
+  ![Select Visualizations](screenshots/T8-1.png)  
+
+  - Final dashboard view:  
+  ![Dashboard Complete](screenshots/T8-2.png)  
+
+  **Answer:** No answer needed  
 
 ---
 
