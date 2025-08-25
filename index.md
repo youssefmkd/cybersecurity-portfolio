@@ -11,12 +11,12 @@ Welcome! This is my **hands-on cybersecurity portfolio**, documenting labs, inve
 
 ## 📂 Portfolio Sections
 
-### 1. [SIEM](01-SIEM/README.md)
+### 1. [Security Information and Event Management](01-SIEM/README.md)
 - Completed: Intro to SIEM, ELK101, ItsyBitsy, Splunk Basics, Incident Handling with Splunk, Benign  
 - Case Studies:  
   
 
-### 2. [DFIR](02-DFIR/README.md)
+### 2. [Digital Forensics and Incident Response](02-DFIR/README.md)
 - Tools: Volatility, Autopsy, FTK Imager  
 - Case Study:
 
