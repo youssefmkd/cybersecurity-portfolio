@@ -20,8 +20,10 @@ In this case study, I revisited the **Introductory Splunk SOC Room** on TryHackM
 - Determined the **web server CMS** being targeted was **Joomla**  
 - Detected the use of the **Acunetix vulnerability scanner** by the attacker  
 
-<img src="screenshots/IHWS-1.png" alt="Reconnaissance CVE" width="600" height="auto">
+<img src="screenshots/IHWS-1.png" alt="Reconnaissance CVE" width="600" height="300">
+
 <img src="screenshots/IHWS-6.png" alt="CMS Detected" width="600" height="auto">
+
 <img src="screenshots/IHWS-7.png" alt="Scanner Identified" width="600" height="auto">
 
 **Other findings:**
@@ -47,6 +49,7 @@ In this case study, I revisited the **Introductory Splunk SOC Room** on TryHackM
 - VirusTotal search revealed alias: **ab.exe** 
 
 <img src="screenshots/IHWS-10.png" alt="Process Execution" width="600" height="auto">
+
 <img src="screenshots/IHWS-11.png" alt="VirusTotal Lookup" width="600" height="auto">
 
 ---
