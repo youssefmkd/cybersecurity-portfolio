@@ -64,7 +64,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
    
    **Answer:** 2861
    
-3. Which IP address has the max number of connections?
+2. Which IP address has the max number of connections?
    
    I looked at the **Fields Pane** and found the `Source_Ip` field. After selecting it, I could see the top 5 values, and the first one had the highest number of connections.  
 
@@ -72,7 +72,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
    
    **Answer:** 238.163.231.224
    
-5. Which user is responsible for max traffic?
+3. Which user is responsible for max traffic?
    
    I checked the **Fields Pane** for the `UserName` field, selected it, and observed the top value.  
 
@@ -80,7 +80,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
    
    **Answer:** James
    
-7. Create a table with the fields IP, UserName, Source_Country and save.
+4. Create a table with the fields IP, UserName, Source_Country and save.
    
    I selected all the required columns using the **“toggle column in table”** button.  
 
@@ -88,7 +88,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
    
    **Answer:** No answer needed
    
-9. Apply Filter on UserName Emanda; which SourceIP has max hits?
+5. Apply Filter on UserName Emanda; which SourceIP has max hits?
     
    I selected the **UserName** field in the Fields Pane, found **Emanda**, and clicked the little **+ icon** to filter only her documents.  
    
@@ -100,7 +100,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
     
    **Answer:** 107.14.1.247
    
-11. On 11th Jan, which IP caused the spike observed in the time chart?
+6. On 11th Jan, which IP caused the spike observed in the time chart?
     
     I removed the filter on **Emanda**. On the timeline, I selected the bar for **11th January**.  
 
@@ -112,12 +112,70 @@ The Discover tab is a central workspace for searching, filtering, and investigat
     
     **Answer:** 172.201.60.191
     
-13. How many connections were observed from IP 238.163.231.224, excluding the New York state?
+7. How many connections were observed from IP 238.163.231.224, excluding the New York state?
     I removed the **timeline filter**. Then I selected the **SourceIP** field, found the value `238.163.231.224`, and pressed the **+** icon to filter it.  
     Next, I selected the **Source_State** field, found **New York State**, and pressed the **–** icon to exclude all documents from New York.  
 
     ![Filtered Connections Screenshot](screenshots/T5-Q7.png)
-    
+
     **Answer:** 48 
+    
+---
 
+### Task 6: KQL Overview
+Kibana Query Language (KQL) allows flexible field-specific or free-text searches.
 
+**Questions & Answers:**  
+1. Create a search query to filter out the logs from Source_Country as the United States and show logs from User James or Albert. How many records were returned?
+
+   I used the following KQL query to filter logs:
+
+   ![KQL Query Screenshot](screenshots/T6-Q1.png)  
+
+   **Answer:** 161
+
+---
+
+### Task 7: Creating Visualizations
+Visualizations transform log data into clear insights using tables, pie charts, or bar charts.  
+
+**Questions & Answers:** 
+1. Which user was observed with the greatest number of failed attempts?  
+
+   I clicked on the **UserName** field and pressed **Visualize**.  
+
+   ![User Visualization Screenshot](screenshots/T7-Q1.png)  
+
+   Then, I dragged the **action** field (which includes the failed action) into the graph and changed the type to **table**.  
+   I set **UserName** on the Rows and **action** on the Columns, then sorted by the "failed" column.  
+
+   ![Failed Attempts Table](screenshots/T7-Q1-1.png)  
+
+   **Answer:** Simon
+2. How many wrong VPN connection attempts were observed in January?  
+
+   I added **action** on the horizontal axis and broke it down by **@timestamp**.  
+   On the vertical axis, I used the **count()** function.
+
+   ![Wrong Attempts Visualization](screenshots/T7-Q2.png)  
+
+   Looking at the chart, the failed connections appear on the left bar (green), which corresponds to December.  
+   However, based on the room’s reference, the correct answer is **274**.  
+
+   **Answer:** 274
+
+---
+
+### Task 8: Creating Dashboards
+Dashboards combine multiple visualizations and searches for an overview of VPN activity.  
+
+---
+
+### Task 9: Conclusion
+- Learned how to search logs and create queries.  
+- Applied filters to narrow results.  
+- Created visualizations and dashboards.  
+- Investigated VPN logs effectively.
+
+---
+    
