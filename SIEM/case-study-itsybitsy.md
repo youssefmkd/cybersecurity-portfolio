@@ -1,73 +1,52 @@
-# Case Study: ItsyBitsy Malware Investigation
+# 📝 Case Study: ItsyBitsy Malware Investigation
 
-## Task: Scenario – Investigate a potential C2 communication alert
+## 🔹 Overview
+During SOC monitoring, an IDS alert indicated potential C2 communication from **Browne** (HR). A suspicious file contained a malicious pattern `THM:{ ________ }`. A week of HTTP connection logs were ingested into the **connection_logs** index in Kibana.  
 
-### Scenario
-During normal SOC monitoring, Analyst John observed an alert on an IDS solution indicating a potential C2 communication from a user **Browne** from the HR department. A suspicious file was accessed containing a malicious pattern `THM:{ ________ }`. A week-long HTTP connection logs have been pulled to investigate. Due to limited resources, only the connection logs could be pulled out and are ingested into the **connection_logs** index in Kibana.
-
-Our task in this room is to examine the network connection logs of this user, find the link and the content of the file, and answer the questions.
+**Skills demonstrated:**
+- Investigating network logs for anomalies
+- Identifying suspicious C2 activity
+- Extracting file and URL information
+- Threat hunting in Kibana
 
 ---
 
-### Questions & Answers
+## 🔍 Key Findings
 
-**1. How many events were returned for the month of March 2022?**  
+### 1. Events Overview
+- Filtered events for March 2022 → **1482 events**  
 
-  I filtered events only for the month of March.  
-  
-  ![Screenshot](screenshots/itsyBitsy-Q1.png)  
-  
-  ![Screenshot](screenshots/itsyBitsy-Q1-1.png)  
-  
-  **Answer:** 1482
+<img src="screenshots/itsyBitsy-Q1.png" width="600" height="auto">
 
-**2. What is the IP associated with the suspected user in the logs?**  
+### 2. Suspected User IP
+- Investigated user Browne → **192.166.65.54**  
 
-  I checked the filtered events for the suspected user Browne.  
-  
-  ![Screenshot](screenshots/itsyBitsy-Q2.png)  
-  
-  **Answer:** 192.166.65.54  
+<img src="screenshots/itsyBitsy-Q2.png" width="600" height="auto">
 
-**3. The user’s machine used a legit Windows binary to download a file from the C2 server. What is the name of the binary?**  
+### 3. Download Tool
+- Identified the binary used from the `user_agent` field → **bitsadmin**  
 
-  I identified the download tool from the `user_agent` field in the filtered events.  
-  
-  ![Screenshot](screenshots/itsyBitsy-Q3.png)  
-  
-  **Answer:** bitsadmin  
+<img src="screenshots/itsyBitsy-Q3.png" width="600" height="auto">
 
-> BITSAdmin is a command-line tool to create download/upload jobs and monitor progress.
+> BITSAdmin is a command-line tool for download/upload tasks.
 
-**4. The infected machine connected with a famous filesharing site, which also acts as a C2 server. What is the name of the filesharing site?**  
+### 4. C2 Server
+- Determined the filesharing site acting as C2 → **pastebin.com**  
 
-  I inspected the `host` field in the filtered events to find the C2 server.  
-  
-  ![Screenshot](screenshots/itsyBitsy-Q4.png)  
-  
-  **Answer:** pastebin.com
+<img src="screenshots/itsyBitsy-Q4.png" width="600" height="auto">
 
-**5. What is the full URL of the C2 to which the infected host is connected?**  
+### 5. Full C2 URL
+- Combined `host` and `URI` fields → **pastebin.com/yTg0Ah6a**  
 
-  I combined the `host` and `URI` fields from the filtered events to get the full URL.  
-  
-  ![Screenshot](screenshots/itsyBitsy-Q5.png)  
-  
-  **Answer:** pastebin.com/yTg0Ah6a
+<img src="screenshots/itsyBitsy-Q5.png" width="600" height="auto">
 
-**6. A file was accessed on the filesharing site. What is the name of the file accessed?**  
+### 6. Accessed File
+- File accessed on the site → **secret.txt**  
 
-  I checked the URL in the filtered events to determine the accessed file.  
-  
-  ![Screenshot](screenshots/itsyBitsy-Q6.png)  
-  
-  **Answer:** secret.txt
+<img src="screenshots/itsyBitsy-Q6.png" width="600" height="auto">
 
-**7. The file contains a secret code with the format `THM{_____}`. What is the code?**  
-
-  I examined the content of the accessed file from the filtered events.  
-  
-  **Answer:** THM{SECRET__CODE}
+### 7. Secret Code
+- Extracted from the file → **THM{SECRET__CODE}**
 
 ---
 
