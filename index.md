@@ -14,10 +14,10 @@ Welcome! This is my **hands-on cybersecurity portfolio**, documenting labs, inve
 ### 1. [Security Information and Event Management](SIEM/README.md)
 - **Completed Modules:** Intro to SIEM, Investigating with ELK101, ItsyBitsy (Splunk), Splunk Basics, Incident Handling with Splunk, Investigating with Splunk, Benign  
 - **Case Studies:**  
-  1. [Investigating with ELK 101](01-SIEM/case-study-elk.md) – Built queries and dashboards to analyze authentication logs and detect anomalies.  
-  2. [ItsyBitsy (Splunk) Investigation](01-SIEM/case-study-itsybitsy.md) – Conducted hands-on analysis using Splunk to identify suspicious events and patterns.  
-  3. [Incident Handling with Splunk](01-SIEM/case-study-incident-handling.md) – End-to-end incident investigation including detection, analysis, and reporting.  
-  4. [Investigating with Splunk](01-SIEM/case-study-investigating.md) – Detailed investigations on scenarios like brute-force attempts and unauthorized access.
+  1. [Investigating with ELK 101](SIEM/case-study-elk.md) – Built queries and dashboards to analyze authentication logs and detect anomalies.  
+  2. [ItsyBitsy (Splunk) Investigation](SIEM/case-study-itsybitsy.md) – Conducted hands-on analysis using Splunk to identify suspicious events and patterns.  
+  3. [Incident Handling with Splunk](SIEM/case-study-incident-handling.md) – End-to-end incident investigation including detection, analysis, and reporting.  
+  4. [Investigating with Splunk](SIEM/case-study-investigating.md) – Detailed investigations on scenarios like brute-force attempts and unauthorized access.
   
 
 ### 2. [Digital Forensics and Incident Response](02-DFIR/README.md)
