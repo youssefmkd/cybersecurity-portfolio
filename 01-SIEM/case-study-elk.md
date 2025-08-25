@@ -178,4 +178,7 @@ Dashboards combine multiple visualizations and searches for an overview of VPN a
 - Investigated VPN logs effectively.
 
 ---
+
+## 🔗 Navigation
+- Back to [SIEM Home](../01-SIEM/README.md)
     
