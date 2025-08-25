@@ -57,20 +57,67 @@ The Discover tab is a central workspace for searching, filtering, and investigat
 
 **Questions & Answers:**  
 1. Select the index vpn_connections and filter from 31st December 2021 to 2nd Feb 2022. How many hits are returned?
+   
    I used the Time Filter in the top right corner to set the date range from 31st December 2021 to 2nd February 2022 and then pressed refresh.
+   
    ![Filtered Hits Screenshot](screenshots/T5-Q1.png)
+   
    **Answer:** 2861
+   
 3. Which IP address has the max number of connections?
-   **Answer:** 238.163.231.224  
+   
+   I looked at the **Fields Pane** and found the `Source_Ip` field. After selecting it, I could see the top 5 values, and the first one had the highest number of connections.  
+
+   ![Max Connections IP Screenshot](screenshots/T5-Q2.png)
+   
+   **Answer:** 238.163.231.224
+   
 5. Which user is responsible for max traffic?
-   **Answer:** James  
+   
+   I checked the **Fields Pane** for the `UserName` field, selected it, and observed the top value.  
+
+   ![Max Traffic User Screenshot](screenshots/T5-Q3.png) 
+   
+   **Answer:** James
+   
 7. Create a table with the fields IP, UserName, Source_Country and save.
+   
+   I selected all the required columns using the **“toggle column in table”** button.  
+
+   ![Table Creation Screenshot](screenshots/T5-Q4.png)
+   
    **Answer:** No answer needed
+   
 9. Apply Filter on UserName Emanda; which SourceIP has max hits?
+    
+   I selected the **UserName** field in the Fields Pane, found **Emanda**, and clicked the little **+ icon** to filter only her documents.  
+   
+   ![User Filter Screenshot](screenshots/T5-Q5.png)  
+
+   Then, I selected the **SourceIP** field under Selected fields to see the top value.  
+
+   ![SourceIP Top Value Screenshot](screenshots/T5-Q5-1.png) 
+    
    **Answer:** 107.14.1.247
+   
 11. On 11th Jan, which IP caused the spike observed in the time chart?
+    
+    I removed the filter on **Emanda**. On the timeline, I selected the bar for **11th January**.  
+
+    ![Timeline Spike Screenshot](screenshots/T5-Q6.png)  
+
+    The data was then filtered for that specific date. I checked the **Source_IP** field under Selected fields to see the top 5 values:  
+
+    ![Top IPs Screenshot](screenshots/T5-Q6-1.png)
+    
     **Answer:** 172.201.60.191
+    
 13. How many connections were observed from IP 238.163.231.224, excluding the New York state?
+    I removed the **timeline filter**. Then I selected the **SourceIP** field, found the value `238.163.231.224`, and pressed the **+** icon to filter it.  
+    Next, I selected the **Source_State** field, found **New York State**, and pressed the **–** icon to exclude all documents from New York.  
+
+    ![Filtered Connections Screenshot](screenshots/T5-Q7.png)
+    
     **Answer:** 48 
 
 
