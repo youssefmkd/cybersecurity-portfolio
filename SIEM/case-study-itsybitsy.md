@@ -16,17 +16,17 @@ During SOC monitoring, an IDS alert indicated potential C2 communication from **
 ### 1. Events Overview
 - Filtered events for March 2022 → **1482 events**  
 
-<img src="screenshots/itsyBitsy-Q1.png" width="auto" height="600">
+<img src="screenshots/itsyBitsy-Q1.png" width="auto" height="300">
 
 ### 2. Suspected User IP
 - Investigated user Browne → **192.166.65.54**  
 
-<img src="screenshots/itsyBitsy-Q2.png" width="auto" height="600">
+<img src="screenshots/itsyBitsy-Q2.png" width="auto" height="300">
 
 ### 3. Download Tool
 - Identified the binary used from the `user_agent` field → **bitsadmin**  
 
-<img src="screenshots/itsyBitsy-Q3.png" width="auto" height="600">
+<img src="screenshots/itsyBitsy-Q3.png" width="auto" height="300">
 
 > BITSAdmin is a command-line tool for download/upload tasks.
 
@@ -38,12 +38,12 @@ During SOC monitoring, an IDS alert indicated potential C2 communication from **
 ### 5. Full C2 URL
 - Combined `host` and `URI` fields → **pastebin.com/yTg0Ah6a**  
 
-<img src="screenshots/itsyBitsy-Q5.png" width="auto" height="600">
+<img src="screenshots/itsyBitsy-Q5.png" width="auto" height="300">
 
 ### 6. Accessed File
 - File accessed on the site → **secret.txt**  
 
-<img src="screenshots/itsyBitsy-Q6.png" width="auto" height="600">
+<img src="screenshots/itsyBitsy-Q6.png" width="auto" height="300">
 
 ### 7. Secret Code
 - Extracted from the file → **THM{SECRET__CODE}**
