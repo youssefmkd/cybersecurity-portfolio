@@ -19,7 +19,7 @@ In this case study, I analyzed **Windows + Sysmon logs** in Splunk to uncover ad
 - Adjusted time range → **All Time**  
 - Found **12,256 total events** ingested.  
 
-<img src="screenshots/IWS-1.png" alt="Total Events Screenshot" width="650">
+<img src="screenshots/IWS-1.jpg" alt="Total Events Screenshot" width="650">
 
 ---
 
@@ -29,7 +29,7 @@ In this case study, I analyzed **Windows + Sysmon logs** in Splunk to uncover ad
 - Found attacker-created account: **A1berto**  
   - Substitution trick: “L” replaced with “1” to mimic **Alberto**.  
 
-<img src="screenshots/IWS-2.png" alt="Backdoor User Screenshot" width="650">
+<img src="screenshots/IWS-2.jpg" alt="Backdoor User Screenshot" width="650">
 
 ---
 
@@ -39,7 +39,7 @@ In this case study, I analyzed **Windows + Sysmon logs** in Splunk to uncover ad
 - Persistence established at:  
   **HKLM\SAM\SAM\Domains\Account\Users\Names\A1berto**  
 
-<img src="screenshots/IWS-3.png" alt="Registry Key Screenshot" width="650">
+<img src="screenshots/IWS-3.jpg" alt="Registry Key Screenshot" width="650">
 
 ---
 
@@ -47,7 +47,7 @@ In this case study, I analyzed **Windows + Sysmon logs** in Splunk to uncover ad
 - Analyzed user activity across logs.  
 - Adversary attempted to impersonate legitimate user: **Alberto**.  
 
-<img src="screenshots/IWS-4.png" alt="Impersonated User Screenshot" width="650">
+<img src="screenshots/IWS-4.jpg" alt="Impersonated User Screenshot" width="650">
 
 ---
 
@@ -56,7 +56,7 @@ In this case study, I analyzed **Windows + Sysmon logs** in Splunk to uncover ad
 - Identified WMIC command used for remote user creation:  
   “C:\windows\System32\Wbem\WMIC.exe” /node:WORKSTATION6 process call create “net user /add A1berto paw0rd1”
 
-<img src="screenshots/IWS-5.png" alt="Backdoor Command Screenshot" width="650">
+<img src="screenshots/IWS-5.jpg" alt="Backdoor Command Screenshot" width="650">
 
 ---
 
@@ -65,7 +65,7 @@ In this case study, I analyzed **Windows + Sysmon logs** in Splunk to uncover ad
 - Filter: `User="A1berto"`  
 - Result: **0 successful logons** by the backdoor account.  
 
-<img src="screenshots/IWS-6.png" alt="Backdoor Logins Screenshot" width="650">
+<img src="screenshots/IWS-6.jpg" alt="Backdoor Logins Screenshot" width="650">
 
 ---
 
@@ -73,7 +73,7 @@ In this case study, I analyzed **Windows + Sysmon logs** in Splunk to uncover ad
 - Search: `index="main" powershell`  
 - Identified compromised host: **James.browne**  
 
-<img src="screenshots/IWS-7.png" alt="Infected Host Screenshot" width="650">
+<img src="screenshots/IWS-7.jpg" alt="Infected Host Screenshot" width="650">
 
 ---
 
@@ -81,7 +81,7 @@ In this case study, I analyzed **Windows + Sysmon logs** in Splunk to uncover ad
 - Event ID **4103** → PowerShell command logging.  
 - Found **79 malicious PowerShell execution events**.  
 
-<img src="screenshots/IWS-8.png" alt="Malicious PowerShell Screenshot" width="650">
+<img src="screenshots/IWS-8.jpg" alt="Malicious PowerShell Screenshot" width="650">
 
 ---
 
@@ -90,8 +90,8 @@ In this case study, I analyzed **Windows + Sysmon logs** in Splunk to uncover ad
 - Decoded to reveal attacker C2 infrastructure:  
 **hxxp[://]10[.]10[.]10[.]5/news[.]php**  
 
-<img src="screenshots/IWS-9.png" alt="Encoded PowerShell Screenshot" width="650">  
-<img src="screenshots/IWS-10.png" alt="Decoded C2 URL Screenshot" width="650">
+<img src="screenshots/IWS-9.jpg" alt="Encoded PowerShell Screenshot" width="650">  
+<img src="screenshots/IWS-10.jpg" alt="Decoded C2 URL Screenshot" width="650">
 
 ---
 
