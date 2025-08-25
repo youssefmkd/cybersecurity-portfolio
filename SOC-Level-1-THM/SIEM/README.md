@@ -53,4 +53,4 @@ It helps security analysts **detect, investigate, and respond to threats** effic
 ---
 
 ## 🔗 Navigation
-- Back to [Portfolio Home](../blob/main/index.md)
+- Back to [Portfolio Home](../../index.md)
