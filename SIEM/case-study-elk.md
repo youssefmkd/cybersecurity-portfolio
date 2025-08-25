@@ -193,5 +193,5 @@ Dashboards combine multiple visualizations and searches for an overview of VPN a
 ---
 
 ## 🔗 Navigation
-- Back to [SIEM Home](../01-SIEM/README.md)
+- Back to [SIEM Home](../SIEM/README.md)
     
