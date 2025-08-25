@@ -60,7 +60,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
    
    I used the Time Filter in the top right corner to set the date range from 31st December 2021 to 2nd February 2022 and then pressed refresh.
    
-   ![Filtered Hits Screenshot](screenshots/T5-Q1.png)
+   <img src="screenshots/T5-Q1.png" alt="Filtered Hits Screenshot" width="600" height="auto">
    
    **Answer:** 2861
    
@@ -68,7 +68,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
    
    I looked at the **Fields Pane** and found the `Source_Ip` field. After selecting it, I could see the top 5 values, and the first one had the highest number of connections.  
 
-   ![Max Connections IP Screenshot](screenshots/T5-Q2.png)
+   <img src="screenshots/T5-Q2.png" alt="Max Connections IP Screenshot" width="600" height="auto">
    
    **Answer:** 238.163.231.224
    
@@ -76,7 +76,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
    
    I checked the **Fields Pane** for the `UserName` field, selected it, and observed the top value.  
 
-   ![Max Traffic User Screenshot](screenshots/T5-Q3.png) 
+   <img src="screenshots/T5-Q3.png" alt="Max Traffic User Screenshot" width="600" height="auto">
    
    **Answer:** James
    
@@ -84,7 +84,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
    
    I selected all the required columns using the **“toggle column in table”** button.  
 
-   ![Table Creation Screenshot](screenshots/T5-Q4.png)
+   <img src="screenshots/T5-Q4.png" alt="Table Creation Screenshot" width="600" height="auto">
    
    **Answer:** No answer needed
    
@@ -92,11 +92,11 @@ The Discover tab is a central workspace for searching, filtering, and investigat
     
    I selected the **UserName** field in the Fields Pane, found **Emanda**, and clicked the little **+ icon** to filter only her documents.  
    
-   ![User Filter Screenshot](screenshots/T5-Q5.png)  
+   <img src="screenshots/T5-Q5.png" alt="User Filter Screenshot" width="600" height="auto">
 
    Then, I selected the **SourceIP** field under Selected fields to see the top value.  
 
-   ![SourceIP Top Value Screenshot](screenshots/T5-Q5-1.png) 
+   <img src="screenshots/T5-Q5-1.png" alt="SourceIP Top Value Screenshot" width="600" height="auto">
     
    **Answer:** 107.14.1.247
    
@@ -104,11 +104,11 @@ The Discover tab is a central workspace for searching, filtering, and investigat
     
     I removed the filter on **Emanda**. On the timeline, I selected the bar for **11th January**.  
 
-    ![Timeline Spike Screenshot](screenshots/T5-Q6.png)  
+    <img src="screenshots/T5-Q6.png" alt="Timeline Spike Screenshot" width="600" height="auto">
 
     The data was then filtered for that specific date. I checked the **Source_IP** field under Selected fields to see the top 5 values:  
 
-    ![Top IPs Screenshot](screenshots/T5-Q6-1.png)
+    <img src="screenshots/T5-Q6-1.png" alt="Top IPs Screenshot" width="600" height="auto">
     
     **Answer:** 172.201.60.191
     
@@ -116,7 +116,7 @@ The Discover tab is a central workspace for searching, filtering, and investigat
     I removed the **timeline filter**. Then I selected the **SourceIP** field, found the value `238.163.231.224`, and pressed the **+** icon to filter it.  
     Next, I selected the **Source_State** field, found **New York State**, and pressed the **–** icon to exclude all documents from New York.  
 
-    ![Filtered Connections Screenshot](screenshots/T5-Q7.png)
+    <img src="screenshots/T5-Q7.png" alt="Filtered Connections Screenshot" width="600" height="auto">
 
     **Answer:** 48 
     
@@ -130,7 +130,7 @@ Kibana Query Language (KQL) allows flexible field-specific or free-text searches
 
    I used the following KQL query to filter logs:
 
-   ![KQL Query Screenshot](screenshots/T6-Q1.png)  
+   <img src="screenshots/T6-Q1.png" alt="KQL Query Screenshot" width="600" height="auto"> 
 
    **Answer:** 161
 
@@ -144,12 +144,12 @@ Visualizations transform log data into clear insights using tables, pie charts, 
 
    I clicked on the **UserName** field and pressed **Visualize**.  
 
-   ![User Visualization Screenshot](screenshots/T7-Q1.png)  
+   <img src="screenshots/T7-Q1.png" alt="User Visualization Screenshot" width="600" height="auto"> 
 
    Then, I dragged the **action** field (which includes the failed action) into the graph and changed the type to **table**.  
    I set **UserName** on the Rows and **action** on the Columns, then sorted by the "failed" column.  
 
-   ![Failed Attempts Table](screenshots/T7-Q1-1.png)  
+   <img src="screenshots/T7-Q1-1.png" alt="Failed Attempts Table" width="600" height="auto">
 
    **Answer:** Simon
 2. How many wrong VPN connection attempts were observed in January?  
@@ -157,7 +157,7 @@ Visualizations transform log data into clear insights using tables, pie charts, 
    I added **action** on the horizontal axis and broke it down by **@timestamp**.  
    On the vertical axis, I used the **count()** function.
 
-   ![Wrong Attempts Visualization](screenshots/T7-Q2.png)  
+   <img src="screenshots/T7-Q2.png" alt="Wrong Attempts Visualization" width="600" height="auto">
 
    Looking at the chart, the failed connections appear on the left bar (green), which corresponds to December.  
    However, based on the room’s reference, the correct answer is **274**.  
@@ -172,13 +172,13 @@ Dashboards combine multiple visualizations and searches for an overview of VPN a
   I navigated to the **Dashboard** tab to create a dashboard containing all the visualizations that I had previously created and saved.  
 
   - From the Dashboard tab:  
-  ![Dashboard Navigation](screenshots/T8.png)  
+  <img src="screenshots/T8.png" alt="Dashboard Navigation" width="600" height="auto"> 
 
   - I selected all the visualizations that were created and saved in this room. This displayed them together in one dashboard.  
-  ![Select Visualizations](screenshots/T8-1.png)  
+  <img src="screenshots/T8-1.png" alt="Select Visualizations" width="600" height="auto"> 
 
   - Final dashboard view:  
-  ![Dashboard Complete](screenshots/T8-2.png)  
+  <img src="screenshots/T8-2.png" alt="Dashboard Complete" width="600" height="auto">
 
   **Answer:** No answer needed  
 
