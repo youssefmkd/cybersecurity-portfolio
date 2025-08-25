@@ -20,7 +20,7 @@ In this case study, I revisited the **Introductory Splunk SOC Room** on TryHackM
 - Determined the **web server CMS** being targeted was **Joomla**  
 - Detected the use of the **Acunetix vulnerability scanner** by the attacker  
 
-<img src="screenshots/IHWS-1.png" alt="Reconnaissance CVE" width="600" height="300">
+<img src="screenshots/IHWS-1.png" alt="Reconnaissance CVE" width="600" height="auto">
 
 <img src="screenshots/IHWS-6.png" alt="CMS Detected" width="600" height="auto">
 
