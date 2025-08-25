@@ -77,4 +77,4 @@ I acquired practical experience in threat hunting through this authentic exercis
 ---
 
 ## 🔗 Navigation
-- Back to [SIEM Home](../01-SIEM/README.md)
+- Back to [SIEM Home](../SIEM/README.md)
