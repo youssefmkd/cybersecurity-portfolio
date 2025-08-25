@@ -1,5 +1,5 @@
-title: Hacker theme
-description: Hacker is a theme for GitHub Pages.
-show_downloads: true
-google_analytics:
+title: Cybersecurity Portfolio
+description: Hands-on SOC Analyst (Level 1) projects, DFIR investigations, SIEM case studies, and Threat Intelligence labs.
+show_downloads: false   
+google_analytics:       
 theme: jekyll-theme-hacker
