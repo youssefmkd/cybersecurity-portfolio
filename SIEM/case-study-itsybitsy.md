@@ -51,7 +51,7 @@ During SOC monitoring, an IDS alert indicated potential C2 communication from **
 ---
 
 ### Reflection
-I acquired practical experience in threat hunting through this authentic exercise conducted in Kibana. This exercise involved utilizing log analysis to detect and investigate security incidents. The skills I honed, such as examining data points and proxy logs, are directly applicable to real-life threat hunting scenarios.
+I gained hands-on experience in threat hunting through this Kibana-based exercise. By analyzing logs and investigating security incidents, I developed skills in examining data points and proxy logs, directly applicable to real-world SOC operations.
 
 ---
 
