@@ -1,14 +1,12 @@
-title: Cybersecurity Portfolio
+title: Youssef Moukadem
 baseurl: "/cybersecurity-portfolio"
 repository: "https://github.com/youssefmkd/cybersecurity-portfolio"
-description: Hands-on SOC Analyst (Level 1) projects, DFIR investigations, SIEM case studies, and Threat Intelligence labs.
-show_downloads: false   
-google_analytics:       
+description: "Cybersecurity Enthusiast | Computer Science Graduate | Cloud Enthusiast | Lifelong Learner"
+show_downloads: false
+google_analytics:
 theme: jekyll-theme-hacker
 nav:
   - Home: index.md
   - SOC Level 1: SOC-Level-1-THM/README.md
   - SIEM: SIEM/README.md
-social:
-  github: "youssefmkd"
-  linkedin: "youssef-moukadem"
+  - DFIR: DFIR/README.md
