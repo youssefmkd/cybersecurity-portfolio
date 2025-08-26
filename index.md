@@ -1,4 +1,5 @@
 [Home](index.md) | [SOC Level 1](SOC-Level-1-THM/README.md) | [SIEM](SIEM/README.md)
+
 ---
 layout: default
 title: Cybersecurity Portfolio
@@ -6,7 +7,7 @@ title: Cybersecurity Portfolio
 
 # 🛡️ Cybersecurity Portfolio
 
-Hi, I’m **Youssef Moukadem**, a cybersecurity enthusiast building practical skills in **SOC, DFIR, endpoint monitoring, network defense, and threat intelligence**. This portfolio documents hands-on labs, investigations, and projects from **TryHackMe SOC Level 1**, Google Cloud SIEM projects, and IBM cybersecurity capstone exercises.
+Welcome! This is my **hands-on cybersecurity portfolio**, documenting labs, investigations, and projects across **SOC analysis, incident response, endpoint monitoring, network defense, cloud security, and real-world scenarios**. It highlights practical experience from SOC Level 1 labs, Google Cloud Security Command Center projects, and IBM cybersecurity case studies and capstone exercises.
 
 ---
 
