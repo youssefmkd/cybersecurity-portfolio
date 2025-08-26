@@ -1,7 +1,3 @@
-[Home](index.md) | [SOC Level 1](SOC-Level-1-THM/README.md) | [SIEM](SIEM/README.md)
-
----
-
 ---
 layout: default
 title: Cybersecurity Portfolio
