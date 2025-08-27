@@ -13,7 +13,7 @@ Welcome! This is my **hands-on cybersecurity portfolio**, documenting labs, inve
 
 - **[TryHackMe SOC Level 1](SOC-Level-1-THM/README.md)** – Labs, SIEM, threat hunting, DFIR, and capstone challenges.
   
-- **Google Cloud SIEM Projects** – Security Command Center investigations (coming soon).
+- **[Google Cloud SIEM Projects](Google/README.md)** – Security Command Center investigations (coming soon).
   
 - **IBM Cybersecurity Capstone** – Real-world cybersecurity case studies (coming soon).
 
