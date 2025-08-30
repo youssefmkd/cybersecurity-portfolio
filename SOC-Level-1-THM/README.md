@@ -60,14 +60,12 @@ This folder contains my **TryHackMe SOC Level 1 labs, exercises, and case studie
 
 
 ### 6. [Digital Forensics & Incident Response (DFIR)](DFIR/README.md)
-- **Completed Modules:** DFIR: An Introduction, Windows Forensics 1, Windows Forensics 2, Linux Forensics, Autopsy, Redline, KAPE, Volatility, Velociraptor, TheHive Project, Intro to Malware Analysis, Unattended, Disgruntled, Critical, Secret Recipe  
+- **Completed Modules:** DFIR: An Introduction, Windows Forensics 1 & 2, Linux Forensics, Autopsy, Redline, KAPE, Volatility, Velociraptor, TheHive Project, Intro to Malware Analysis, Unattended, Disgruntled, Critical, Secret Recipe  
 - **Case Studies:**  
-  1. [Windows Forensics Investigation](DFIR/case-study-windows-forensics.md) – Analyzed Windows artifacts (registry, event logs, prefetch) to trace adversary actions and persistence mechanisms.  
-  2. [Linux Forensics Case Study](DFIR/case-study-linux-forensics.md) – Conducted timeline analysis of bash history, cron jobs, and log files to identify malicious activity.  
-  3. [Memory Forensics with Volatility](DFIR/case-study-volatility.md) – Used Volatility to extract processes, network connections, and injected code from a compromised memory image.  
-  4. [Endpoint Triage with KAPE & Redline](DFIR/case-study-kape-redline.md) – Performed rapid evidence collection and analysis to uncover indicators of compromise.  
-  5. [Incident Coordination with TheHive](DFIR/case-study-thehive.md) – Documented and tracked incident response workflows using TheHive for case management.  
-  6. [Malware Analysis Case Study](DFIR/case-study-malware-analysis.md) – Reverse engineered and investigated malware samples, decoded obfuscation, and extracted IOCs.
+  1. [Unattended](DFIR/case-study-unattended.md) – Investigated unauthorized access by analyzing Windows event logs, registry artifacts, and user activity.  
+  2. [Disgruntled](DFIR/case-study-disgruntled.md) – Insider threat case involving forensic analysis of file access and potential data exfiltration.  
+  3. [Critical](DFIR/case-study-critical.md) – Malware investigation using memory and disk forensics with Volatility and Redline.  
+  4. [Secret Recipe](DFIR/case-study-secret-recipe.md) – Full end-to-end DFIR case involving malware, insider activity, and lateral movement; solved using multiple forensic tools.  
 
 
 
