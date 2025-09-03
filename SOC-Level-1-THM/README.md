@@ -89,4 +89,7 @@ This folder contains my **TryHackMe SOC Level 1 labs, exercises, and case studie
 - **Endpoint Monitoring**: Sysmon, Sysinternals, Wazuh  
 - **Phishing Analysis**: Email header & attachment triage  
 - **Network Defense**: Snort, Zeek, Wireshark  
-- **Threat Intelligence**: Yara, OpenCTI, MISP  
+- **Threat Intelligence**: Yara, OpenCTI, MISP
+
+## Navigation
+- Back to [Portfolio Home](../index.md)
