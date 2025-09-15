@@ -26,8 +26,8 @@ It focuses on identifying, collecting, analyzing, and preserving digital evidenc
 ---
 
 ## 📄 Reference Material
-- [Windows Forensics Cheat Sheet (PDF)](Windows_Forensics_Cheat_Sheet.pdf) – Key forensic tools and workflows for Windows systems.  
-- [Linux Forensics Cheat Sheet (PDF)](Linux_Forensics_Cheat_Sheet.pdf) – Important Linux forensics commands, log locations, and investigation tips.  
+- [Windows Forensics Cheat Sheet (PDF)](resources/Windows_Forensics_Cheat_Sheet.pdf) – Key forensic tools and workflows for Windows systems.  
+- [Linux Forensics Cheat Sheet (PDF)](resources/Linux_Forensics_Cheat_Sheet.pdf) – Important Linux forensics commands, log locations, and investigation tips.  
 
 ---
 
@@ -72,4 +72,5 @@ It focuses on identifying, collecting, analyzing, and preserving digital evidenc
 
 ## 🔗 Navigation
 - Back to [Portfolio Home](../../index.md)  
+
 
