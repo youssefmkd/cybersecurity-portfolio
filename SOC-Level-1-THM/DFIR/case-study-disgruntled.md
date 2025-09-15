@@ -31,7 +31,6 @@ cat auth.log | grep install
 
 ### 2. User creation and sudo grant
 - Searched `auth.log` for user creation and sudo updates:
-```bash
 cat auth.log | grep adduser
 cat auth.log | grep sudo
 ## Findings
