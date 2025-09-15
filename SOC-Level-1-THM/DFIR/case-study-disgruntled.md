@@ -17,9 +17,8 @@ The goal was to determine what the user did on the host, identify malicious arti
 
 ### 1. Review sudo / install activity
 - Searched the authentication log for install actions:
-```bash
 cd /var/log
-cat auth.log | grep install
+cat auth.log | grep install  
 ## Findings
 - **Full command executed with sudo:**  
   `/usr/bin/apt install dokuwiki`
