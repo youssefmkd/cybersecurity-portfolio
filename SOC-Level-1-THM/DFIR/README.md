@@ -25,6 +25,12 @@ It focuses on identifying, collecting, analyzing, and preserving digital evidenc
 
 ---
 
+## 📄 Reference Material
+- [Windows Forensics Cheat Sheet (PDF)](Windows_Forensics_Cheat_Sheet.pdf) – Key forensic tools and workflows for Windows systems.  
+- [Linux Forensics Cheat Sheet (PDF)](Linux_Forensics_Cheat_Sheet.pdf) – Important Linux forensics commands, log locations, and investigation tips.  
+
+---
+
 ## 🎯 Skills Gained
 - Collecting and analyzing Windows and Linux forensic artifacts  
 - Using tools like **Autopsy, Redline, Volatility, and KAPE** for forensic analysis  
@@ -66,3 +72,4 @@ It focuses on identifying, collecting, analyzing, and preserving digital evidenc
 
 ## 🔗 Navigation
 - Back to [Portfolio Home](../../index.md)  
+
