@@ -50,11 +50,7 @@ It focuses on identifying, collecting, analyzing, and preserving digital evidenc
    Performed forensic analysis of file access and system artifacts to detect data exfiltration by a malicious insider.  
    [Read Full Case Study →](case-study-disgruntled.md)  
 
-3. **Critical (Malware Investigation)**  
-   Conducted memory and disk forensics using **Volatility and Redline** to identify persistence mechanisms of a malware infection.  
-   [Read Full Case Study →](case-study-critical.md)  
-
-4. **Secret Recipe (Comprehensive DFIR Case)**  
+3. **Secret Recipe (Comprehensive DFIR Case)**  
    End-to-end investigation of a simulated breach involving malware, insider threat, and lateral movement.  
    Used **multiple forensic tools** (KAPE, Autopsy, Velociraptor) to collect artifacts, analyze evidence, and report findings.  
    [Read Full Case Study →](case-study-secret-recipe.md)  
@@ -72,5 +68,6 @@ It focuses on identifying, collecting, analyzing, and preserving digital evidenc
 
 ## 🔗 Navigation
 - Back to [Portfolio Home](../../index.md)  
+
 
 
