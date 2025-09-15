@@ -83,7 +83,6 @@ A suspicious janitor was observed leaving the office, raising concerns of **unau
 - Copied string: **ne7AIRhi3PdESy9RnOrN**
 
 <img src="screenshots/unattended-pastebin.png" width="600">
-<img src="screenshots/unattended-pastebin1.png" width="600">
 
 ---
 
