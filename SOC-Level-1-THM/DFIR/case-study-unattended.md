@@ -26,9 +26,9 @@ A suspicious janitor was observed leaving the office, raising concerns of **unau
 - File type searched: **.pdf**  
 - Keyword searched: **continental**  
 
-<img src="screenshots/unattended-typedpaths.png" width="600">
-<img src="screenshots/unattended-typedpaths1.png" width="600">
-<img src="screenshots/unattended-typedpaths2.png" width="600">
+<img src="screenshots/unattended-typedpaths.png" width="800">
+<img src="screenshots/unattended-typedpaths1.png" width="800">
+<img src="screenshots/unattended-typedpaths2.png" width="800">
 
 ---
 
@@ -42,8 +42,8 @@ A suspicious janitor was observed leaving the office, raising concerns of **unau
 - File downloaded: **7z2201-x64.exe**  
 - Timestamp: **2022-11-19 12:09:19 UTC**  
 
-<img src="screenshots/unattended-download.png" width="600">
-<img src="screenshots/unattended-download1.png" width="600">
+<img src="screenshots/unattended-download.png" width="800">
+<img src="screenshots/unattended-download1.png" width="800">
 
 ---
 
@@ -56,7 +56,7 @@ A suspicious janitor was observed leaving the office, raising concerns of **unau
 - File opened: **continental.png**  
 - Opened at: **2022-11-19 12:10:21**  
 
-<img src="screenshots/unattended-recentdocs.png" width="600">
+<img src="screenshots/unattended-recentdocs.png" width="800">
 
 ---
 
@@ -70,7 +70,7 @@ A suspicious janitor was observed leaving the office, raising concerns of **unau
 - Text file accessed **2 times**  
 - Last modified: **11/19/2022 12:12**
 
-<img src="screenshots/unattended-jumplist.png" width="600">
+<img src="screenshots/unattended-jumplist.png" width="800">
 
 ---
 
@@ -82,7 +82,7 @@ A suspicious janitor was observed leaving the office, raising concerns of **unau
 - Exfiltrated to: **https://pastebin.com/1FQASAav**  
 - Copied string: **ne7AIRhi3PdESy9RnOrN**
 
-<img src="screenshots/unattended-pastebin.png" width="600">
+<img src="screenshots/unattended-pastebin.png" width="800">
 
 ---
 
