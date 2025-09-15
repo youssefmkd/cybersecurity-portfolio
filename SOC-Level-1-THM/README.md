@@ -67,7 +67,7 @@ This folder contains my **TryHackMe SOC Level 1 labs, exercises, and case studie
 
 ---
 
-### 7. [Phishing Analysis & Prevention](Phishing/README.md)
+### 7. [Phishing Analysis & Prevention](PHISHING/README.md)
 - **Completed Modules:** Phishing Fundamentals, Phishing Tools, Greenholt Phish, Snapped Phish, Phishing Unfolding  
 - **Case Studies:**  
   1. [The Greenholt Phish](Phishing/case-study-greenholt.md) – Analyzed a simulated phishing campaign to identify malicious emails, extract IOCs, and recommend mitigation strategies.  
