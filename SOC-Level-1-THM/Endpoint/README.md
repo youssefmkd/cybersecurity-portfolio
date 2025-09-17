@@ -32,15 +32,15 @@ It combines log analysis, behavioral monitoring, and security tools to detect an
 ## 📑 Case Studies
 1. **Sysinternals for Threat Hunting**  
    Leveraged Sysinternals tools to analyze running processes, network connections, and persistence techniques.  
-   [Read Full Case Study →](Endpoint/case-study-sysinternals.md)  
+   [Read Full Case Study →](case-study-sysinternals.md)  
 
 2. **Sysmon Event Analysis**  
    Built detections and investigated suspicious behavior using Sysmon logs.  
-   [Read Full Case Study →](Endpoint/case-study-sysmon.md)  
+   [Read Full Case Study →](case-study-sysmon.md)  
 
 3. **Endpoint Detection with Wazuh**  
    Used Wazuh to collect and analyze endpoint logs for intrusion detection and monitoring.  
-   [Read Full Case Study →](Endpoint/case-study-wazuh.md)  
+   [Read Full Case Study →](case-study-wazuh.md)  
 
 ---
 
