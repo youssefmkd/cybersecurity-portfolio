@@ -30,15 +30,15 @@ CTI helps security teams proactively detect, prevent, and respond to attacks by 
 ## 📑 Case Studies
 1. **YARA Threat Detection**  
    Created and applied YARA rules to detect malware patterns and indicators of compromise.  
-   [Read Full Case Study →](CTI/case-study-yara.md)  
+   [Read Full Case Study →](case-study-yara.md)  
 
 2. **MISP Intelligence Analysis**  
    Leveraged MISP to aggregate threat intelligence and analyze correlations between incidents.  
-   [Read Full Case Study →](CTI/case-study-misp.md)  
+   [Read Full Case Study →](case-study-misp.md)  
 
 3. **OpenCTI Threat Investigation**  
    Tracked threat actor TTPs using OpenCTI, identifying actionable intelligence for defense.  
-   [Read Full Case Study →](CTI/case-study-opencti.md)  
+   [Read Full Case Study →](case-study-opencti.md)  
 
 ---
 
