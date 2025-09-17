@@ -75,11 +75,14 @@ sha256sum SWT_#09674321____PDF__.CAB
 
 **Findings:**  
 - Name: `SWT_#09674321____PDF__.CAB`
-<img src="screenshots/phish6.png" width="600" height="auto"> 
+<img src="screenshots/phish6.png" width="600" height="auto">
+
 - SHA256: `2e91c533615a9bb8929ac4bb76707b2444597ce063d84a4b33525e25074fff3f`
 <img src="screenshots/phish6-1.png" width="600" height="auto">
+
 - File size: `400.26 KB`
 <img src="screenshots/phish6-2.png" width="600" height="auto">
+
 - Actual file extension: `RAR`
 <img src="screenshots/phish6-3.png" width="600" height="auto">
 
