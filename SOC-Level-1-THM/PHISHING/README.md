@@ -35,7 +35,7 @@ It involves understanding email threats, analyzing suspicious messages, extracti
 ## 📑 Case Studies
 1. **The Greenholt Phish**  
    Analyzed a simulated phishing campaign to identify malicious emails, extract IOCs, and recommend mitigation strategies.  
-   [Read Full Case Study →](Phishing/case-study-greenholt.md)  
+   [Read Full Case Study →](PHISHING/case-study-greenholt.md)  
 
 ---
 
