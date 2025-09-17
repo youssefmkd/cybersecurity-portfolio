@@ -62,8 +62,7 @@ This folder contains my **TryHackMe SOC Level 1 labs, exercises, and case studie
 - **Case Studies:**  
   1. [Unattended](DFIR/case-study-unattended.md) – Investigated unauthorized access by analyzing Windows event logs, registry artifacts, and user activity.  
   2. [Disgruntled](DFIR/case-study-disgruntled.md) – Insider threat case involving forensic analysis of file access and potential data exfiltration.  
-  3. [Critical](DFIR/case-study-critical.md) – Malware investigation using memory and disk forensics with Volatility and Redline.  
-  4. [Secret Recipe](DFIR/case-study-secret-recipe.md) – Full end-to-end DFIR case involving malware, insider activity, and lateral movement.  
+  3. [Secret Recipe](DFIR/case-study-secret-recipe.md) – Full end-to-end DFIR case involving malware, insider activity, and lateral movement.  
 
 ---
 
