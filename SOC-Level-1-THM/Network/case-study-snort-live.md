@@ -41,6 +41,8 @@ sudo snort -v -l .
 
 I let Snort run for ~15 seconds, then stopped with `CTRL+C`.
 
+<img src="screenshots/snort.png" width="600" height="auto">
+
 ---
 
 ### Step 2: Analyze the Captured Log
@@ -49,6 +51,8 @@ I opened the captured log in hex-dump mode:
 sudo snort -r snort.log.1672414629 -X
 
 Scrolling through packets, I noticed **port 22** repeatedly in both **source** and **destination** fields.
+
+<img src="screenshots/snort1.png" width="600" height="auto">
 
 ---
 
@@ -61,6 +65,8 @@ I also searched for the string “ssh”:
 sudo snort -r snort.log.1672414629 -X | grep "ssh"
 
 This confirmed multiple SSH connections.
+
+<img src="screenshots/snort2.png" width="600" height="auto">
 
 ---
 
@@ -77,7 +83,7 @@ drop tcp any 22 <> any any (msg:"SSH Connection attempted"; sid:100001; rev:1;)
 - `any 22 <> any any` → source any on port 22 to any destination  
 - `msg` → descriptive message  
 - `sid` → unique Snort ID  
-- `rev` → rule revision  
+- `rev` → rule revision 
 
 ---
 
@@ -95,7 +101,10 @@ After a short wait, a **flag.txt** file appeared on the Desktop, confirming the 
 ### Results
 - **Flag:** `THM{81b7fef657f8aaa6e4e200d616738254}`  
 - **Service under attack:** `SSH`  
-- **Protocol/Port:** `TCP/22`  
+- **Protocol/Port:** `TCP/22`
+
+<img src="screenshots/snort3.png" width="600" height="auto">
+<img src="screenshots/snort4.png" width="600" height="auto">
 
 ---
 
