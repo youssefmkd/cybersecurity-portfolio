@@ -159,7 +159,10 @@ After about a minute, a new **flag.txt** appeared on the Desktop, confirming the
 ### Results
 - **Flag:** `THM{0ead8c494861079b1b74ec2380d2cd24}`  
 - **Protocol/Port:** `TCP/4444`  
-- **Associated tool:** `Metasploit` – since port 4444 is heavily associated with its reverse shell payloads.  
+- **Associated tool:** `Metasploit` – since port 4444 is heavily associated with its reverse shell payloads.
+
+<img src="screenshots/snort5.png" width="600" height="auto">
+<img src="screenshots/snort6.png" width="600" height="auto">
 
 ---
 
