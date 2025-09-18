@@ -39,15 +39,15 @@ It combines intrusion detection, packet inspection, and flow analysis to identif
 ## 📑 Case Studies
 1. **Snort Live Attacks Challenge**  
    Detected and analyzed simulated network attacks using Snort IDS rules and alert patterns.  
-   [Read Full Case Study →](Network/case-study-snort-live.md)  
+   [Read Full Case Study →](case-study-snort-live.md)  
 
 2. **Wireshark Traffic Analysis**  
    Examined packet captures to identify anomalies, suspicious protocols, and potential data exfiltration.  
-   [Read Full Case Study →](Network/case-study-wireshark.md)  
+   [Read Full Case Study →](case-study-wireshark.md)  
 
 3. **Zeek Network Monitoring**  
    Leveraged Zeek logs to track host activity, detect suspicious connections, and analyze network flows.  
-   [Read Full Case Study →](Network/case-study-zeek.md)  
+   [Read Full Case Study →](case-study-zeek.md)  
 
 ---
 
