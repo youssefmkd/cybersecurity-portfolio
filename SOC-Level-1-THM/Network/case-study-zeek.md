@@ -122,6 +122,9 @@ Answer: hopto[.]org
 How I did it:
 On VirusTotal under the Behavior tab, I found that the .exe attempted to connect to hopto.org.
 
+<img src="screenshots/zeek8.png" width="600" height="auto">
+<img src="screenshots/zeek9.png" width="600" height="auto">
+
 ### Q6: What is the request name of the downloaded malicious .exe file?
 
 Answer: knr.exe
@@ -178,6 +181,9 @@ I extracted base64 values from log4j.log and decoded them:
 cat log4j.log | zeek-cut value | grep Base64
 
 After decoding, the commands showed the creation of a file named pwned.
+
+<img src="screenshots/zeek10.png" width="600" height="auto">
+<img src="screenshots/zeek11.png" width="600" height="auto">
 
 
 ## ✅ Conclusion
