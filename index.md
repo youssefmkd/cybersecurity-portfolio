@@ -5,7 +5,7 @@ title: Cybersecurity Portfolio
 
 # 🛡️ Cybersecurity Portfolio
 
-Welcome! This is my **hands-on cybersecurity portfolio**, documenting labs, investigations, and projects across **SOC analysis, incident response, endpoint monitoring, network defense, cloud security, and real-world scenarios**. It highlights practical experience from SOC Level 1 labs, Google Cloud Security Command Center projects, and IBM cybersecurity case studies and capstone exercises.
+Welcome! This is my **hands-on cybersecurity portfolio**, documenting labs, investigations, and projects across **SOC analysis, incident response, endpoint monitoring, network defense, cloud security, and real-world scenarios**. It highlights practical experience from SOC Level 1 labs and Google Cloud Security Command Center projects.
 
 ---
 
@@ -15,8 +15,6 @@ Welcome! This is my **hands-on cybersecurity portfolio**, documenting labs, inve
   
 - **[Google Cloud SIEM Projects](Google/README.md)** – Security Command Center investigations (coming soon).
   
-- **IBM Cybersecurity Capstone** – Real-world cybersecurity case studies (coming soon).
-
 ---
 
 ## ⚡ Skills
