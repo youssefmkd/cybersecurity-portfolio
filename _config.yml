@@ -1,4 +1,4 @@
-title: "Youssef Moukadem | Cybersecurity Portfolio"
+title: "Youssef Moukadem"
 baseurl: "/cybersecurity-portfolio"
 repository: "https://github.com/youssefmkd/cybersecurity-portfolio"
 description: "Cybersecurity Enthusiast | Computer Science Graduate | Cloud Enthusiast | Lifelong Learner"
@@ -6,7 +6,7 @@ show_downloads: false
 google_analytics:
 theme: jekyll-theme-hacker
 
-social_links:
+social:
   linkedin: "www.linkedin.com/in/youssef-moukadem"
   tryhackme: "https://tryhackme.com/p/YoussefMoukadem"
   email: "mailto:y.moukadem@outlook.com"
