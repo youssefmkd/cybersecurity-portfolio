@@ -1,12 +1,13 @@
-title: Youssef Moukadem
+title: "Youssef Moukadem | Cybersecurity Portfolio"
 baseurl: "/cybersecurity-portfolio"
 repository: "https://github.com/youssefmkd/cybersecurity-portfolio"
 description: "Cybersecurity Enthusiast | Computer Science Graduate | Cloud Enthusiast | Lifelong Learner"
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-hacker
-nav:
-  - Home: index.md
-  - SOC Level 1: SOC-Level-1-THM/README.md
-  - SIEM: SIEM/README.md
-  - DFIR: DFIR/README.md
+
+social_links:
+  linkedin: "www.linkedin.com/in/youssef-moukadem"
+  tryhackme: "https://tryhackme.com/p/YoussefMoukadem"
+  email: "mailto:y.moukadem@outlook.com"
+  
