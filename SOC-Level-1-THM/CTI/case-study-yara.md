@@ -1,247 +1,211 @@
-# Case Study: Yara Analysis
+# Case Study: Yara and Malware Detection with Loki & Valhalla
 
-## Task 1: Introduction  
-In this room, I learned about Yara, a tool used for identifying and classifying malware through rule-based signatures.
-
----
-
-## Task 2: What is Yara?
-
-### #2.1 What is the name of the base-16 numbering system that Yara can detect?  
-I read through the provided documentation about Yara. I noticed that it mentioned Yara can detect hexadecimal patterns in files and memory scans.  
-
-**Answer:** hex  
-
-<img src="screenshots/yara1.png" width="600" height="auto">
+After completing several malware detection exercises, I wanted to explore **Yara** — a powerful rule-based tool that helps analysts identify and classify malware based on textual or binary patterns.  
+In this case study, I learned to create and use Yara rules, integrate them with **Loki** for live scanning, and analyze detections through **Valhalla** and **VirusTotal** to understand how these tools work together in a real-world SOC workflow.
 
 ---
 
-### #2.2 Would the text “Enter your Name” be a string in an application? (Yay/Nay)  
-I read the example section about Yara strings, and it explained that readable text within an application is recognized as a string.  
+## Introduction and Learning Setup
 
-**Answer:** Yay  
+I began by deploying the TryHackMe environment and confirming that the machine was running properly. Once it was active, I connected through the browser interface and explored the file structure to locate the suspicious samples and tools provided.
 
-<img src="screenshots/yara2.png" width="600" height="auto">
+I reviewed the introduction and learned that Yara can identify hexadecimal (`hex`) patterns, plain text, and regular expressions.  
+For example, phrases like `"Enter your Name"` in application code are recognized as **strings** that can be matched during scans.
 
----
+**Answer:**  
+- Base-16 system: `hex`  
+- “Enter your Name” as string: `Yay`
 
-## Task 3: Deploy  
-
-### #3.1 I’ve connected to my instance!  
-I started the machine by pressing “Start Machine” and confirmed the instance was running.  
-
-**Answer:** No answer is needed  
+<img src="screenshots/yara1.png" width="600">
+<img src="screenshots/yara2.png" width="600">
 
 ---
 
-## Task 4: Introduction to Yara Rules  
+## Getting Started with Yara Rules
 
-### #4.1 One rule to — well — rule them all.  
-I created a new file named `somefile` using:  
+To begin practicing, I created a small test rule. I first created a file called `somefile` and then another file named `myfirstrule.yar`:
 
 touch somefile
+nano myfirstrule.yar
 
-Then I created another file called myfirstrule.yar and opened it using nano myfirstrule.yar.
-Inside it, I wrote a basic rule structure with a condition: true statement and saved it.
+Inside the Yara file, I wrote the following minimal rule:
 
-**Answer:** No answer is needed
+rule myfirstrule {
+    condition: true
+}
 
-<img src="screenshots/yara3.png" width="600" height="auto">
-<img src="screenshots/yara4.png" width="600" height="auto">
+This simple rule always returns true, which means it will match anything — useful for testing that Yara is working correctly.
+After saving the file, I ran Yara against a test input to make sure it loaded successfully. This helped me understand Yara’s structure: each rule contains a name, strings section, metadata, and conditions.
 
----
-
-##Task 5: Expanding on Yara Rules
-
-### #5.1 Upwards and onwards…
-
-I read the section that explained how Yara rules can include multiple strings, conditions, and metadata fields.
-
-**Answer:** No answer is needed
+<img src="screenshots/yara3.png" width="600"> <img src="screenshots/yara4.png" width="600">
 
 ---
 
-## Task 6: Yara Modules
-### #6.1 Sounds pretty cool!
+## Understanding and Expanding Yara Rules
 
-I reviewed the Yara modules section and learned that modules enhance detection by allowing analysis of specific file types and formats.
+Once I got the basics working, I read through the explanation of how Yara rules can be expanded to include multiple string matches and conditions.
+For example, I learned that Yara can scan for text fragments like URLs, command keywords, or encoded payloads, making it highly flexible for malware identification.
 
-**Answer:** No answer is needed
-
----
-
-##Task 7: Other Tools and Yara
-### #7.1 Cool tools. I’m ready to use one of them.
-
-I explored how Yara integrates with other tools like Loki for malware detection.
-
-**Answer:** No answer is needed
+I also discovered that Yara modules let analysts analyze specific file types, such as PE files or ELF executables, by extracting internal properties. These modules make detection rules far more powerful.
 
 ---
 
-##Task 8: Using LOKI and Its Yara Rule Set
+## Using Yara with Loki
 
-I navigated to the suspicious files directory:
+Next, I moved into the practical investigation phase using Loki, which leverages Yara rules for scanning files.
+I navigated to the directory of the first suspicious file:
 
 cd /suspicious-files/file1/
 python ../../tools/Loki/loki.py -p .
 
-<img src="screenshots/yara5.png" width="600" height="auto">
-### #8.1 Scan file 1. Does Loki detect this file as suspicious/malicious or benign?
+<img src="screenshots/yara5.png" width="600">
 
-I ran the scan and observed Loki marked the file as suspicious.
+The scan results appeared in the terminal, and Loki detected the file as suspicious.
 
-**Answer:** Suspicious
+Answer: Suspicious
 
-<img src="screenshots/yara6.png" width="600" height="auto">
-### #8.2 What Yara rule did it match on?
+From the output, I noticed the Yara rule it matched on was:
 
-After checking the scan output, I saw the Yara rule matched was webshell_metaslsoft.
+Answer: webshell_metaslsoft
 
-**Answer:** webshell_metaslsoft
+<img src="screenshots/yara6.png" width="600"> <img src="screenshots/yara7.png" width="600">
 
-<img src="screenshots/yara7.png" width="600" height="auto">
-### #8.3 What does Loki classify this file as?
+Loki also classified the file as a Web Shell, confirming that it matched the behavior of remote administration backdoors often deployed by attackers.
 
-The classification in the output showed it as a web shell.
+Answer: Web Shell
 
-**Answer:** Web Shell
+<img src="screenshots/yara8.png" width="600">
 
-<img src="screenshots/yara8.png" width="600" height="auto">
-### #8.4 Based on the output, what string within the Yara rule did it match on?
+The rule triggered based on a specific string named:
 
-In the Loki results, I saw that the rule matched on the string Str1.
+Answer: Str1
 
-**Answer:** Str1
+<img src="screenshots/yara9.png" width="600">
 
-<img src="screenshots/yara9.png" width="600" height="auto">
-### #8.5 What is the name and version of this hack tool?
+After examining more details, I learned that this web shell was identified as:
 
-The version details showed b374k 2.2.
+Answer: b374k 2.2
 
-**Answer:** b374k 2.2
+<img src="screenshots/yara10.png" width="600">
 
-<img src="screenshots/yara10.png" width="600" height="auto">
-### #8.6 Inspect the actual Yara file that flagged file 1. Within this rule, how many strings are there to flag this file?
+To confirm the rule details, I opened the Yara file responsible for detection and saw that it contained only one string condition, demonstrating that even minimal patterns can be powerful when chosen correctly.
 
-I opened the Yara file and confirmed there was only one string condition.
+Answer: 1
 
-**Answer:** 1
+---
 
-### #8.7 Scan file 2. Does Loki detect this file as suspicious/malicious or benign?
+## Scanning the Second Suspicious File
 
-I switched to the file2 directory and ran:
+I then navigated to the second folder:
 
 cd /suspicious-files/file2/
 python ../../tools/Loki/loki.py -p .
 
+<img src="screenshots/yara11.png" width="600">
 
-The results showed it as benign.
-
-**Answer:** Benign
-
-<img src="screenshots/yara11.png" width="600" height="auto">
-### #8.8 Inspect file 2. What is the name and version of this web shell?
-
-I opened the file using:
+This time, Loki classified the file as Benign, meaning no existing Yara rule matched.
+To dig deeper, I opened the file manually:
 
 nano 1ndex.php
 
-I found the version mentioned as b374k 3.2.3.
+Inside, I found version information referencing b374k 3.2.3, indicating that this was a newer variant of the previous web shell.
 
-**Answer:** b374k 3.2.3
+Answer: b374k 3.2.3
 
-<img src="screenshots/yara12.png" width="600" height="auto">
-## Task 9: Creating Yara Rules with yarGen
+<img src="screenshots/yara12.png" width="600">
 
-I generated a Yara rule for file2 using yarGen.
+---
 
-### #9.1 From within the root of the suspicious files directory, what command would you run to test Yara and your Yara rule against file 2?
+## Generating a Custom Yara Rule with yarGen
+
+To improve detection coverage, I decided to generate a custom rule using yarGen.
+I ran the tool against file2 to automatically extract unique strings and characteristics.
+
+After generation, I tested the rule manually using:
+
 yara file2.yar file2/1ndex.php
 
+Answer: yara file2.yar file2/1ndex.php
 
-**Answer:** yara file2.yar file2/1ndex.php
+<img src="screenshots/yara13.png" width="600">
 
-<img src="screenshots/yara13.png" width="600" height="auto">
-### #9.2 Did Yara rule flag file 2?
+Yara successfully flagged the file — Answer: Yay
+I then moved the rule into Loki’s signature directory to include it in future scans.
 
-**Answer:** Yay
+When I ran Loki again, it detected the file as malicious based on the new rule.
 
-### #9.3 Copy the Yara rule you created into the Loki signatures directory.
+Answer: Yay
 
-I moved the generated rule file into the Loki Yara signatures directory.
+From the output, the variable name of the matched string was:
 
-**Answer:** No answer is needed
+Answer: Zepto
 
-### #9.4 Test the Yara rule with Loki, does it flag file 2?
+Upon opening the generated rule file in nano, I counted all the string patterns and found there were 20 in total.
 
-I tested again using Loki, and this time the file was flagged successfully.
+Answer: 20
 
-**Answer:** Yay
+<img src="screenshots/yara14.png" width="600">
 
-### #9.5 What is the name of the variable for the string that it matched on?
+Additionally, the rule had a file size condition stating that the file must be less than:
 
-From the Loki output, I saw the string variable name was Zepto.
+Answer: 700KB
 
-**Answer:** Zepto
+This made sense since Yara rules often include file size limits to optimize scanning performance.
 
-### #9.6 Inspect the Yara rule, how many strings were generated?
+---
 
-I opened the rule using nano and counted 20 strings in total.
+## Correlating Results with Valhalla and VirusTotal
 
-**Answer:** 20
+To verify my findings, I took the SHA256 hashes from both samples and uploaded them to Valhalla, a threat intelligence platform that maps Yara rules to known campaigns.
 
-<img src="screenshots/yara14.png" width="600" height="auto">
-### #9.7 One of the conditions to match on the Yara rule specifies file size. The file has to be less than what amount?
+File1 hash: 5479f8cd1375364770df36e5a18262480a8f9d311e8eedb2c2390ecb233852ad
 
-In the rule conditions, the filesize limit was set to less than 700KB.
+File2 hash: 53fe44b4753874f079a936325d1fdc9b1691956a29c3aaf8643cdbd49f5984bf
 
-**Answer:** 700KB
+The first file was attributed to an APT group.
+Answer: Yay
 
-## Task 10: Valhalla
-### #10.1 Enter the SHA256 hash of file 1 into Valhalla. Is this file attributed to an APT group?
+For the second file, Valhalla displayed the first matching rule as:
 
-I used the hash 5479f8cd1375364770df36e5a18262480a8f9d311e8eedb2c2390ecb233852ad in Valhalla and found it linked to an APT group.
+Answer: Webshell_b374k_rule1
 
-**Answer:** Yay
+I then examined its VirusTotal record, which showed that the THOR APT scanner was the first to detect the Yara match.
 
-### #10.2 Do the same for file 2. What is the name of the first Yara rule to detect file 2?
+Answer: THOR APT Scanner
 
-Using hash 53fe44b4753874f079a936325d1fdc9b1691956a29c3aaf8643cdbd49f5984bf, I found the first rule listed as Webshell_b374k_rule1.
+Not all antivirus engines flagged the file as malicious —
+Answer: Nay
 
-**Answer:** Webshell_b374k_rule1
+When I checked the “Details” tab, I noticed another file extension associated with the same sample:
 
-### #10.3 Examine the information for file 2 from VirusTotal (VT). The Yara Signature Match is from what scanner?
+Answer: EXE
 
-The scanner that matched the Yara rule was THOR APT.
+From the rule content, I learned that this web shell also used the Zepto JavaScript library, confirming what my generated rule had already detected.
 
-**Answer:** THOR APT Scanner
+Finally, I verified whether this specific Yara rule existed in Loki’s default signature set using:
 
-### #10.4 Enter the SHA256 hash of file 2 into Virus Total. Did every AV detect this as malicious?
+ls /home/cmnatic/tools/Loki/signature-base/yara/ | grep "Webshell_b374k_rule1"
 
-Not all antivirus engines flagged it as malicious.
+No results appeared, confirming it was not part of the default Loki ruleset.
 
-**Answer:** Nay
+Answer: Nay
 
-### #10.5 Besides .PHP, what other extension is recorded for this file?
+---
 
-I checked the file details tab and found .exe listed as an additional extension.
+## Lessons Learned and Reflections
 
-**Answer:** EXE
+This case study gave me a deep understanding of how Yara rules can be written, customized, and applied in real SOC operations.
 
-### #10.6 What JavaScript library is used by file 2?
+I learned how to:
 
-I searched within the rule details and found the library name Zepto.js.
+Write and test my own Yara rules using basic conditions.
+Integrate Yara with Loki for automated file scanning.
+Use yarGen to create new Yara signatures from unknown malware.
+Verify detections through Valhalla and VirusTotal.
+Understand how version changes or obfuscation in malware can bypass static rules.
+Analyze real detection patterns like Zepto.js and web shell behaviors.
 
-**Answer:** Zepto
+What I liked most about this exercise was how it connected multiple stages of detection:
 
-### #10.7 Is this Yara rule in the default Yara file Loki uses to detect these types of hack tools?
-
-I searched inside the Loki signature base using grep but found no match for Webshell_b374k_rule1.
-
-**Answer:** Nay
-
-## Task 11: Conclusion
-
-I learned how Yara rules are created, tested, and integrated into tools like Loki and Valhalla. I also practiced analyzing suspicious files and verifying rule detections through VirusTotal and Yara rule behavior.
-
+from rule creation, to tool integration, to threat intelligence validation — simulating a real workflow of a SOC analyst or malware researcher.
+By the end, I felt confident that I could write and adapt Yara rules for my own investigations and contribute to shared rule repositories effectively.
