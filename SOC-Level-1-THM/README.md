@@ -74,10 +74,10 @@ This folder contains my **TryHackMe SOC Level 1 labs, exercises, and case studie
 ---
 
 ### 8. [SOC Level 1 Capstone Challenges](SOC/README.md)
-- **Completed Modules:** Tempest, Boogeyman Series, Upload and Conquer, Hidden Hooks, BlackCat  
+- **Completed Modules:** Tempest, Boogeyman Series (1–3), Upload and Conquer, Hidden Hooks, BlackCat  
 - **Case Studies:**  
-  1. [Upload and Conquer Challenge](SOC/case-study-upload.md) – Examined malicious file uploads and network traffic to identify indicators of compromise (IOCs).  
-  2. [BlackCat Incident Response](SOC/case-study-blackcat.md) – Performed end-to-end response for ransomware-style attack simulations.  
+  1. [Boogeyman Series: Incident Correlation & Threat Detection](SOC/case-study-boogeyman.md) – Investigated multi-stage attacks through SIEM event correlation, privilege escalation tracking, and lateral movement detection.  
+  2. [Tempest Challenge: Full-Scope Threat Investigation](SOC/case-study-tempest.md) – Conducted a complete SOC investigation including alert triage, PowerShell activity analysis, and identification of command-and-control communication.
 
 ---
 
