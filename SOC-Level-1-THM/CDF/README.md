@@ -31,15 +31,15 @@ They help security teams analyze attacker behavior, assess defenses, and impleme
 ## 📑 Case Studies
 1. **MITRE ATT&CK Mapping**  
    Mapped real-world incidents to MITRE ATT&CK tactics and techniques to identify detection gaps.  
-   [Read Full Case Study →](CDF/case-study-mitre.md)  
+   [Read Full Case Study →](case-study-mitre.md)  
 
 2. **Cyber Kill Chain Simulation**  
    Analyzed attack stages in a simulated environment to practice early detection and response strategies.  
-   [Read Full Case Study →](CDF/case-study-killchain.md)  
+   [Read Full Case Study →](case-study-killchain.md)  
 
 3. **Diamond Model Analysis**  
    Applied the Diamond Model to investigate threat actor infrastructure, capabilities, and objectives.  
-   [Read Full Case Study →](CDF/case-study-diamond.md)  
+   [Read Full Case Study →](case-study-diamond.md)  
 
 ---
 
