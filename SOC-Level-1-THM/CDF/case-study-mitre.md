@@ -38,7 +38,8 @@ To visualize relationships, I launched the **ATT&CK Navigator**:
 https://mitre-attack.github.io/attack-navigator/
 
 I loaded a public layer to see how techniques are mapped against coverage and detections.  
-Then, I browsed a real threat group: **Axiom (G0001)**.  
+Then, I browsed a real threat group: **Axiom (G0001)**. 
+
 <img src="screenshots/mitre2.png" width="600">
 
 It showed associated techniques, malware families, and even overlaps with **Winnti Group** — demonstrating how ATT&CK can reveal campaign-level relationships.
@@ -83,6 +84,7 @@ I opened **Persona Creation (SAC0002)** under *Prepare*, which provides a **Pers
 
 I also reviewed **Lures (EAC0005)** under *Expose*, which describes techniques for baiting adversaries to interact with deception assets.  
 These worksheets can be downloaded and used to design controlled engagement experiments.
+
 <img src="screenshots/mitre4.png" width="600">
 
 This section showed how deception can **actively collect adversary telemetry** — a valuable method to test defenses in realistic ways.
@@ -98,6 +100,7 @@ I searched for **Data Obfuscation**, one of the first examples in the lookup lis
 The framework displayed **defensive techniques**, **relationships**, and **observable artifacts**.
 
 **Answer:** Observable Artifact – `Outbound Internet Network Traffic`
+
 <img src="screenshots/mitre5.png" width="600">
 
 
@@ -134,8 +137,10 @@ https://attack.mitre.org/groups/G0064/
 **Findings:**
 - Operational since: `2013`
 <img src="screenshots/mitre7.png" width="600">
+
 - Cloud-related technique: `T1078.004 (Valid Accounts: Cloud Accounts)`
 <img src="screenshots/mitre8.png" width="600">
+
 - Associated tool: `Ruler`
 - Mitigation: `Multi-Factor Authentication (M1032)`
 - Affected platforms: `IaaS`, `SaaS`, `Office Suite`, `Identity Providers`
