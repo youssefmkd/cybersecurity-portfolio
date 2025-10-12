@@ -5,29 +5,37 @@ title: Cybersecurity Portfolio
 
 # 🛡️ Cybersecurity Portfolio
 
-Welcome! This is my **hands-on cybersecurity portfolio**, documenting labs, investigations, and projects across **SOC analysis, incident response, endpoint monitoring, network defense, cloud security, and real-world scenarios**. It highlights practical experience from SOC Level 1 labs and Google Cloud Security Command Center projects.
+Welcome to my **Cybersecurity Portfolio** — a collection of my practical work in **SOC operations, cloud security, incident response, digital forensics, and threat analysis**.  
+Here, I document hands-on labs, investigations, and real-world simulations that reflect my journey toward becoming a **well-rounded cybersecurity and cloud engineer**.
+
+Each project demonstrates my technical skills, problem-solving process, and ability to analyze, detect, and respond to security incidents using modern tools and frameworks.
 
 ---
 
 ## 📂 Main Sections
 
-- **[TryHackMe SOC Level 1](SOC-Level-1-THM/README.md)** – Labs, SIEM, threat hunting, DFIR, and capstone challenges.
+- **[TryHackMe SOC Level 1](SOC-Level-1-THM/README.md)**
+  Hands-on labs focused on SIEM analysis, threat hunting, DFIR, and SOC workflows.
   
-- **[Google Cloud SIEM Projects](Google/README.md)** – Security Command Center investigations (coming soon).
+- **[Google Cloud SIEM Projects](Google/README.md)**
+  Threat detection, policy hardening, and investigation through **Google Cloud SCC** and related tools.
   
 ---
 
 ## ⚡ Skills
 
-- **SOC & SIEM:** Splunk, ELK
-  
-- **DFIR:** Volatility, Autopsy
-  
-- **Endpoint Monitoring:** Sysmon, Wazuh
-  
-- **Network Defense:** Snort, Zeek
-  
-- **Threat Intelligence:** Yara, OpenCTI, MISP
-    
-- **Phishing Analysis:** Email analysis and mitigation
+- **SOC & SIEM:** Splunk, ELK Stack  
+- **Incident Response & DFIR:** Volatility, Autopsy, Sysmon  
+- **Endpoint & Network Defense:** Wazuh, Snort, Zeek  
+- **Threat Intelligence:** Yara, OpenCTI, MISP  
+- **Cloud Security:** Google Cloud SCC, IAM, Security Posture Management  
+- **Phishing & Malware Analysis:** Email analysis, Yara rules, behavioral detection
+
+---
+
+## 🌐 Connect With Me
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/youssef-moukadem/)  
+- 🧩 [TryHackMe](https://tryhackme.com/p/YoussefMoukadem)  
+- ✉️ [Email Me](mailto:y.moukadem@outlook.com)
 
