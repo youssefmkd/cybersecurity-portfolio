@@ -36,6 +36,5 @@ Each project demonstrates my technical skills, problem-solving process, and abil
 ## 🌐 Connect With Me
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/youssef-moukadem/)  
-- 🧩 [TryHackMe](https://tryhackme.com/p/YoussefMoukadem)  
 - ✉️ [Email Me](mailto:y.moukadem@outlook.com)
 
