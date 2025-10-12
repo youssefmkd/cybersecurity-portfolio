@@ -118,8 +118,5 @@ I learned how to:
 
 In summary, I discovered how the Diamond Model acts as a **bridge between raw incident data and actionable intelligence**, making it a valuable framework for any security analyst or threat hunter.
 
----
-
-📘 **Flag:** `THM{DIAMOND_MODEL_ATTACK_CHAIN}`
 
 
