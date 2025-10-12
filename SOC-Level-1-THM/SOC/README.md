@@ -33,7 +33,7 @@ Each challenge focuses on key aspects of **threat detection**, **incident respon
 In this three-part challenge, I investigated a series of escalating threats inside a simulated enterprise environment.  
 I started by analyzing suspicious logs in the SIEM, uncovering a phishing campaign that led to privilege escalation and lateral movement.  
 Through careful event correlation, I identified persistence mechanisms and traced the attacker’s full kill chain — from **initial access** to **data exfiltration**.  
-[Read Full Case Study →](SOC/case-study-boogeyman.md)
+[Read Full Case Study →](case-study-boogeyman.md)
 
 ---
 
@@ -42,7 +42,7 @@ This capstone challenge required performing a complete SOC investigation from al
 I analyzed endpoint activity, reviewed malicious PowerShell execution, and correlated SIEM events to identify command-and-control communication.  
 By following structured IR steps, I isolated the compromised endpoint, extracted IOCs, and recommended mitigation controls.  
 This exercise reinforced my understanding of **real-world SOC workflows** and **incident prioritization**.  
-[Read Full Case Study →](SOC/case-study-tempest.md)
+[Read Full Case Study →](case-study-tempest.md)
 
 ---
 
