@@ -14,12 +14,9 @@ Each project demonstrates my technical skills, problem-solving process, and abil
 
 ## 📂 Main Sections
 
-- **[TryHackMe SOC Level 1](SOC-Level-1-THM/README.md)**
+- **[TryHackMe SOC Level 1](SOC-Level-1-THM/README.md)**  
   Hands-on labs focused on SIEM analysis, threat hunting, DFIR, and SOC workflows.
-  
-- **[Google Cloud SIEM Projects](Google/README.md)**
-  Threat detection, policy hardening, and investigation through **Google Cloud SCC** and related tools.
-  
+
 ---
 
 ## ⚡ Skills
@@ -28,7 +25,7 @@ Each project demonstrates my technical skills, problem-solving process, and abil
 - **Incident Response & DFIR:** Volatility, Autopsy, Sysmon  
 - **Endpoint & Network Defense:** Wazuh, Snort, Zeek  
 - **Threat Intelligence:** Yara, OpenCTI, MISP  
-- **Cloud Security:** Google Cloud SCC, IAM, Security Posture Management  
+- **Cloud Security:** IAM, Security Posture Management  
 - **Phishing & Malware Analysis:** Email analysis, Yara rules, behavioral detection
 
 ---
@@ -37,4 +34,3 @@ Each project demonstrates my technical skills, problem-solving process, and abil
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/youssef-moukadem/)  
 - ✉️ [Email Me](mailto:y.moukadem@outlook.com)
-
