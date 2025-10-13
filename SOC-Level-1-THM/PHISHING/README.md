@@ -17,11 +17,6 @@ It involves understanding email threats, analyzing suspicious messages, extracti
 
 ---
 
-## 📄 Reference Material
-- [Phishing Analysis Cheat Sheet (PDF)](resources/Phishing_Analysis_Cheat_Sheet.pdf) – Common phishing indicators, email header analysis techniques, and mitigation strategies.  
-
----
-
 ## 🎯 Skills Gained
 - Analyzing suspicious emails and identifying malicious payloads  
 - Extracting **Indicators of Compromise (IOCs)** from email headers, attachments, and links  
