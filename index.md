@@ -14,7 +14,7 @@ Each project demonstrates my technical skills, problem-solving process, and abil
 
 ## 📂 Main Sections
 
-### [SOC Tier 1 Monitoring & Incident Response – Practical Lab Experience](SOC-Level-1-THM/README.md)**
+### [SOC Tier 1 Monitoring & Incident Response – Practical Lab Experience](SOC-Level-1-THM/README.md)
 
 Hands-on labs focused on **SIEM monitoring, alert triage, threat hunting, incident response (DFIR), and SOC Tier 1 workflows**.
 
