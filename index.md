@@ -14,8 +14,8 @@ Each project demonstrates my technical skills, problem-solving process, and abil
 
 ## 📂 Main Sections
 
-- **[TryHackMe SOC Level 1](SOC-Level-1-THM/README.md)**  
-  Hands-on labs focused on SIEM analysis, threat hunting, DFIR, and SOC workflows.
+- **[SOC Tier 1 Monitoring & Incident Response – Practical Lab Experience](SOC-Level-1-THM/README.md)**  
+  Hands-on labs focused on SIEM monitoring, alert triage, threat hunting, incident response (DFIR), and SOC Tier 1 workflows. Includes investigating simulated security alerts, documenting findings, and creating dashboards to track and escalate incidents effectively. Based on TryHackMe SOC Level 1 labs.
 
 ---
 
