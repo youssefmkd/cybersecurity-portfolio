@@ -1,190 +1,178 @@
-# Case Study: MITRE Frameworks — ATT&CK, CAR, ENGAGE & D3FEND
+# Étude de Cas : Frameworks MITRE — ATT&CK, CAR, ENGAGE & D3FEND
 
-In this case study, I wanted to dive deeper into the **MITRE ecosystem** — a suite of frameworks that form the backbone of modern cybersecurity defense and threat analysis.  
-I explored **ATT&CK**, **CAR**, **ENGAGE**, and **D3FEND**, learning how each contributes to understanding, detecting, and defending against adversarial behaviors.  
-This project also involved reviewing **emulation plans** and mapping **real-world threat groups** to cloud-based environments.
-
----
-
-## Introduction and Learning Setup
-
-I began by setting up a local workspace for screenshots and notes, then visited the official MITRE sites for ATT&CK, CAR, ENGAGE, and D3FEND.  
-The goal was to understand how each framework fits into the threat lifecycle — from identifying **tactics, techniques, and procedures (TTPs)** to implementing **defensive countermeasures**.
+Dans cette étude de cas, j’ai exploré en profondeur **l’écosystème MITRE**, un ensemble de frameworks qui constituent la base de la défense moderne et de l’analyse des menaces.  
+J’ai étudié **ATT&CK**, **CAR**, **ENGAGE** et **D3FEND**, afin de comprendre comment chacun contribue à **identifier, détecter et se défendre** contre les comportements adverses.  
+Ce projet incluait également l’étude de **plans d’émulation** et la cartographie de **groupes de menaces réels** dans des environnements cloud.
 
 ---
 
-## Exploring ATT&CK — Mapping Adversarial Behavior
+## Introduction et Préparation
 
-To start, I opened the **MITRE ATT&CK** website:
+J’ai commencé par créer un espace de travail local pour les captures d’écran et les notes, puis j’ai consulté les sites officiels MITRE pour **ATT&CK, CAR, ENGAGE et D3FEND**.  
+L’objectif était de comprendre comment chaque framework s’intègre dans le cycle de vie des menaces — depuis l’identification des **tactiques, techniques et procédures (TTPs)** jusqu’à la mise en place de **contre-mesures défensives**.
 
+---
+
+## Exploration d’ATT&CK — Cartographier le comportement des attaquants
+
+J’ai ouvert le site **MITRE ATT&CK** :  
 https://attack.mitre.org/
 
-I searched for the **Phishing** technique, which is one of the most common initial access methods used by attackers.
+J’ai recherché la technique **Phishing**, l’une des méthodes d’accès initial les plus courantes.
 
-**Answer:** Technique ID – `T1566`
+**Réponse :** Technique ID – `T1566`
 
 <img src="screenshots/mitre1.png" width="600">
 
-From the details, I learned that MITRE categorizes this under the **Initial Access** tactic and lists subtechniques such as:
-- Spearphishing Attachment
-- Spearphishing Link
-- Spearphishing via Service
+MITRE classe cette technique dans la **tactique Initial Access** et liste des sous-techniques comme :
+- Spearphishing Attachment  
+- Spearphishing Link  
+- Spearphishing via Service  
 
-Each entry also includes **mitigations** and **detection ideas**.  
-For Phishing (T1566), recommended mitigation: **User Training (M1017)**.  
-Detection data sources: **Application logs**, **network traffic**, and **file content inspection**.
+Chaque entrée fournit également des **mitigations** et des **idées de détection**.  
+Pour Phishing (T1566), mitigation recommandée : **Formation des utilisateurs (M1017)**.  
+Sources de données pour la détection : **logs applicatifs**, **trafic réseau** et **inspection des fichiers**.
 
-To visualize relationships, I launched the **ATT&CK Navigator**:
+Pour visualiser les relations, j’ai utilisé le **ATT&CK Navigator** :  
 https://mitre-attack.github.io/attack-navigator/
 
-I loaded a public layer to see how techniques are mapped against coverage and detections.  
-Then, I browsed a real threat group: **Axiom (G0001)**. 
+J’ai chargé une couche publique pour voir comment les techniques sont cartographiées selon la couverture et la détection.  
+Puis, j’ai étudié un groupe de menace réel : **Axiom (G0001)**.
 
 <img src="screenshots/mitre2.png" width="600">
 
-It showed associated techniques, malware families, and even overlaps with **Winnti Group** — demonstrating how ATT&CK can reveal campaign-level relationships.
+Cela montre les techniques associées, les familles de malware et les recouvrements avec le **Winnti Group** — illustrant comment ATT&CK révèle les relations au niveau des campagnes.
 
 ---
 
-## Investigating CAR — Turning Techniques into Detections
+## Investigation CAR — Transformer les techniques en détections
 
-After mapping techniques, I moved on to **MITRE CAR (Cyber Analytics Repository)** at:
-https://car.mitre.org/analytics 
+Ensuite, j’ai exploré **MITRE CAR (Cyber Analytics Repository)** :  
+https://car.mitre.org/analytics
 
-This repository bridges the gap between ATT&CK theory and practical detection.  
-I opened an analytic example: CAR-2013-05-004
+Ce référentiel fait le lien entre la théorie ATT&CK et la **détection pratique**.  
+J’ai ouvert l’exemple analytique : CAR-2013-05-004
 
-The page included:
-- **Pseudocode** for detection logic  
-- **Platform-specific queries** (Splunk, EQL, Zeek, etc.)  
-- **Unit tests** for validation  
+La page inclut :
+- **Pseudo-code** pour la logique de détection  
+- **Requêtes spécifiques aux plateformes** (Splunk, EQL, Zeek…)  
+- **Tests unitaires** pour validation  
 
-This analytic described how to detect suspicious **process execution patterns** — mapping directly to ATT&CK techniques.
+Cet exemple décrit comment détecter des **modèles d’exécution de processus suspects**, directement liés aux techniques ATT&CK.
 
-I also discovered **BZAR**, a collection of Zeek scripts for network-level analytics, which helps analysts detect SMB/RPC anomalies.  
-
-This made it clear that **CAR provides reusable detection building blocks** that can be adapted across different SIEMs.
+J’ai aussi découvert **BZAR**, une collection de scripts Zeek pour l’analyse réseau, permettant de détecter des anomalies SMB/RPC.  
+CAR fournit donc des **blocs de détection réutilisables**, adaptables à différents SIEM.
 
 ---
 
-## Understanding ENGAGE — Deception and Adversary Interaction
+## Comprendre ENGAGE — Tromper et interagir avec l’adversaire
 
-Next, I explored **MITRE ENGAGE**, which focuses on **adversary engagement and deception operations**.
+J’ai ensuite exploré **MITRE ENGAGE**, axé sur les **opérations de tromperie et d’engagement des adversaires**.  
 https://engage.mitre.org/
 
-The ENGAGE matrix includes five main categories:
-- **Prepare**
-- **Expose**
-- **Affect**
-- **Elicit**
-- **Understand**
+La matrice ENGAGE comporte cinq catégories principales :
+- **Prepare** (Préparer)  
+- **Expose** (Exposer)  
+- **Affect** (Affecter)  
+- **Elicit** (Provoquer)  
+- **Understand** (Comprendre)
 
-I opened **Persona Creation (SAC0002)** under *Prepare*, which provides a **Persona Profile Worksheet** to help create believable decoys.
+J’ai ouvert **Persona Creation (SAC0002)** dans *Prepare*, qui fournit une **fiche de profil Persona** pour créer des leurres crédibles.  
+
 <img src="screenshots/mitre3.png" width="600">
 
-I also reviewed **Lures (EAC0005)** under *Expose*, which describes techniques for baiting adversaries to interact with deception assets.  
-These worksheets can be downloaded and used to design controlled engagement experiments.
+J’ai aussi consulté **Lures (EAC0005)** dans *Expose*, décrivant des techniques pour inciter les adversaires à interagir avec des leurres.  
+Ces fiches peuvent être utilisées pour concevoir des expériences de tromperie contrôlées.
 
 <img src="screenshots/mitre4.png" width="600">
 
-This section showed how deception can **actively collect adversary telemetry** — a valuable method to test defenses in realistic ways.
+Cette section montre comment la tromperie permet de **collecter activement des données sur l’adversaire**, un moyen précieux pour tester les défenses dans des conditions réalistes.
 
 ---
 
-## Analyzing D3FEND — Mapping Countermeasures
+## Analyse D3FEND — Cartographier les contre-mesures
 
-After studying how attacks and detections are structured, I explored the defensive counterpart: **MITRE D3FEND**.
+Après avoir étudié l’attaque et la détection, j’ai exploré **MITRE D3FEND** :  
 https://d3fend.mitre.org/
 
-I searched for **Data Obfuscation**, one of the first examples in the lookup list.  
-The framework displayed **defensive techniques**, **relationships**, and **observable artifacts**.
+J’ai recherché **Data Obfuscation**, un des premiers exemples de la liste.  
+Le framework présente **les techniques défensives**, **leurs relations** et **les artefacts observables**.
 
-**Answer:** Observable Artifact – `Outbound Internet Network Traffic`
+**Réponse :** Artefact observable – `Outbound Internet Network Traffic`
 
 <img src="screenshots/mitre5.png" width="600">
 
-
-This helped me see how D3FEND maps directly to ATT&CK tactics — forming a **bidirectional view** of offense and defense.  
-It essentially provides defenders with a blueprint for mitigating ATT&CK techniques in practice.
+D3FEND montre comment cartographier les contre-mesures directement sur les tactiques ATT&CK, offrant une **vision bidirectionnelle attaque/défense**.  
+Il fournit un plan pratique pour atténuer les techniques ATT&CK.
 
 ---
 
-## Reviewing MITRE Emulation Plans — From Theory to Testing
+## Revue des plans d’émulation MITRE — De la théorie à la pratique
 
-To make the study practical, I accessed **MITRE’s Adversary Emulation Plans** library:
+Pour rendre l’étude pratique, j’ai consulté la bibliothèque **Adversary Emulation Plans** de MITRE :  
 https://attack.mitre.org/resources/adversary-emulation-plans/
 
-I opened the **APT3** emulation plan and reviewed **Phase 1**, which focuses on **C2 setup**.  
-I also noticed that the plan used the **Sticky Keys** persistence trick by replacing:
-sethc.exe → cmd.exe
+J’ai ouvert le plan **APT3** et examiné la **Phase 1** sur la mise en place du C2.  
+Le plan utilise également la technique de persistance **Sticky Keys** (sethc.exe → cmd.exe).
 
-Then, I reviewed **APT29** and **Sandworm** plans to identify tools and web shells:
-- APT29 used **Pupy**, **Metasploit**, and **PoshC2**
-- Sandworm referenced **P.A.S. (S0598)** web shell
+J’ai ensuite examiné les plans **APT29** et **Sandworm** pour identifier outils et web shells :  
+- APT29 : **Pupy**, **Metasploit**, **PoshC2**  
+- Sandworm : web shell **P.A.S. (S0598)**
+
 <img src="screenshots/mitre6.png" width="600">
 
-This gave me hands-on exposure to **how threat emulation plans** can be used to test defensive coverage against real TTPs.
+Cela m’a permis de voir concrètement comment les **plans d’émulation** servent à tester la couverture défensive face aux TTP réels.
 
 ---
 
-## Cloud Context — Mapping ATT&CK to APT33
+## Contexte Cloud — Cartographier ATT&CK pour APT33
 
-Finally, I conducted a focused investigation on **APT33**, a group known to target the aviation sector and cloud environments.
+Enfin, j’ai mené une investigation sur **APT33**, connu pour cibler le secteur aéronautique et les environnements cloud.
 
-Using the ATT&CK group page:
+Page ATT&CK du groupe :  
 https://attack.mitre.org/groups/G0064/
 
-**Findings:**
-- Operational since: `2013`
+**Constatations :**
+- Actif depuis : `2013`
 <img src="screenshots/mitre7.png" width="600">
 
-- Cloud-related technique: `T1078.004 (Valid Accounts: Cloud Accounts)`
+- Technique cloud : `T1078.004 (Comptes valides : comptes cloud)`
 <img src="screenshots/mitre8.png" width="600">
 
-- Associated tool: `Ruler`
-- Mitigation: `Multi-Factor Authentication (M1032)`
-- Affected platforms: `IaaS`, `SaaS`, `Office Suite`, `Identity Providers`
+- Outil associé : `Ruler`  
+- Mitigation : `Authentification multi-facteur (M1032)`  
+- Plateformes impactées : `IaaS`, `SaaS`, `Office Suite`, `Identity Providers`  
 <img src="screenshots/mitre9.png" width="600">
 
-This section helped me understand how **ATT&CK can guide cloud security prioritization** — by showing where to focus detection and hardening efforts.
+Cette section montre comment **ATT&CK peut guider la priorisation de la sécurité cloud**, en identifiant les points critiques pour la détection et le durcissement.
 
 ---
 
-## Lessons Learned and Reflections
+## Leçons Apprises et Réflexions
 
-This project tied together the full MITRE ecosystem — from adversary behaviors to defensive implementation.  
-Through this, I learned how to:
+Ce projet a couvert **l’écosystème MITRE complet**, de l’analyse du comportement des attaquants à la mise en œuvre défensive.  
+J’ai appris à :
 
-- Map **ATT&CK techniques** to **CAR analytics** for actionable detections.  
-- Use **ENGAGE** to design **deception strategies** that generate threat telemetry.  
-- Apply **D3FEND** to select **practical countermeasures** against specific ATT&CK techniques.  
-- Reference **emulation plans** to validate detections and train SOC teams.  
-- Analyze **real threat groups (APT33, APT3, APT29)** and connect them to modern infrastructure risks.
+- Cartographier les **techniques ATT&CK** vers des **analyses CAR** pour obtenir des détections exploitables.  
+- Utiliser **ENGAGE** pour concevoir des **stratégies de tromperie** et générer des données sur les menaces.  
+- Appliquer **D3FEND** pour choisir des **contre-mesures concrètes** face à des techniques ATT&CK spécifiques.  
+- Se référer aux **plans d’émulation** pour valider les détections et former les équipes SOC.  
+- Analyser des **groupes de menaces réels (APT33, APT3, APT29)** et les relier aux risques sur les infrastructures modernes.
 
-What stood out most was how MITRE frameworks work **as a continuous feedback loop**:
+Le plus frappant est que les frameworks MITRE fonctionnent **comme une boucle de rétroaction continue** :
 
-> ATT&CK shows *how attacks happen*,  
-> CAR shows *how to detect them*,  
-> D3FEND shows *how to stop them*, and  
-> ENGAGE shows *how to learn from adversary behavior*.
+> ATT&CK montre *comment les attaques se produisent*,  
+> CAR montre *comment les détecter*,  
+> D3FEND montre *comment les arrêter*,  
+> ENGAGE montre *comment apprendre du comportement des adversaires*.
 
-By the end of this exploration, I felt confident applying MITRE frameworks as a unified methodology for **threat modeling, detection engineering, and red-blue collaboration**.
+À la fin de cette exploration, je me sens capable d’appliquer les frameworks MITRE comme **méthodologie unifiée pour le threat modeling, la détection et la collaboration Red-Blue**.
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Outils et Références :**
+- OSINT Framework  
+- theHarvester  
+- Hunter.io  
+- MITRE ATT&CK Framework  
+- TryHackMe : MITRE Room
