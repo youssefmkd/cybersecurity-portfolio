@@ -1,206 +1,186 @@
-# 🔗 Cyber Kill Chain Case Study
+# 🔗 Étude de Cas : Cyber Kill Chain
 
-## Overview
+## Vue d’ensemble
 
-In this case study, I explored the **Cyber Kill Chain Framework**, developed by **Lockheed Martin** in 2011.  
-Originally a **military concept** describing the stages of an attack, the framework was adapted to cybersecurity to help analysts understand and disrupt digital intrusions.
+Dans cette étude de cas, j’ai exploré le **framework Cyber Kill Chain**, développé par **Lockheed Martin** en 2011.  
+Initialement un **concept militaire** décrivant les étapes d’une attaque, ce framework a été adapté à la cybersécurité pour aider les analystes à comprendre et interrompre les intrusions numériques.
 
-The Cyber Kill Chain outlines the **seven key phases** of a cyberattack:
+La Cyber Kill Chain décrit **sept phases clés** d’une cyberattaque :
 
 1. Reconnaissance  
-2. Weaponization  
-3. Delivery  
+2. Weaponization (Préparation de l’attaque)  
+3. Livraison (Delivery)  
 4. Exploitation  
 5. Installation  
-6. Command & Control  
-7. Actions on Objectives  
+6. Command & Control (C2)  
+7. Actions sur les objectifs  
 
-Understanding these stages allows analysts to detect, disrupt, and defend against cyberattacks — especially **ransomware campaigns**, **breaches**, and **Advanced Persistent Threats (APTs)**.
-
----
-
-## 🧠 What I Did
-
-I started by reviewing how the **Cyber Kill Chain** translates the attacker’s workflow into identifiable stages.  
-The goal was to learn how each step leaves behind digital footprints that can be detected and mitigated by defenders.
-
-Throughout this project, I examined each phase through the lens of a fictional attacker named **“Megatron”**, using simulated scenarios to understand how adversaries plan, execute, and maintain cyber operations.
+Comprendre ces étapes permet aux analystes de **détecter, perturber et se défendre** contre les cyberattaques — en particulier les campagnes de **ransomware**, les **intrusions** et les **APT (Advanced Persistent Threats)**.
 
 ---
 
-## 🕵️‍♂️ Phase 1: Reconnaissance
+## 🧠 Mon approche
 
-I began with **reconnaissance**, where attackers gather information about their target using **OSINT (Open Source Intelligence)**.  
-This involves studying company infrastructure, identifying employees, and collecting contact data.
+J’ai commencé par étudier comment la **Cyber Kill Chain** traduit le workflow de l’attaquant en étapes identifiables.  
+L’objectif était de comprendre comment chaque phase laisse des **empreintes numériques** détectables et exploitables par les défenseurs.
 
-I explored tools that attackers commonly use for this phase:
-- **theHarvester** – gathers emails, subdomains, and IPs.  
-- **Hunter.io** – finds publicly available email addresses.  
-- **OSINT Framework** – a web-based interface that organizes reconnaissance tools.  
-
-I learned how attackers perform **email harvesting** — the process of collecting email addresses to prepare for phishing campaigns.  
-This stage emphasized the importance of limiting public exposure of sensitive company information and training staff against social engineering.
-
-✅ **Key Takeaways**
-- Reconnaissance is about preparation and research.  
-- OSINT data is a goldmine for attackers — and a red flag for defenders to monitor exposure.
+Pour ce projet, j’ai analysé chaque étape via un scénario fictif avec un attaquant nommé **“Megatron”**, afin de comprendre comment les adversaires planifient, exécutent et maintiennent leurs opérations cyber.
 
 ---
 
-## ⚔️ Phase 2: Weaponization
+## 🕵️‍♂️ Phase 1 : Reconnaissance
 
-Once reconnaissance is complete, I studied how attackers **build their weapon** — combining **malware** and **exploits** into a payload.
+La **reconnaissance** consiste à collecter des informations sur la cible via **OSINT (Open Source Intelligence)** :  
+- Analyse de l’infrastructure de l’entreprise  
+- Identification des employés  
+- Collecte des contacts  
 
-I analyzed:
-- **Malware**: software designed to damage or infiltrate systems.  
-- **Exploit**: code that leverages a system vulnerability.  
-- **Payload**: the malicious code executed on a system.  
+Outils couramment utilisés par les attaquants :
+- **theHarvester** – collecte d’e-mails, sous-domaines et IP.  
+- **Hunter.io** – recherche d’adresses e-mail publiques.  
+- **OSINT Framework** – interface web organisant les outils de reconnaissance.  
 
-Attackers often embed **macros** inside Office documents, using **VBA scripts** to automate infection upon opening.  
-More advanced groups might build custom malware or purchase it on the **Dark Web** to evade detection.
+Cette étape montre l’importance de **limiter l’exposition publique des informations sensibles** et de former le personnel contre le **social engineering**.
 
-✅ **Key Takeaway:**  
-Even something as common as a Word document can be weaponized using malicious macros — a reminder of why email attachments remain a major attack vector.
-
----
-
-## 📧 Phase 3: Delivery
-
-Next, I learned how attackers deliver their weapon to the victim.  
-This is where social engineering meets technical exploitation.
-
-Common delivery methods include:
-- **Phishing emails** (including spearphishing for targeted attacks)  
-- **Infected USB drives** (e.g., “USB drop” attacks)  
-- **Watering hole attacks**, where a trusted website is compromised to serve malware  
-
-I discovered that the **watering hole attack** is particularly dangerous since it targets websites that victims frequently visit, making it a stealthy and effective delivery strategy.
-
-✅ **Key Takeaway:**  
-Delivery is where human psychology becomes part of the attack surface — education and awareness are critical defenses.
+✅ **Points clés :**  
+- La reconnaissance prépare et guide l’attaque.  
+- Les données OSINT constituent une mine d’informations pour les attaquants et un indicateur à surveiller pour les défenseurs.
 
 ---
 
-## 💣 Phase 4: Exploitation
+## ⚔️ Phase 2 : Weaponization (Préparation de l’attaque)
 
-In this phase, I analyzed how attackers exploit system vulnerabilities to execute the payload.  
-This can happen when victims click malicious links or open infected attachments.
+Une fois la reconnaissance terminée, les attaquants créent leur **charge utile** combinant **malware** et **exploits**.
 
-I learned about **zero-day exploits**, which target unknown vulnerabilities — giving defenders no time to prepare or patch.
+J’ai analysé :
+- **Malware** : logiciel visant à endommager ou infiltrer des systèmes.  
+- **Exploit** : code exploitant une vulnérabilité.  
+- **Payload** : code malveillant exécuté sur le système.  
 
-Attackers might:
-- Trigger exploits via malicious attachments or web links.  
-- Use server-based vulnerabilities for remote access.  
-- Exploit both software and human errors.
+Les attaquants peuvent intégrer des **macros** dans des documents Office via des **scripts VBA** pour automatiser l’infection.  
+Les groupes avancés créent parfois des malwares sur mesure ou les achètent sur le **Dark Web** pour échapper à la détection.
 
-✅ **Key Takeaway:**  
-Exploitation is where prevention and detection overlap — strong patch management and endpoint protection are vital.
-
----
-
-## 🧬 Phase 5: Installation
-
-Once access is gained, attackers aim for **persistence** — ensuring they can return even after a reboot or cleanup.
-
-I learned about persistence techniques such as:
-- Deploying **web shells** on servers for remote access.  
-- Installing **backdoors** using tools like **Meterpreter**.  
-- Modifying Windows services or **registry run keys** for automatic execution.  
-- Using **Timestomping** to alter file timestamps and avoid forensic detection.
-
-✅ **Key Takeaway:**  
-Persistence techniques allow attackers to blend in with legitimate processes. Detecting unusual registry changes or service modifications is essential.
+✅ **Point clé :**  
+Même un document Word peut devenir une arme via des macros malveillantes — d’où l’importance de rester vigilant avec les pièces jointes.
 
 ---
 
-## 🌐 Phase 6: Command & Control (C2)
+## 📧 Phase 3 : Livraison (Delivery)
 
-I then explored how attackers establish a **C2 channel** to control infected systems remotely.  
-This is where malware begins communicating with the attacker’s infrastructure.
+C’est la phase où la charge utile atteint la victime.  
+Les méthodes courantes incluent :  
+- **Emails de phishing** (y compris spearphishing pour attaques ciblées)  
+- **Clés USB infectées** (attaques de type « USB drop »)  
+- **Watering hole** : site de confiance compromis pour livrer le malware  
 
-Common methods include:
-- **HTTP/HTTPS beaconing** on ports 80 or 443 (to blend with normal web traffic).  
-- **DNS Tunneling**, where DNS queries are used to hide communication.
+Le **watering hole** est particulièrement dangereux car il cible des sites visités fréquemment par les victimes, rendant l’attaque discrète et efficace.
 
-Once the connection is established, the attacker can issue commands, move laterally, and deploy additional payloads.
-
-✅ **Key Takeaway:**  
-Monitoring outbound traffic and unusual DNS activity can reveal C2 communications before major damage occurs.
-
----
-
-## 🎯 Phase 7: Actions on Objectives
-
-Finally, I reached the last phase — where attackers achieve their original goals.  
-This can include:
-
-- **Credential theft**  
-- **Privilege escalation**  
-- **Internal reconnaissance**  
-- **Data exfiltration**  
-- **Deleting backups and shadow copies**  
-
-I studied how **Shadow Copy**, a Windows feature for creating system snapshots, is often deleted by attackers to prevent recovery during ransomware attacks.
-
-✅ **Key Takeaway:**  
-The attacker’s final actions reveal intent — whether espionage, data theft, or sabotage. Protecting backups and monitoring exfiltration channels is critical.
+✅ **Point clé :**  
+La livraison combine psychologie humaine et exploitation technique — la sensibilisation reste une défense essentielle.
 
 ---
 
-## 🧩 Practice Analysis: Target Data Breach
+## 💣 Phase 4 : Exploitation
 
-To put theory into practice, I analyzed the **2013 Target data breach**, one of the largest in history.  
-I completed the interactive Cyber Kill Chain simulation by matching attack components to each phase:
+Les attaquants exploitent les vulnérabilités pour exécuter la charge utile.  
+Exemples : clic sur un lien malveillant ou ouverture d’une pièce jointe infectée.
 
-| Phase | Example from Case Study |
-|-------|--------------------------|
+- **Zero-day exploits** : vulnérabilités inconnues, laissant peu de temps pour patcher.  
+- Exploitation de failles logicielles ou erreurs humaines pour accès distant.
+
+✅ **Point clé :**  
+L’exploitation est là où **prévention et détection se croisent** — gestion des patches et protection des endpoints sont cruciales.
+
+---
+
+## 🧬 Phase 5 : Installation
+
+Une fois l’accès obtenu, les attaquants cherchent à assurer la **persistance** : revenir après redémarrage ou nettoyage.
+
+Techniques courantes :
+- Déploiement de **web shells**  
+- Installation de **backdoors** via **Meterpreter**  
+- Modification des services Windows ou **clés de registre** pour exécution automatique  
+- **Timestomping** pour masquer les traces
+
+✅ **Point clé :**  
+La persistance permet aux attaquants de se fondre parmi les processus légitimes. Détecter des modifications inhabituelles est essentiel.
+
+---
+
+## 🌐 Phase 6 : Command & Control (C2)
+
+Création d’un canal **C2** pour contrôler les systèmes infectés.
+
+Méthodes typiques :
+- **Beaconing HTTP/HTTPS** (ports 80/443)  
+- **DNS Tunneling** pour masquer la communication  
+
+Une fois établi, l’attaquant peut donner des commandes, se déplacer latéralement et déployer des charges supplémentaires.
+
+✅ **Point clé :**  
+Surveiller le trafic sortant et les anomalies DNS peut révéler les communications C2 avant des dommages majeurs.
+
+---
+
+## 🎯 Phase 7 : Actions sur les Objectifs
+
+Phase finale : réalisation des objectifs initiaux de l’attaquant, par exemple :  
+- Vol de credentials  
+- Escalade de privilèges  
+- Reconnaissance interne  
+- Exfiltration de données  
+- Suppression de sauvegardes ou Shadow Copies  
+
+✅ **Point clé :**  
+Les actions finales révèlent l’intention : espionnage, vol de données ou sabotage. Protéger les sauvegardes et surveiller l’exfiltration est crucial.
+
+---
+
+## 🧩 Analyse Pratique : Fuite de données Target 2013
+
+Simulation pratique de la **Cyber Kill Chain** avec la fuite Target, l’une des plus grandes de l’histoire.
+
+| Phase | Exemple |
+|-------|---------|
 | **Weaponization** | PowerShell |
-| **Delivery** | Spearphishing attachment |
-| **Exploitation** | Exploit public-facing application |
+| **Delivery** | Pièce jointe spearphishing |
+| **Exploitation** | Application publique vulnérable |
 | **Installation** | Dynamic linker hijacking |
-| **Command & Control** | Fallback channels |
-| **Exfiltration** | Data from local system |
+| **Command & Control** | Canaux de fallback |
+| **Exfiltration** | Données locales |
 
-After correctly completing the chain, the flag revealed was:
-THM{7HR347_1N73L_12_4w35om3}
-
-
-✅ **Key Insight:**  
-By mapping each event to the Kill Chain, I could visualize how a single compromise evolved into a full-scale breach — reinforcing how breaking any one phase can stop the attack.
+✅ **Point clé :**  
+Cartographier chaque événement sur la Kill Chain permet de visualiser comment une intrusion unique évolue en une brèche complète — interrompre n’importe quelle phase peut stopper l’attaque.
 
 ---
 
-## 🧩 What I Learned
+## 🧩 Leçons Apprises
 
-This case study strengthened my understanding of:
-- How attackers move through a structured set of phases.  
-- How defenders can “break the chain” by detecting indicators early.  
-- The strengths and limitations of the traditional **Lockheed Martin Cyber Kill Chain**.  
+Cette étude a renforcé ma compréhension de :  
+- La progression des attaquants à travers des phases structurées  
+- Comment les défenseurs peuvent **interrompre la chaîne** en détectant tôt les indicateurs  
+- Les forces et limites de la **Lockheed Martin Cyber Kill Chain**  
 
-I also recognized that while the model is powerful, it has limitations — especially in detecting **insider threats** or **multi-vector attacks**.  
-That’s why modern defenders complement it with **MITRE ATT&CK** and the **Unified Kill Chain** for a more comprehensive approach.
+Elle montre aussi la nécessité de compléter le modèle avec **MITRE ATT&CK** ou la **Unified Kill Chain** pour une vision plus complète.
 
 ---
 
 ## 🧭 Conclusion
 
-The **Cyber Kill Chain** remains a foundational framework for threat detection and response.  
-By understanding each stage, I learned how to:
-- Identify attacker intent  
-- Map threat behaviors  
-- Strengthen organizational defenses  
+La **Cyber Kill Chain** reste un cadre fondamental pour la détection et la réponse aux menaces.  
+Elle permet de :  
+- Identifier l’intention des attaquants  
+- Cartographier les comportements malveillants  
+- Renforcer les défenses organisationnelles  
 
-Although cybersecurity threats continue to evolve, this structured framework helps analysts think like attackers — and defend more effectively.
-
+Bien que les menaces évoluent, ce cadre aide les analystes à **penser comme les attaquants** et à défendre plus efficacement.
 
 ---
 
-**Tools & References Used:**
+**Outils & Références :**
 - OSINT Framework  
 - theHarvester  
 - Hunter.io  
 - MITRE ATT&CK Framework  
-- TryHackMe: Cyber Kill Chain Room
-
-
-
+- TryHackMe : Cyber Kill Chain Room
