@@ -1,56 +1,49 @@
-# 🛡️ Cyber Defense Frameworks (CDF)
+# 🛡️ Cadres de Défense Cyber (CDF)
 
-## 📖 What is Cyber Defense Frameworks?
-**Cyber Defense Frameworks (CDF)** are structured models and methodologies used to understand, detect, and respond to cyber threats.  
-They help security teams analyze attacker behavior, assess defenses, and implement effective strategies for incident detection and response.  
+## 📖 Qu’est-ce que les Cadres de Défense Cyber ?
+Les **Cadres de Défense Cyber (CDF)** sont des modèles et méthodologies structurés utilisés pour comprendre, détecter et répondre aux menaces cyber.  
+Ils aident les équipes de sécurité à analyser le comportement des attaquants, évaluer les défenses et mettre en place des stratégies efficaces pour la détection et la réponse aux incidents.  
 
 ---
 
-## 📌 Modules Completed
-- Junior Security Analyst Intro  
-- Pyramid Of Pain  
+## 📌 Modules Complétés
+- Introduction Analyste Sécurité Junior  
+- Pyramid of Pain  
 - Cyber Kill Chain  
 - Unified Kill Chain  
-- Diamond Model  
 - MITRE  
 - Summit  
 - Eviction  
 
 ---
 
-## 🎯 Skills Gained
-- Understanding attacker behavior and mapping to frameworks like **MITRE ATT&CK**  
-- Applying the **Cyber Kill Chain** to identify stages of attacks  
-- Leveraging the **Diamond Model** to analyze threat actors and relationships  
-- Prioritizing detection and mitigation strategies using the **Pyramid of Pain**  
-- Translating theoretical frameworks into practical incident response workflows  
-- Evaluating and improving security posture using structured frameworks  
+## 🎯 Compétences Acquises
+- Comprendre le comportement des attaquants et le mapper sur des cadres comme **MITRE ATT&CK**  
+- Appliquer la **Cyber Kill Chain** pour identifier les étapes des attaques  
+- Prioriser les stratégies de détection et de mitigation avec la **Pyramid of Pain**  
+- Traduire les cadres théoriques en workflows pratiques de réponse aux incidents  
+- Évaluer et améliorer la posture de sécurité à l’aide de cadres structurés  
 
 ---
 
-## 📑 Case Studies
-1. **MITRE ATT&CK Mapping**  
-   Mapped real-world incidents to MITRE ATT&CK tactics and techniques to identify detection gaps.  
-   [Read Full Case Study →](case-study-mitre.md)  
+## 📑 Études de Cas
+1. **Cartographie MITRE ATT&CK**  
+   Cartographie d’incidents réels sur les tactiques et techniques MITRE ATT&CK pour identifier les lacunes de détection.  
+   [Lire l’étude complète →](case-study-mitre.md)  
 
-2. **Cyber Kill Chain Simulation**  
-   Analyzed attack stages in a simulated environment to practice early detection and response strategies.  
-   [Read Full Case Study →](case-study-killchain.md)  
-
-3. **Diamond Model Analysis**  
-   Applied the Diamond Model to investigate threat actor infrastructure, capabilities, and objectives.  
-   [Read Full Case Study →](case-study-diamond.md)  
+2. **Simulation Cyber Kill Chain**  
+   Analyse des étapes d’attaque dans un environnement simulé pour pratiquer la détection précoce et les stratégies de réponse.  
+   [Lire l’étude complète →](case-study-killchain.md)  
 
 ---
 
-## ✅ Lessons Learned
-- Security frameworks help **structure analysis and detection** of attacks.  
-- Mapping attacks to MITRE ATT&CK allows teams to **identify coverage gaps and improve defenses**.  
-- Understanding attacker tactics, techniques, and procedures (TTPs) is critical for effective incident response.  
-- Simulation exercises strengthen the ability to apply frameworks in **real-world SOC scenarios**.  
+## ✅ Leçons Apprises
+- Les cadres de sécurité permettent de **structurer l’analyse et la détection** des attaques.  
+- Mapper les attaques sur MITRE ATT&CK permet d’**identifier les lacunes et d’améliorer les défenses**.  
+- Comprendre les tactiques, techniques et procédures (TTPs) des attaquants est essentiel pour une réponse efficace aux incidents.  
+- Les exercices de simulation renforcent la capacité à appliquer les cadres dans des **scénarios SOC réels**.  
 
 ---
 
 ## 🔗 Navigation
-- Back to [Portfolio Home](../../index.md)
-
+- Retour à [Accueil du Portfolio](../../index.md)
