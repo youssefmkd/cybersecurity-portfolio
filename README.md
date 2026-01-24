@@ -1,52 +1,52 @@
-# 🛡️ TryHackMe SOC Level 1 Cybersecurity Portfolio
+# 🛡️ TryHackMe SOC Niveau 1 - Portfolio Cybersécurité
 
-Welcome! This portfolio showcases my **hands-on cybersecurity skills** from **TryHackMe SOC Level 1**, covering **SOC analysis, incident response, endpoint monitoring, network defense, DFIR, phishing, and threat intelligence**.  
+Bienvenue ! Ce portfolio met en avant mes **compétences pratiques en cybersécurité** acquises grâce à **TryHackMe SOC Niveau 1**, couvrant **l’analyse SOC, la réponse aux incidents, la surveillance des endpoints, la défense réseau, le DFIR, le phishing et la threat intelligence**.  
 
-Check it live here: [Cybersecurity Portfolio](https://youssefmkd.github.io/cybersecurity-portfolio/)
+Voir en direct ici : [Portfolio Cybersécurité](https://youssefmkd.github.io/cybersecurity-portfolio/)
 
 ---
 
-## 📂 Portfolio Sections
+## 📂 Sections du Portfolio
 
-### 1. Cyber Defense Frameworks
-**Modules:** Pyramid of Pain, Cyber Kill Chain, Diamond Model, MITRE  
-**Case Studies:** MITRE ATT&CK Mapping, Cyber Kill Chain Simulation, Diamond Model Analysis  
+### 1. Cadres de Défense Cyber
+**Modules :** Pyramid of Pain, Cyber Kill Chain, MITRE  
+**Études de cas :** Cartographie MITRE ATT&CK, Simulation Cyber Kill Chain  
 
-### 2. Cyber Threat Intelligence
-**Modules:** Yara, OpenCTI, MISP  
-**Case Studies:** YARA Threat Detection, MISP Intelligence Analysis, OpenCTI Threat Investigation  
+### 2. Threat Intelligence Cyber
+**Modules :** Yara, OpenCTI, MISP  
+**Études de cas :** Détection de Menaces avec YARA, Analyse d’Intelligence MISP, Investigation OpenCTI  
 
-### 3. Network Security & Traffic Analysis
-**Modules:** Snort, Zeek, Wireshark, TShark  
-**Case Studies:** Snort Live Attacks, Wireshark Traffic Analysis, Zeek Network Monitoring  
+### 3. Sécurité Réseau & Analyse du Trafic
+**Modules :** Snort, Zeek, Wireshark, TShark  
+**Études de cas :** Attaques en Direct avec Snort, Analyse de Trafic Wireshark, Surveillance Réseau avec Zeek  
 
-### 4. Endpoint Security Monitoring
-**Modules:** Sysinternals, Windows Event Logs, Sysmon, Osquery, Wazuh  
-**Case Studies:** Core Windows Processes, Sysinternals Threat Hunting, Sysmon Event Analysis  
+### 4. Surveillance des Endpoints
+**Modules :** Sysinternals, Journaux Windows, Sysmon, Osquery, Wazuh  
+**Études de cas :** Processus Windows de Base, Threat Hunting avec Sysinternals, Analyse des Événements Sysmon  
 
 ### 5. SIEM
-**Modules:** Splunk, ELK, Incident Handling  
-**Case Studies:** Investigating with ELK 101, Splunk Incident Handling  
+**Modules :** Splunk, ELK, Gestion des Incidents  
+**Études de cas :** Investigations avec ELK 101, Gestion des Incidents avec Splunk  
 
 ### 6. DFIR
-**Modules:** Windows & Linux Forensics, Volatility, KAPE, Redline, TheHive, Malware Analysis  
-**Case Studies:** Windows Forensics, Linux Forensics, Memory Forensics, Endpoint Triage, Incident Coordination, Malware Analysis  
+**Modules :** Forensique Windows & Linux, Volatility, KAPE, Redline, TheHive, Analyse Malware  
+**Études de cas :** Forensique Windows, Forensique Linux, Forensique Mémoire, Triage Endpoint, Coordination des Incidents, Analyse Malware  
 
-### 7. Phishing Analysis
-**Modules:** Phishing Fundamentals, Tools, Campaign Analysis  
-**Case Studies:** The Greenholt Phish, Snapped Phish-ing Line, Phishing Unfolding  
+### 7. Analyse du Phishing
+**Modules :** Fondamentaux du Phishing, Outils, Analyse de Campagnes  
+**Études de cas :** Campagne Greenholt Phish, Snapped Phish-ing Line, Phishing Unfolding  
 
-### 8. SOC Level 1 Capstone
-**Modules:** Tempest, Boogeyman Series, Upload and Conquer, Hidden Hooks, BlackCat  
-**Case Studies:** Boogeyman Investigations, Upload and Conquer, Hidden Hooks Analysis, BlackCat Incident Response  
+### 8. Capstone SOC Niveau 1
+**Modules :** Tempest, Boogeyman Series, Upload and Conquer, Hidden Hooks, BlackCat  
+**Études de cas :** Investigations Boogeyman, Upload and Conquer, Analyse Hidden Hooks, Réponse aux Incidents BlackCat  
 
 ---
 
-## 🛠️ Skills Demonstrated
+## 🛠️ Compétences Démontrées
 
-- **SIEM & Log Analysis:** Splunk, ELK  
-- **Incident Response & DFIR:** Volatility, Autopsy, KAPE, Redline, TheHive  
-- **Endpoint Monitoring:** Sysmon, Osquery, Wazuh, Sysinternals  
-- **Network Defense:** Snort, Zeek, Wireshark  
-- **Threat Intelligence:** Yara, OpenCTI, MISP  
-- **Phishing Analysis:** Email header & attachment triage  
+- **SIEM & Analyse des Logs :** Splunk, ELK  
+- **Réponse aux Incidents & DFIR :** Volatility, Autopsy, KAPE, Redline, TheHive  
+- **Surveillance des Endpoints :** Sysmon, Osquery, Wazuh, Sysinternals  
+- **Défense Réseau :** Snort, Zeek, Wireshark  
+- **Threat Intelligence :** Yara, OpenCTI, MISP  
+- **Analyse du Phishing :** Analyse des en-têtes et pièces jointes d’e-mails
