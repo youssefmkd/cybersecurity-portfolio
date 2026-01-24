@@ -1,15 +1,15 @@
 # 🛡️ Cyber Threat Intelligence (CTI)
 
-## 📖 What is Cyber Threat Intelligence?
-**Cyber Threat Intelligence (CTI)** involves the collection, analysis, and sharing of information about threats to an organization’s digital assets.  
-CTI helps security teams proactively detect, prevent, and respond to attacks by understanding threat actors, their tactics, techniques, and procedures (TTPs).  
+## 📖 Qu’est-ce que la Cyber Threat Intelligence ?
+La **Cyber Threat Intelligence (CTI)** consiste à collecter, analyser et partager des informations sur les menaces pesant sur les actifs numériques d’une organisation.  
+La CTI permet aux équipes de sécurité de **détecter, prévenir et répondre proactivement** aux attaques en comprenant les acteurs malveillants, leurs tactiques, techniques et procédures (TTPs).
 
 ---
 
-## 📌 Modules Completed
-- Intro to Cyber Threat Intel  
-- Threat Intelligence Tools  
-- Yara  
+## 📌 Modules Complétés
+- Introduction à la Cyber Threat Intelligence  
+- Outils de Threat Intelligence  
+- YARA  
 - OpenCTI  
 - MISP  
 - Friday Overtime  
@@ -17,40 +17,35 @@ CTI helps security teams proactively detect, prevent, and respond to attacks by 
 
 ---
 
-## 🎯 Skills Gained
-- Developing and applying **YARA rules** to detect malware and IOCs  
-- Aggregating and analyzing threat intelligence using **MISP**  
-- Tracking threat actor TTPs and campaigns with **OpenCTI**  
-- Investigating cyber incidents using structured intelligence workflows  
-- Leveraging threat intel tools to improve detection and response  
-- Reporting actionable intelligence to strengthen organizational defenses  
+## 🎯 Compétences Acquises
+- Développement et application de **règles YARA** pour détecter malware et IOCs  
+- Agrégation et analyse des renseignements sur les menaces avec **MISP**  
+- Suivi des TTPs et campagnes des acteurs malveillants via **OpenCTI**  
+- Investigation d’incidents cyber avec des workflows structurés d’intelligence  
+- Exploitation des outils de threat intel pour améliorer détection et réponse  
+- Rédaction de rapports de renseignements exploitables pour renforcer la défense organisationnelle  
 
 ---
 
-## 📑 Case Studies
-1. **YARA Threat Detection**  
-   Created and applied YARA rules to detect malware patterns and indicators of compromise.  
-   [Read Full Case Study →](case-study-yara.md)  
+## 📑 Études de Cas
+1. **Détection de Menaces avec YARA**  
+   Création et application de règles YARA pour identifier des patterns de malware et des indicateurs de compromission.  
+   [Lire l’étude complète →](case-study-yara.md)  
 
-2. **MISP Intelligence Analysis**  
-   Leveraged MISP to aggregate threat intelligence and analyze correlations between incidents.  
-   [Read Full Case Study →](case-study-misp.md)  
-
-3. **OpenCTI Threat Investigation**  
-   Tracked threat actor TTPs using OpenCTI, identifying actionable intelligence for defense.  
-   [Read Full Case Study →](case-study-opencti.md)  
+2. **Investigation de Menaces avec OpenCTI**  
+   Suivi des TTPs des acteurs malveillants via OpenCTI, permettant d’identifier des informations exploitables pour la défense.  
+   [Lire l’étude complète →](case-study-opencti.md)  
 
 ---
 
-## ✅ Lessons Learned
-- YARA rules are essential for automated detection of malware and malicious activity.  
-- MISP allows for **centralized threat intelligence management** and correlation between incidents.  
-- OpenCTI helps visualize threat actor campaigns and identify trends.  
-- Combining tools and intelligence sources improves **incident detection and proactive defense**.  
-- Structured intelligence workflows ensure actionable, accurate, and timely insights for SOC teams.  
+## ✅ Leçons Apprises
+- Les règles YARA sont essentielles pour la **détection automatisée** de malware et d’activités malveillantes.  
+- MISP permet une **gestion centralisée de l’intelligence sur les menaces** et la corrélation entre incidents.  
+- OpenCTI facilite la visualisation des campagnes des acteurs malveillants et l’identification des tendances.  
+- La combinaison d’outils et de sources de renseignements améliore la **détection des incidents et la défense proactive**.  
+- Des workflows d’intelligence structurés garantissent des informations exploitables, précises et ponctuelles pour les équipes SOC.  
 
 ---
 
 ## 🔗 Navigation
-- Back to [Portfolio Home](../../index.md)
-
+- Retour à [Accueil du Portfolio](../../index.md)
