@@ -1,160 +1,159 @@
-# Case Study: OpenCTI
+# Étude de Cas : OpenCTI
 
 ## Introduction
 
-After completing several rooms about threat intelligence and SOC workflows, I explored **OpenCTI**, an open-source platform designed to centralize, correlate, and analyze CTI (Cyber Threat Intelligence).  
+Après avoir terminé plusieurs rooms sur le renseignement sur les menaces et les workflows SOC, j’ai exploré **OpenCTI**, une plateforme open-source conçue pour centraliser, corréler et analyser le **CTI (Cyber Threat Intelligence)**.  
 
-This room helped me learn how to navigate and analyze real-world data in OpenCTI — especially focusing on mapping malware, campaigns, and APT groups to techniques and indicators using frameworks like MITRE ATT&CK.
-
----
-
-## Task 1: Room Overview
-
-I learned that OpenCTI allows organizations to **store, analyze, and visualize threat intelligence**.  
-
-No answer was needed here, but it gave me a foundation for what I’d be working with.
+Cette room m’a permis d’apprendre à naviguer et analyser des données réelles dans OpenCTI — en me concentrant particulièrement sur le mappage des malwares, campagnes et groupes APT aux techniques et indicateurs en utilisant des frameworks comme **MITRE ATT&CK**.
 
 ---
 
-## Task 2: Introduction to OpenCTI
+## Tâche 1 : Présentation de la Room
 
-OpenCTI was developed by the **French National Cybersecurity Agency (ANSSI)**. I learned that it:
-- Integrates multiple tools to connect technical and non-technical data.
-- Follows the **MITRE ATT&CK framework** for structuring data.
-- Connects with **MISP** (threat feeds) and **TheHive** (case management).
-- Helps analysts visualize and connect intelligence from campaigns to observables.
+J’ai appris qu’OpenCTI permet aux organisations de **stocker, analyser et visualiser le renseignement sur les menaces**.  
 
-No answer was needed for this section.
+Aucune réponse n’était nécessaire ici, mais cela m’a donné les bases pour ce sur quoi je travaillerais.
 
 ---
 
-## Task 3: Understanding the OpenCTI Data Model
+## Tâche 2 : Introduction à OpenCTI
 
-OpenCTI uses the **STIX2 standard** to structure entities and relationships, making it easier to trace intelligence.  
+OpenCTI a été développé par **l’Agence Nationale de la Sécurité des Systèmes d’Information (ANSSI)**. J’ai appris qu’il :
+- Intègre plusieurs outils pour connecter les données techniques et non techniques.  
+- Suit le **framework MITRE ATT&CK** pour structurer les données.  
+- Se connecte à **MISP** (flux de menaces) et **TheHive** (gestion de cas).  
+- Aide les analystes à visualiser et relier l’intelligence depuis les campagnes jusqu’aux observables.
 
-Key architecture components I explored:
-- **GraphQL API:** Main access point for queries.
-- **Write Workers:** Handle asynchronous data writes.
-- **Connectors:** Import, enrich, and export data from external systems like CVE, MISP, and TheHive.
-
-I learned how modular the system is and how it supports integration with external sources for enriched threat intelligence.
-
-No answer was needed here.
+Aucune réponse n’était nécessaire pour cette section.
 
 ---
 
-## Task 4: OpenCTI Dashboard Exploration
+## Tâche 3 : Comprendre le Modèle de Données OpenCTI
 
-I launched the OpenCTI instance using the provided credentials:
+OpenCTI utilise le **standard STIX2** pour structurer les entités et leurs relations, ce qui facilite le suivi des renseignements.  
 
-**Username:** info@tryhack.io  
-**Password:** TryHackMe1234
+Composants clés explorés :
+- **GraphQL API :** point d’accès principal pour les requêtes.  
+- **Write Workers :** gèrent les écritures de données asynchrones.  
+- **Connecteurs :** importent, enrichissent et exportent des données depuis des systèmes externes comme CVE, MISP et TheHive.
 
-The dashboard displays:
-- Number of entities, relationships, reports, and observables.
-- 24-hour changes in activity.
+J’ai compris la modularité du système et comment il supporte l’intégration de sources externes pour un renseignement enrichi.
 
-I explored the main sections:
+Aucune réponse n’était nécessaire ici.
 
-- **Activities:** Incidents and reports for triage.
-- **Knowledge:** Maps adversaries, tools, campaigns.
-- **Analysis:** Lists reports and connects related entities.
-- **Observations:** Houses IOCs and technical data.
-- **Threats:** Shows threat actors, intrusion sets, and campaigns.
-- **Arsenal:** Malware, tools, vulnerabilities, and attack patterns.
-- **Entities:** Organizations, people, and sectors under attack.
+---
 
-### My Investigations
+## Tâche 4 : Exploration du Tableau de Bord OpenCTI
 
-**Q1:** *Group using 4H RAT malware*  
-- Knowledge → Arsenal → Malware → Search “4H RAT”  
-- **Answer:** `Putter Panda`
+J’ai lancé l’instance OpenCTI avec les identifiants fournis :
+
+**Nom d’utilisateur :** info@tryhack.io  
+**Mot de passe :** TryHackMe1234
+
+Le tableau de bord affiche :
+- Le nombre d’entités, relations, rapports et observables.  
+- Les changements d’activité sur 24 heures.
+
+J’ai exploré les sections principales :
+
+- **Activities :** incidents et rapports pour le triage.  
+- **Knowledge :** cartographie des adversaires, outils, campagnes.  
+- **Analysis :** liste des rapports et connexion des entités liées.  
+- **Observations :** IOCs et données techniques.  
+- **Threats :** acteurs de menace, intrusion sets, campagnes.  
+- **Arsenal :** malwares, outils, vulnérabilités et patterns d’attaque.  
+- **Entities :** organisations, personnes et secteurs ciblés.
+
+### Mes Investigations
+
+**Q1 :** *Groupe utilisant le malware 4H RAT*  
+- Knowledge → Arsenal → Malware → Rechercher “4H RAT”  
+- **Réponse :** `Putter Panda`  
 <img src="screenshots/opencti.png" width="600">
 
-**Q2:** *Kill-chain phase linked with Command-Line Interface Attack Pattern*  
-- Arsenal → Attack Patterns → Search “Command-Line Interface”  
-- **Answer:** `execution-ics`
+**Q2 :** *Phase de kill-chain liée au pattern d’attaque Command-Line Interface*  
+- Arsenal → Attack Patterns → Rechercher “Command-Line Interface”  
+- **Réponse :** `execution-ics`  
 <img src="screenshots/opencti1.png" width="600">
 
-**Q3:** *Tab housing Indicators*  
+**Q3 :** *Onglet contenant les indicateurs*  
 - Activities → Observations → Indicators  
-- **Answer:** `Observations`
+- **Réponse :** `Observations`  
 <img src="screenshots/opencti2.png" width="600">
+
 ---
 
-## Task 5: Navigating General Tabs
+## Tâche 5 : Navigation dans les Onglets Généraux
 
-Each entity page has six main tabs:
+Chaque page d’entité a six onglets principaux :
 
-1. **Overview:** Basic info, reports, and confidence level.  
-2. **Knowledge:** Relationships to indicators, campaigns, threats.  
-3. **Analysis:** Lists reports mentioning the entity.  
-4. **Indicators:** Displays IOCs.  
-5. **Data:** Stores supporting files.  
-6. **History:** Tracks modifications.
+1. **Overview :** informations de base, rapports, niveau de confiance.  
+2. **Knowledge :** relations avec indicateurs, campagnes, menaces.  
+3. **Analysis :** liste les rapports mentionnant l’entité.  
+4. **Indicators :** affiche les IOCs.  
+5. **Data :** fichiers de support.  
+6. **History :** suivi des modifications.
 
-### Findings
+### Résultats
 
-**Q1:** *Intrusion sets associated with Cobalt Strike malware with Good confidence level*  
-- Knowledge → Arsenal → Search “Cobalt Strike” → Knowledge → Intrusion Sets  
-- **Answer:** `CopyKittens, FIN7`
+**Q1 :** *Intrusion sets associés au malware Cobalt Strike avec un niveau de confiance élevé*  
+- Knowledge → Arsenal → Rechercher “Cobalt Strike” → Knowledge → Intrusion Sets  
+- **Réponse :** `CopyKittens, FIN7`  
 <img src="screenshots/opencti3.png" width="600">
 
-**Q2:** *Author of the entity*  
-- Overview tab shows **The MITRE Corporation**  
-- **Answer:** `The MITRE Corporation`
+**Q2 :** *Auteur de l’entité*  
+- Onglet Overview : **The MITRE Corporation**  
+- **Réponse :** `The MITRE Corporation`
 
 ---
 
-## Task 6: Investigative Scenario
+## Tâche 6 : Scénario d’Investigation
 
-Investigating **CaddyWiper** malware and **APT37** threat group.
+Investigation sur le malware **CaddyWiper** et le groupe APT **APT37**.
 
 ### CaddyWiper
 
-**Q1:** *Earliest date recorded*  
-- Knowledge → Arsenal → Search “CaddyWiper” → Analysis  
-- **Answer:** `2022/03/15`
+**Q1 :** *Date la plus ancienne enregistrée*  
+- Knowledge → Arsenal → Rechercher “CaddyWiper” → Analysis  
+- **Réponse :** `2022/03/15`  
 <img src="screenshots/opencti4.png" width="600">
 
-**Q2:** *Attack technique for execution*  
+**Q2 :** *Technique d’attaque pour l’exécution*  
 - Overview → Attack Patterns  
-- **Answer:** `Native API`
+- **Réponse :** `Native API`  
 <img src="screenshots/opencti5.png" width="600">
 
-**Q3:** *Number of malware relations linked to this attack technique*  
-- Native API → Knowledge → Malware relations  
-- **Answer:** `113`
+**Q3 :** *Nombre de relations malware liées à cette technique d’attaque*  
+- Native API → Knowledge → Relations Malware  
+- **Réponse :** `113`  
 <img src="screenshots/opencti6.png" width="600">
 
-**Q4:** *Tools used by the Attack Technique in 2016*  
-- Native API → Tools → Filter by 2016  
-- **Answer:** `BloodHound, Empire, ShimRatReporter`
+**Q4 :** *Outils utilisés par la technique d’attaque en 2016*  
+- Native API → Tools → Filtrer par 2016  
+- **Réponse :** `BloodHound, Empire, ShimRatReporter`  
 <img src="screenshots/opencti7.png" width="600">
 
 ### APT37
 
-**Q5:** *Country associated with APT37*  
-- Threats → Intrusion Sets → Search “APT37”  
-- **Answer:** `North Korea`
+**Q5 :** *Pays associé à APT37*  
+- Threats → Intrusion Sets → Rechercher “APT37”  
+- **Réponse :** `North Korea`  
 <img src="screenshots/opencti8.png" width="600">
 
-**Q6:** *Attack techniques for initial access*  
+**Q6 :** *Techniques d’attaque pour l’accès initial*  
 - APT37 → Attack Patterns → Initial Access  
-- **Answer:** `T1189, T1566`
+- **Réponse :** `T1189, T1566`  
 <img src="screenshots/opencti9.png" width="600">
 
 ---
 
-## Task 7: Conclusion
+## Tâche 7 : Conclusion
 
-By completing this room, I learned how to:
+En complétant cette room, j’ai appris à :
 
-- Explore and connect **entities, campaigns, malware, and indicators**.  
-- Interpret relationships and kill-chain phases using **MITRE ATT&CK**.  
-- Use **Arsenal, Knowledge, and Threats** sections for research.  
-- Perform investigations linking malware and APTs through shared TTPs.
+- Explorer et relier **entités, campagnes, malwares et indicateurs**.  
+- Interpréter les relations et les phases de kill-chain avec **MITRE ATT&CK**.  
+- Utiliser les sections **Arsenal, Knowledge et Threats** pour la recherche.  
+- Effectuer des investigations liant malwares et APT via les TTP partagés.
 
-OpenCTI is a powerful tool for SOC analysts, integrating structured threat intelligence with actionable insights for real-world investigations.
-
----
+OpenCTI est un outil puissant pour les analystes SOC, intégrant un renseignement structuré avec des insights exploitables pour des investigations réelles.
