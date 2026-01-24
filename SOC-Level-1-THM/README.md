@@ -1,95 +1,85 @@
 ---
 layout: default
-title: TryHackMe SOC Level 1
+title: TryHackMe SOC Niveau 1
 ---
 
-# 🛡️ TryHackMe SOC Level 1
+# 🛡️ TryHackMe SOC Niveau 1
 
-This folder contains my **TryHackMe SOC Level 1 labs, exercises, and case studies**, covering SOC fundamentals, SIEM investigations, threat hunting, and incident response.
-
----
-
-## 📂 TryHackMe SOC Level 1 Sections
-
-### 1. [Cyber Defense Frameworks](CDF/README.md)
-- **Completed Modules:** Junior Security Analyst Intro, Pyramid of Pain, Cyber Kill Chain, Unified Kill Chain, Diamond Model, MITRE, Summit, Eviction  
-- **Case Studies:**  
-  1. [MITRE ATT&CK Mapping](CDF/case-study-mitre.md) – Mapped real-world incidents to MITRE ATT&CK tactics and techniques to identify detection gaps.  
-  2. [Cyber Kill Chain Simulation](CDF/case-study-killchain.md) – Analyzed attack stages in a simulated environment to practice early detection and response strategies.  
-  3. [Diamond Model Analysis](CDF/case-study-diamond.md) – Applied the Diamond Model to investigate threat actor infrastructure, capabilities, and objectives.  
+Ce dossier contient mes **labs, exercices et études de cas TryHackMe SOC Niveau 1**, couvrant les fondamentaux du SOC, les investigations SIEM, la chasse aux menaces et la réponse aux incidents.
 
 ---
 
-### 2. [Cyber Threat Intelligence](CTI/README.md)
-- **Completed Modules:** Intro to Cyber Threat Intel, Threat Intelligence Tools, Yara, OpenCTI, MISP, Friday Overtime, Trooper  
-- **Case Studies:**  
-  1. [YARA Threat Detection](CTI/case-study-yara.md) – Created and applied YARA rules to detect malware patterns and indicators of compromise.  
-  2. [MISP Intelligence Analysis](CTI/case-study-misp.md) – Leveraged MISP to aggregate threat intelligence and analyze correlations between incidents.  
-  3. [OpenCTI Threat Investigation](CTI/case-study-opencti.md) – Tracked threat actor TTPs using OpenCTI, identifying actionable intelligence for defense.  
+## 📂 Sections TryHackMe SOC Niveau 1
+
+### 1. [Cadres de Défense Cyber](CDF/README.md)
+- **Modules complétés:** Introduction Analyste Sécurité Junior, Pyramid of Pain, Cyber Kill Chain, Unified Kill Chain, Diamond Model, MITRE, Summit, Eviction  
+- **Études de cas :**  
+  1. [Cartographie MITRE ATT&CK](CDF/case-study-mitre.md) – Cartographie d’incidents réels sur les tactiques et techniques MITRE ATT&CK pour identifier les lacunes de détection.  
+  2. [Simulation Cyber Kill Chain](CDF/case-study-killchain.md) – Analyse des étapes d’attaque dans un environnement simulé pour pratiquer la détection précoce et les stratégies de réponse.  
 
 ---
 
-### 3. [Network Security & Traffic Analysis](Network/README.md)
-- **Completed Modules:** Traffic Analysis Essentials, Snort, Snort Challenge, NetworkMiner, Zeek, Wireshark, TShark, Brim  
-- **Case Studies:**  
-  1. [Snort Live Attacks Challenge](Network/case-study-snort-live.md) – Detected and analyzed simulated network attacks using Snort IDS rules and alert patterns.  
-  2. [Wireshark Traffic Analysis](Network/case-study-wireshark.md) – Examined packet captures to identify anomalies, suspicious protocols, and potential data exfiltration.  
-  3. [Zeek Network Monitoring](Network/case-study-zeek.md) – Leveraged Zeek logs to track host activity, detect suspicious connections, and analyze network flows.  
+### 2. [Renseignement sur les Menaces Cyber (CTI)](CTI/README.md)
+- **Modules complétés :** Introduction au Cyber Threat Intelligence, Outils de Threat Intelligence, Yara, OpenCTI, MISP, Friday Overtime, Trooper  
+- **Études de cas :**  
+  1. [Détection de Menaces avec YARA](CTI/case-study-yara.md) – Création et application de règles YARA pour détecter des motifs malware et des indicateurs de compromission.  
+  2. [Investigation OpenCTI](CTI/case-study-opencti.md) – Suivi des TTP des acteurs malveillants avec OpenCTI, identification d’informations exploitables pour la défense.  
 
 ---
 
-### 4. [Endpoint Security Monitoring](Endpoint/README.md)
-- **Completed Modules:** Core Windows Processes, Sysinternals, Windows Event Logs, Sysmon, Osquery, Wazuh  
-- **Case Studies:**  
-  1. [Sysinternals for Threat Hunting](Endpoint/case-study-sysinternals.md) – Leveraged Sysinternals tools to analyze running processes, network connections, and persistence techniques.  
-  2. [Sysmon Event Analysis](Endpoint/case-study-sysmon.md) – Built detections and investigated suspicious behavior using Sysmon logs.  
-  3. [Endpoint Detection with Wazuh](Endpoint/case-study-wazuh.md) – Used Wazuh to collect and analyze endpoint logs for intrusion detection and monitoring.  
+### 3. [Sécurité Réseau & Analyse du Trafic](Network/README.md)
+- **Modules complétés :** Bases de l’Analyse du Trafic, Snort, Snort Challenge, NetworkMiner, Zeek, Wireshark, TShark, Brim  
+- **Études de cas :**  
+  1. [Challenge Attaques en Direct avec Snort](Network/case-study-snort-live.md) – Détection et analyse d’attaques réseau simulées à l’aide des règles IDS Snort et des modèles d’alerte.  
+  2. [Analyse de Trafic Wireshark](Network/case-study-wireshark.md) – Examen des captures de paquets pour identifier des anomalies, protocoles suspects et potentielles exfiltrations de données.  
 
 ---
 
-### 5. [Security Information and Event Management (SIEM)](SIEM/README.md)
-- **Completed Modules:** Intro to SIEM, ELK101, ItsyBitsy (Splunk), Splunk Basics, Incident Handling with Splunk, Investigating with Splunk  
-- **Case Studies:**  
-  1. [Investigating with ELK 101](SIEM/case-study-elk.md) – Built queries and dashboards to analyze authentication logs and detect anomalies.  
-  2. [ItsyBitsy (Splunk) Investigation](SIEM/case-study-itsybitsy.md) – Conducted hands-on analysis using Splunk to identify suspicious events and patterns.  
-  3. [Incident Handling with Splunk](SIEM/case-study-incident-handling.md) – End-to-end incident investigation including detection, analysis, and reporting.  
-  4. [Investigating with Splunk](SIEM/case-study-investigating.md) – Detailed investigations on scenarios like brute-force attempts and unauthorized access.  
+### 4. [Surveillance des Endpoints](Endpoint/README.md)
+- **Modules complétés :** Processus Windows de Base, Sysinternals, Journaux Windows, Sysmon, Osquery, Wazuh  
+- **Études de cas :**  
+  1. [Analyse des Événements Sysmon](Endpoint/case-study-sysmon.md) – Création de détections et investigation des comportements suspects à partir des logs Sysmon.  
+  2. [Détection Endpoint avec Wazuh](Endpoint/case-study-wazuh.md) – Utilisation de Wazuh pour collecter et analyser les logs des endpoints pour la détection et la surveillance des intrusions.  
 
 ---
 
-### 6. [Digital Forensics & Incident Response (DFIR)](DFIR/README.md)
-- **Completed Modules:** Windows Forensics, Linux Forensics, Autopsy, Redline, Volatility, Velociraptor, TheHive, Intro to Malware Analysis, Unattended, Disgruntled, Critical, Secret Recipe  
-- **Case Studies:**  
-  1. [Unattended](DFIR/case-study-unattended.md) – Investigated unauthorized access by analyzing Windows event logs, registry artifacts, and user activity.  
-  2. [Disgruntled](DFIR/case-study-disgruntled.md) – Insider threat case involving forensic analysis of file access and potential data exfiltration.  
-  3. [Secret Recipe](DFIR/case-study-secret-recipe.md) – Full end-to-end DFIR case involving malware, insider activity, and lateral movement.  
+### 5. [SIEM (Security Information and Event Management)](SIEM/README.md)
+- **Modules complétés :** Introduction au SIEM, ELK101, ItsyBitsy (Splunk), Bases Splunk, Gestion des Incidents avec Splunk, Investigations avec Splunk  
+- **Études de cas :**  
+  1. [Gestion des Incidents avec Splunk](SIEM/case-study-incident-handling.md) – Investigation complète d’incident incluant détection, analyse et reporting.  
 
 ---
 
-### 7. [Phishing Analysis & Prevention](PHISHING/README.md)
-- **Completed Modules:** Phishing Fundamentals, Phishing Tools, Greenholt Phish, Snapped Phish, Phishing Unfolding  
-- **Case Studies:**  
-  1. [The Greenholt Phish](PHISHING/case-study-greenholt.md) – Analyzed a simulated phishing campaign to identify malicious emails, extract IOCs, and recommend mitigation strategies.  
+### 6. [Forensique Digitale & Réponse aux Incidents (DFIR)](DFIR/README.md)
+- **Modules complétés :** Forensique Windows, Forensique Linux, Autopsy, Redline, Volatility, Velociraptor, TheHive, Introduction à l’Analyse Malware, Unattended, Disgruntled, Critical, Secret Recipe  
+- **Études de cas :**  
+  1. [Secret Recipe](DFIR/case-study-secret-recipe.md) – Cas DFIR complet incluant malware, activités internes et mouvements latéraux.  
 
 ---
 
-### 8. [SOC Level 1 Capstone Challenges](SOC/README.md)
-- **Completed Modules:** Tempest, Boogeyman Series (1–3), Upload and Conquer, Hidden Hooks, BlackCat  
-- **Case Studies:**  
-  1. [Boogeyman Series: Incident Correlation & Threat Detection](SOC/case-study-boogeyman.md) – Investigated multi-stage attacks through SIEM event correlation, privilege escalation tracking, and lateral movement detection.  
-  2. [Tempest Challenge: Full-Scope Threat Investigation](SOC/case-study-tempest.md) – Conducted a complete SOC investigation including alert triage, PowerShell activity analysis, and identification of command-and-control communication.
+### 7. [Analyse & Prévention du Phishing](PHISHING/README.md)
+- **Modules complétés :** Fondamentaux du Phishing, Outils de Phishing, Greenholt Phish, Snapped Phish, Phishing Unfolding  
+- **Études de cas :**  
+  1. [Campagne Greenholt Phish](PHISHING/case-study-greenholt.md) – Analyse d’une campagne de phishing simulée pour identifier des emails malveillants, extraire des IOC et recommander des mesures de mitigation.  
 
 ---
 
-## 📌 Skills Demonstrated
-- **SIEM & Log Analysis**: Splunk, ELK  
-- **Incident Response & DFIR**: Volatility, Autopsy, Redline  
-- **Endpoint Monitoring**: Sysmon, Sysinternals, Wazuh  
-- **Phishing Analysis**: Email header & attachment triage  
-- **Network Defense**: Snort, Zeek, Wireshark  
-- **Threat Intelligence**: Yara, OpenCTI, MISP
+### 8. [Défis Capstone SOC Niveau 1](SOC/README.md)
+- **Modules complétés:** Tempest, Boogeyman Series (1–3), Upload and Conquer, Hidden Hooks, BlackCat  
+- **Études de cas :**  
+  1. [Tempest Challenge : Investigation complète](SOC/case-study-tempest.md) – Investigation SOC complète incluant triage des alertes, analyse d’activité PowerShell et identification de communications command-and-control.
+
+---
+
+## 📌 Compétences démontrées
+- **SIEM & Analyse de Logs** : Splunk, ELK  
+- **Réponse aux Incidents & DFIR** : Volatility, Autopsy, Redline  
+- **Surveillance des Endpoints** : Sysmon, Sysinternals, Wazuh  
+- **Analyse du Phishing** : Analyse des en-têtes et pièces jointes emails  
+- **Défense Réseau** : Snort, Zeek, Wireshark  
+- **Threat Intelligence** : Yara, OpenCTI, MISP
 
 ---
 
 ## Navigation
-- Back to [Portfolio Home](../index.md)
+- Retour à [Accueil du Portfolio](../index.md)
