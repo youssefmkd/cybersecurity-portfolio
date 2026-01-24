@@ -1,37 +1,37 @@
 ---
 layout: default
-title: Cybersecurity Portfolio
+title: Portfolio Cybersécurité
 ---
 
-# 🛡️ Cybersecurity Portfolio
+# 🛡️ Portfolio Cybersécurité
 
-Welcome to my **Cybersecurity Portfolio** — a collection of my practical work in **SOC operations, cloud security, incident response, digital forensics, and threat analysis**.  
-Here, I document hands-on labs, investigations, and real-world simulations that reflect my journey toward becoming a **well-rounded cybersecurity and cloud engineer**.
+Bienvenue sur mon **Portfolio Cybersécurité** — une collection de mes travaux pratiques en **opérations SOC, sécurité cloud, réponse aux incidents, forensique digitale et analyse de menaces**.  
+Ici, je documente des labs pratiques, des investigations et des simulations réelles illustrant mon parcours vers un profil **complet en cybersécurité et sécurité cloud**.
 
-Each project demonstrates my technical skills, problem-solving process, and ability to analyze, detect, and respond to security incidents using modern tools and frameworks.
-
----
-
-## 📂 Main Sections
-
-### [SOC Tier 1 Monitoring & Incident Response – Practical Lab Experience](SOC-Level-1-THM/README.md)
-
-Hands-on labs focused on **SIEM monitoring, alert triage, threat hunting, incident response (DFIR), and SOC Tier 1 workflows**.
+Chaque projet met en avant mes compétences techniques, mon processus de résolution de problèmes et ma capacité à analyser, détecter et répondre aux incidents de sécurité en utilisant des outils et cadres modernes.
 
 ---
 
-## ⚡ Skills
+## 📂 Sections principales
 
-- **SOC & SIEM:** Splunk, ELK Stack  
-- **Incident Response & DFIR:** Volatility, Autopsy, Sysmon  
-- **Endpoint & Network Defense:** Wazuh, Snort, Zeek  
-- **Threat Intelligence:** Yara, OpenCTI, MISP  
-- **Cloud Security:** IAM, Security Posture Management  
-- **Phishing & Malware Analysis:** Email analysis, Yara rules, behavioral detection
+### [Surveillance SOC Niveau 1 & Réponse aux Incidents – Labs Pratiques](SOC-Level-1-THM/README.md)
+
+Labs pratiques axés sur **la surveillance SIEM, le triage des alertes, la chasse aux menaces, la réponse aux incidents (DFIR) et les workflows SOC Niveau 1**.
 
 ---
 
-## 🌐 Connect With Me
+## ⚡ Compétences
+
+- **SOC & SIEM :** Splunk, ELK Stack  
+- **Réponse aux incidents & DFIR :** Volatility, Autopsy, Sysmon  
+- **Défense des endpoints & réseau :** Wazuh, Snort, Zeek  
+- **Threat Intelligence :** Yara, OpenCTI, MISP  
+- **Sécurité Cloud :** IAM, Security Posture Management  
+- **Phishing & Analyse Malware :** Analyse des e-mails, règles Yara, détection comportementale
+
+---
+
+## 🌐 Me contacter
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/youssef-moukadem/)  
-- ✉️ [Email Me](mailto:y.moukadem@outlook.com)
+- ✉️ [Envoyez-moi un e-mail](mailto:y.moukadem@outlook.com)
