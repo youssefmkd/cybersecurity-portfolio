@@ -110,8 +110,8 @@ Le challenge Tempest a fourni une expérience complète d’investigation SOC, c
 - Compréhension de la persistance via raccourcis de démarrage et services malveillants
 - Suivi des communications C2 et de l’escalade de privilèges (PrintSpoofer)
 - Identification des TTP de l’attaquant selon le MITRE ATT&CK :
- - Exécution (T1203) 
- - Persistance (T1547)
- - Escalade de privilèges (T1068)
- - Évasion des défenses (T1070)
+Exécution (T1203) 
+Persistance (T1547)
+Escalade de privilèges (T1068)
+Évasion des défenses (T1070)
 Conclusion : cette enquête a renforcé ma capacité à analyser des intrusions réelles, extraire des IOCs exploitables et construire des workflows structurés de réponse aux incidents en utilisant la télémétrie native Windows et les captures réseau.
