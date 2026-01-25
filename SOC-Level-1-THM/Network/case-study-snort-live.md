@@ -1,165 +1,165 @@
-# 📝 Case Study: Snort – Live Attacks
+# 📝 Étude de Cas : Snort – Attaques en Temps Réel
 
-## 🔹 Overview
-This lab focused on using **Snort** to monitor live traffic, detect malicious behavior, and block attacks by writing custom rules.  
-Two real-world scenarios were simulated:  
-1. **Brute-force attack against SSH**  
-2. **Reverse shell outbound traffic**  
+## 🔹 Vue d’ensemble
+Ce laboratoire était axé sur l’utilisation de **Snort** pour surveiller le trafic en temps réel, détecter des comportements malveillants et bloquer des attaques en écrivant des règles personnalisées.  
+Deux scénarios inspirés de situations réelles ont été simulés :  
+1. **Attaque par force brute contre SSH**  
+2. **Trafic sortant de type reverse shell**
 
-The goal was to observe network traffic, identify the anomaly, and then create and deploy Snort rules to stop the attacks.  
+L’objectif était d’observer le trafic réseau, identifier l’anomalie, puis créer et déployer des règles Snort afin de stopper les attaques.
 
-**Skills demonstrated:**  
-- Running Snort in sniffer mode to capture and analyze packets  
-- Inspecting Snort logs for malicious activity  
-- Writing intrusion prevention rules (`drop` rules)  
-- Running Snort in IPS mode to stop live attacks  
-- Understanding brute-force attempts and reverse shells in network traffic  
-
----
-
-## 🔍 Task 1: Introduction
-The challenge introduced Snort’s ability to monitor **live traffic** as well as analyze **captured logs**.  
-The TryHackMe VM setup provided a **split screen view** with tasks on the left and a terminal-based Snort machine on the right.  
-
-I opened a terminal in the VM and confirmed I was ready to run Snort commands for the scenarios.
+**Compétences démontrées :**
+- Exécution de Snort en mode sniffer pour capturer et analyser des paquets  
+- Analyse des journaux Snort pour identifier des activités malveillantes  
+- Écriture de règles de prévention d’intrusion (`drop rules`)  
+- Utilisation de Snort en mode IPS pour bloquer des attaques en temps réel  
+- Compréhension des attaques par force brute et des reverse shells dans le trafic réseau  
 
 ---
 
-## 🚨 Task 2: Scenario 1 – Brute-Force Attack
+## 🔍 Tâche 1 : Introduction
+Ce challenge présentait les capacités de Snort à surveiller le **trafic en temps réel** ainsi qu’à analyser des **logs capturés**.  
+L’environnement TryHackMe fournissait une **vue en écran partagé** avec les consignes à gauche et une machine Snort accessible via un terminal à droite.
 
-### Story
-J&Y Enterprise, a fictional coffee retailer, was under **brute-force attack** targeting their SSH service. My role was to detect the source and stop the attack.
+J’ai ouvert un terminal sur la VM et confirmé que l’environnement était prêt pour exécuter les commandes Snort.
 
 ---
 
-### Step 1: Run Snort in Sniffer Mode
-I started Snort in verbose sniffer mode to capture live packets:
-sudo snort -v -l .
+## 🚨 Tâche 2 : Scénario 1 – Attaque par Force Brute
 
-- `-v` → verbose  
-- `-l .` → log packets to the current directory  
+### Contexte
+J&Y Enterprise, une entreprise fictive de vente de café, subissait une **attaque par force brute** ciblant son service SSH.  
+Mon rôle consistait à identifier la source de l’attaque et à la bloquer.
 
-I let Snort run for ~15 seconds, then stopped with `CTRL+C`.
+---
 
+### Étape 1 : Lancer Snort en mode Sniffer
+J’ai démarré Snort en mode sniffer verbeux pour capturer le trafic en direct :
+
+sudo snort -v -l . 
+
+-v → mode verbeux
+-l . → enregistrement des paquets dans le répertoire courant
+
+Après environ 15 secondes, j’ai arrêté la capture avec CTRL+C.
 <img src="screenshots/snort.png" width="600" height="auto">
 
 ---
 
-### Step 2: Analyze the Captured Log
-Snort creates logs with filenames like `snort.log.<timestamp>`.  
-I opened the captured log in hex-dump mode:
+### Étape 2 : Analyse des Logs Capturés
+Snort génère des fichiers de logs sous la forme snort.log.<timestamp>.
+J’ai ouvert le fichier en mode hexadécimal :
 sudo snort -r snort.log.1672414629 -X
 
-Scrolling through packets, I noticed **port 22** repeatedly in both **source** and **destination** fields.
+En parcourant les paquets, j’ai observé de nombreuses occurrences du port 22 dans les champs source et destination.
 
 <img src="screenshots/snort1.png" width="600" height="auto">
 
 ---
 
-### Step 3: Confirm the Attack
-I filtered for port 22 traffic:
+### Step 3: Confirmation de l’Attaque
+J’ai filtré le trafic sur le port 22 :
 sudo snort -r snort.log.1672414629 -X | grep ":22"
 
-There were many matches — consistent with brute-force SSH attempts.  
-I also searched for the string “ssh”:
+Les résultats étaient nombreux, ce qui est caractéristique d’une attaque par force brute SSH.
+J’ai également recherché la chaîne “ssh” :
 sudo snort -r snort.log.1672414629 -X | grep "ssh"
 
-This confirmed multiple SSH connections.
+Cela a confirmé la présence de multiples connexions SSH.
 
 <img src="screenshots/snort2.png" width="600" height="auto">
 
 ---
 
-### Step 4: Write the Snort Rule
-I opened the local rules file:
+### Step 4: Création de la Règle Snort
+J’ai ouvert le fichier des règles locales :
 sudo gedit /etc/snort/rules/local.rules
 
 
-I created a **drop rule** to block TCP traffic on port 22:
+Puis j’ai créé une règle de type drop pour bloquer le trafic TCP sur le port 22 :
 drop tcp any 22 <> any any (msg:"SSH Connection attempted"; sid:100001; rev:1;)
 
-- `drop` → block traffic  
-- `tcp` → protocol  
-- `any 22 <> any any` → source any on port 22 to any destination  
-- `msg` → descriptive message  
-- `sid` → unique Snort ID  
-- `rev` → rule revision 
+- drop → bloque le trafic
+- tcp → protocole
+- any 22 <> any any → trafic TCP depuis le port 22 vers toute destination
+- msg → message descriptif
+- sid → identifiant unique Snort
+- rev → version de la règle
 
 ---
 
-### Step 5: Run Snort in IPS Mode
-To block live traffic, I ran Snort in IPS mode with AFPacket:
+### Step 5: Exécution de Snort en Mode IPS
+Pour bloquer le trafic en temps réel, j’ai lancé Snort en mode IPS avec AFPacket :
 sudo snort -c /etc/snort/snort.conf -q -Q --daq afpacket -i eth0:eth1 -A full
 
-- `-A full` logs full alerts  
-- `-Q` runs Snort inline as an IPS  
+- -A full → journalisation complète des alertes
+- -Q → exécution de Snort en mode inline (IPS)
 
-After a short wait, a **flag.txt** file appeared on the Desktop, confirming the attack was stopped.
+Après quelques instants, un fichier flag.txt est apparu sur le bureau, confirmant que l’attaque avait été bloquée.
 
 ---
 
-### Results
+### Résultats
 - **Flag:** `THM{81b7fef657f8aaa6e4e200d616738254}`  
-- **Service under attack:** `SSH`  
-- **Protocol/Port:** `TCP/22`
+- **Service attaqué:** `SSH`  
+- **Protocole / Port:** `TCP/22`
 
 <img src="screenshots/snort3.png" width="600" height="auto">
 <img src="screenshots/snort4.png" width="600" height="auto">
 
 ---
 
-## 🚨 Task 3: Scenario 2 – Reverse Shell
+## 🚨 Tâche 3 : Scénario 2 – Reverse Shell
 
-### Story
-After stopping inbound brute-force attempts, I checked outbound traffic.  
-Persistent traffic on **port 4444** suggested a reverse shell connection.
+### Contexte
+Après avoir bloqué les attaques entrantes, j’ai analysé le trafic sortant.
+Une activité persistante sur le port 4444 indiquait une possible connexion de type reverse shell.
 
 ---
 
-### Step 1: Run Snort in Sniffer Mode
-I captured packets again:
+### Étape 1 : Capture du Trafic
+J’ai relancé Snort en mode sniffer :
 sudo snort -v -l .
 
-Stopped after ~15 seconds with `CTRL+C`.
+Arrêt après environ 15 secondes avec CTRL+C.
 
 ---
 
-### Step 2: Inspect the Log
-Opened the log file:
+### Étape 2 : Inspection des Logs
+Ouverture du fichier de log :
 sudo snort -r snort.log.1672697486 -X
 
-I noticed repeated **port 4444** traffic — common for reverse shells.
+J’ai remarqué de nombreuses occurrences du port 4444, couramment utilisé pour les reverse shells.
 
-To confirm, I filtered for port 4444:
+Filtrage du port 4444 :
 sudo snort -r snort.log.1672697486 -X | grep ":4444"
 
-The results showed consistent use of this port.  
-I also limited the output to 10 packets for easier inspection:
+Puis limitation à 10 paquets pour une analyse plus lisible :
 sudo snort -r snort.log.1672697486 -X -n 10
 
 ---
 
-### Step 3: Write the Snort Rule
-I edited local rules again:
+### Étape 3 : Création de la Règle Snort
+Modification des règles locales :
 sudo gedit /etc/snort/rules/local.rules
 
-Then added a new **drop rule**:
+Ajout de la règle suivante :
 drop tcp any 4444 <> any any (msg:"Reverse Shell Detected"; sid:100002; rev:1;)
 
 ---
 
-### Step 4: Run Snort in IPS Mode
-I ran Snort with the same IPS command but using the updated rules:
+### Étape 4 : Blocage en Mode IPS
+Relance de Snort en mode IPS avec les règles mises à jour :
 sudo snort -c /etc/snort/snort.conf -q -Q --daq afpacket -i eth0:eth1 -A full
 
-After about a minute, a new **flag.txt** appeared on the Desktop, confirming the reverse shell was blocked.
+Après environ une minute, un nouveau flag.txt est apparu, confirmant le blocage du reverse shell.
 
 ---
 
-### Results
+### Résultats
 - **Flag:** `THM{0ead8c494861079b1b74ec2380d2cd24}`  
-- **Protocol/Port:** `TCP/4444`  
-- **Associated tool:** `Metasploit` – since port 4444 is heavily associated with its reverse shell payloads.
+- **Protocole / Port:** `TCP/4444`  
+- **Outil associé:** `Metasploit` – since port 4444 is heavily associated with its reverse shell payloads.
 
 <img src="screenshots/snort5.png" width="600" height="auto">
 <img src="screenshots/snort6.png" width="600" height="auto">
@@ -167,23 +167,23 @@ After about a minute, a new **flag.txt** appeared on the Desktop, confirming the
 ---
 
 ## ✅ Conclusion
-Through this challenge, I practiced **both detection and prevention** of two major attack types:
+Ce challenge m’a permis de pratiquer à la fois la détection et la prévention de deux types d’attaques majeures :
 
-- **Brute-force (SSH)** – common in real-world intrusions.  
-- **Reverse shells** – often used by attackers after initial compromise.  
+- **Force brute SSH** – très courante dans les intrusions réelles 
+- **Reverse shells** – souvent utilisés après une compromission initiale
 
-I reinforced the following skills:  
-- Running Snort in sniffer vs. IPS mode  
-- Reading and filtering Snort log files with `grep`  
-- Writing custom drop rules for malicious traffic  
-- Blocking live attacks and confirming via generated flags  
+J’ai renforcé les compétences suivantes :
+- Utilisation de Snort en mode sniffer et en mode IPS 
+- Lecture et filtrage des logs Snort avec grep
+- Écriture de règles personnalisées pour bloquer du trafic malveillant
+- Blocage d’attaques en temps réel et validation via les flags générés
 
-This room gave me hands-on confidence in using Snort as both a detection and prevention system for network security.
+Cette étude de cas m’a donné une solide expérience pratique dans l’utilisation de Snort comme système de détection et de prévention d’intrusions réseau.
 
 ---
 
 ## 🔗 Navigation
-- Back to [Network Security Case Studies](../README.md)
+- Retour aux [Network Security Case Studies](../README.md)
 
 
 
