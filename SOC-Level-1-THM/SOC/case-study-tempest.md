@@ -114,4 +114,4 @@ Le challenge Tempest a fourni une expérience complète d’investigation SOC, c
 - Persistance (T1547)
 - Escalade de privilèges (T1068)
 - Évasion des défenses (T1070)
-Conclusion : cette enquête a renforcé ma capacité à analyser des intrusions réelles, extraire des IOCs exploitables et construire des workflows structurés de réponse aux incidents en utilisant la télémétrie native Windows et les captures réseau.
+- Conclusion : cette enquête a renforcé ma capacité à analyser des intrusions réelles, extraire des IOCs exploitables et construire des workflows structurés de réponse aux incidents en utilisant la télémétrie native Windows et les captures réseau.
