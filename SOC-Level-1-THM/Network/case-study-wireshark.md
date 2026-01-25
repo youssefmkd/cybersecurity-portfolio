@@ -1,371 +1,336 @@
-# Wireshark Traffic Analysis – Case Study
+# Analyse du trafic Wireshark – Étude de cas
 
-## 🔹 Overview
-This case study covers multiple network security investigations using Wireshark, focusing on Nmap scans, ARP poisoning (MITM), host identification, and tunneling traffic.
+## 🔹 Vue d’ensemble
+Cette étude de cas couvre plusieurs investigations de sécurité réseau à l’aide de Wireshark, en se concentrant sur les scans Nmap, l’empoisonnement ARP (MITM), l’identification des hôtes et le trafic de tunneling.
 
-## Task 1: Introduction
-In this room, the focus was on using Wireshark for deeper traffic analysis. This is the third and final room in the Wireshark series after:
--Wireshark: The Basics
--Wireshark: Packet Operations
-In those earlier rooms, I practiced capturing traffic, filtering, and basic packet-level investigation.
-Here, the objective shifted: I needed to synthesize my knowledge of protocols + Wireshark functionality to detect anomalies, malicious activity, and suspicious network behavior.
+## Tâche 1 : Introduction
+Dans ce laboratoire, l’objectif était d’utiliser Wireshark pour une analyse approfondie du trafic. Il s’agit de la troisième et dernière salle de la série Wireshark après :
+- Wireshark: Les bases  
+- Wireshark: Opérations sur les paquets  
 
-## Task 2: Nmap Scans
+Dans ces salles précédentes, je me suis entraîné à capturer le trafic, appliquer des filtres et effectuer des investigations basiques au niveau des paquets.  
+Ici, l’objectif a évolué : je devais synthétiser mes connaissances des protocoles et des fonctionnalités de Wireshark afin de détecter des anomalies, des activités malveillantes et des comportements réseau suspects.
 
-Nmap is a powerful network scanner. The task here was to identify different scan types and their patterns inside packet captures.
+## Tâche 2 : Scans Nmap
 
-### 2.1 What is the total number of the “TCP Connect” scans?
+Nmap est un puissant scanner réseau. La tâche consistait à identifier différents types de scans et leurs signatures dans des captures de paquets.
 
-I opened the file Desktop/exercise-pcaps/nmap/Exercise.pcapng in Wireshark. From the task description, I knew that a TCP Connect scan relies on the full three-way handshake, and the right filter to use was:
+### 2.1 Quel est le nombre total de scans « TCP Connect » ?
+
+J’ai ouvert le fichier `Desktop/exercise-pcaps/nmap/Exercise.pcapng` dans Wireshark. D’après l’énoncé, un scan TCP Connect repose sur le handshake en trois étapes, et le filtre approprié était :
 
 tcp.flags.syn==1 and tcp.flags.ack==0 and tcp.window_size > 1024
 
-I applied this filter, and Wireshark instantly displayed a large set of packets. I verified by looking at the packet details that these were indeed SYN packets without an ACK, with large window sizes. Then, I checked the total count of displayed packets at the bottom of Wireshark. It showed 1000, which meant there were 1000 TCP Connect scans in total.
 
-Answer: 1000
-<img src="screenshots/wireshark.png" width="600" height="auto">
+Après avoir appliqué ce filtre, Wireshark a immédiatement affiché un grand nombre de paquets. En vérifiant les détails des paquets, j’ai confirmé qu’il s’agissait bien de paquets SYN sans ACK, avec une grande taille de fenêtre. En bas de Wireshark, le compteur indiquait 1000 paquets, ce qui signifie qu’il y avait 1000 scans TCP Connect au total.
+
+**Réponse :** 1000  
+<img src="screenshots/wireshark.png" width="600" height="auto">  
 <img src="screenshots/wireshark1.png" width="600" height="auto">
 
-### 2.2 Which scan type is used to scan the TCP port 80?
+### 2.2 Quel type de scan est utilisé pour scanner le port TCP 80 ?
 
-I created a filter to zoom in on traffic targeting TCP port 80:
+J’ai créé un filtre pour me concentrer sur le trafic ciblant le port TCP 80 :
 
 tcp.port == 80
 
-Looking at the resulting packets, I noticed that connections were following a full three-way handshake process. This confirmed it was a TCP Connect scan, because SYN scans do not complete the handshake.
 
-Answer: tcp connect
+En observant les paquets résultants, j’ai remarqué que les connexions suivaient un handshake complet en trois étapes. Cela confirme qu’il s’agit d’un scan TCP Connect, car les scans SYN ne complètent pas le handshake.
+
+**Réponse :** tcp connect  
 <img src="screenshots/wireshark2.png" width="600" height="auto">
 
-### 2.3 How many "UDP close port" messages are there?
+### 2.3 Combien y a-t-il de messages « UDP close port » ?
 
-For UDP, the task explained that closed ports return ICMP unreachable messages. The filter given was:
+Pour l’UDP, la tâche expliquait que les ports fermés renvoient des messages ICMP unreachable. Le filtre fourni était:
 
 icmp.type==3 and icmp.code==3
 
-I entered this filter, and Wireshark displayed only ICMP error messages for closed UDP ports. At the bottom status bar, it showed exactly 1083 results.
 
-Answer: 1083
-<img src="screenshots/wireshark3.png" width="600" height="auto">
+Après avoir appliqué ce filtre, Wireshark n’a affiché que les messages d’erreur ICMP correspondant à des ports UDP fermés. La barre de statut indiquait exactement 1083 résultats.
+
+**Réponse :** 1083  
+<img src="screenshots/wireshark3.png" width="600" height="auto">  
 <img src="screenshots/wireshark3-1.png" width="600" height="auto">
 
-### 2.4 Which UDP port in the 55–70 port range is open?
+### 2.4 Quel port UDP dans la plage 55–70 est ouvert ?
 
-I wanted to see which UDP ports in the given range were probed, so I applied this filter:
+Pour voir quels ports UDP de cette plage étaient sondés, j’ai appliqué le filtre suivant :
 
 udp.dstport >= 55 and udp.dstport <= 70
 
-Only three ports appeared. Two of them triggered ICMP port unreachable errors, which meant they were closed. The remaining one did not trigger any ICMP error, meaning it was open. Checking carefully, I confirmed that the open port was UDP 68.
+Seulement trois ports sont apparus. Deux d’entre eux déclenchaient des messages ICMP port unreachable, ce qui signifie qu’ils étaient fermés. Le dernier ne déclenchait aucune erreur ICMP, indiquant qu’il était ouvert. Après vérification, le port ouvert était UDP 68.
 
-Answer: 68
+**Réponse :** 68  
 <img src="screenshots/wireshark4.png" width="600" height="auto">
 
-## Task 3: ARP Poisoning & Man In The Middle
+## Tâche 3 : Empoisonnement ARP & Man In The Middle
 
-This task focused on detecting ARP spoofing and MITM attacks inside a capture.
+Cette tâche portait sur la détection de l’usurpation ARP et des attaques MITM dans une capture.
 
-### 3.1 What is the number of ARP requests crafted by the attacker?
+### 3.1 Quel est le nombre de requêtes ARP générées par l’attaquant ?
 
-The attacker’s MAC address was given as 00:0c:29:e2:18:b4. I combined that with the ARP request filter:
+L’adresse MAC de l’attaquant était fournie : `00:0c:29:e2:18:b4`. Je l’ai combinée avec le filtre de requêtes ARP :
 
 eth.src==00:0c:29:e2:18:b4 and arp.opcode==1
 
-This displayed all ARP requests created by the attacker. The total count shown was 284.
 
-Answer: 284
+Cela a affiché toutes les requêtes ARP créées par l’attaquant. Le nombre total affiché était 284.
+
+**Réponse :** 284  
 <img src="screenshots/wireshark5.png" width="600" height="auto">
 
-### 3.2 What is the number of HTTP packets received by the attacker?
+### 3.2 Quel est le nombre de paquets HTTP reçus par l’attaquant ?
 
-For this, I needed to look at HTTP traffic with the attacker’s MAC address as the destination. I used:
+Pour cela, j’ai filtré le trafic HTTP ayant l’adresse MAC de l’attaquant comme destination :
 
 eth.dst==00:0c:29:e2:18:b4 and http
 
-This revealed all HTTP traffic that had been redirected to the attacker. The total count of such packets was 90.
+Cela a révélé tout le trafic HTTP redirigé vers l’attaquant. Le total était de 90 paquets.
 
-Answer: 90
+**Réponse :** 90  
 <img src="screenshots/wireshark6.png" width="600" height="auto">
 
-### 3.3 What is the number of sniffed username & password entries?
+### 3.3 Quel est le nombre d’identifiants (nom d’utilisateur et mot de passe) interceptés ?
 
-This part took some experimentation. I started with my earlier filter for attacker-destined HTTP traffic:
+J’ai commencé avec le filtre HTTP vers l’attaquant :
 
 eth.dst==00:0c:29:e2:18:b4 and http
 
-Then, I noticed logins were being sent to testphp.vulnweb.com. I refined the filter:
+J’ai remarqué que les connexions visaient `testphp.vulnweb.com`. J’ai donc affiné le filtre :
 
 http.host==testphp.vulnweb.com and http.request.method==POST
 
-From there, I checked the form data and saw usernames submitted with the uname field. So I added that:
+En examinant les données de formulaire, j’ai vu que les noms d’utilisateur étaient envoyés dans le champ `uname`. J’ai ajouté :
 
 http.host==testphp.vulnweb.com and http.request.method==POST and urlencoded-form contains "uname"
 
-
-This gave me close results but not exact. Finally, by restricting it to the userinfo.php page, I got the precise count:
+Enfin, en limitant à la page `userinfo.php`, j’ai obtenu le compte exact :
 
 http.request.full_uri=="http://testphp.vulnweb.com/userinfo.php" and http.request.method==POST and urlencoded-form contains "uname"
 
-This gave 6 results, confirming 6 sniffed username/password entries.
+Cela a donné 6 résultats, confirmant 6 identifiants interceptés.
 
-Answer: 6
+**Réponse :** 6  
 <img src="screenshots/wireshark7.png" width="600" height="auto">
 
-### 3.4 What is the password of the "Client986"?
+### 3.4 Quel est le mot de passe de « Client986 » ?
 
-I stayed on the same filtered set from the previous question. By going to packet 1668 and expanding the “HTML Form URL Encoded” section, I saw the credentials. The password for Client986 was:
+En restant sur le même ensemble de paquets filtrés, je me suis rendu au paquet 1668 et j’ai développé la section « HTML Form URL Encoded ». Les identifiants étaient visibles et le mot de passe de Client986 était :
 
-Answer: clientnothere!
+**Réponse :** clientnothere!  
 <img src="screenshots/wireshark8.png" width="600" height="auto">
 
-### 3.5 What is the comment provided by the "Client354"?
+### 3.5 Quel est le commentaire fourni par « Client354 » ?
 
-I went back to the earlier POST filter:
+Je suis revenu au filtre POST précédent :
 
 http.host==testphp.vulnweb.com and http.request.method==POST
 
-Scrolling through the results, I found a request to comment.php. Opening that packet and expanding the “Form item: comment” field revealed the submitted comment:
 
-Answer: Nice work!
+En parcourant les résultats, j’ai trouvé une requête vers `comment.php`. En développant le champ « Form item: comment », j’ai vu le commentaire soumis :
+
+**Réponse :** Nice work!  
 <img src="screenshots/wireshark9.png" width="600" height="auto">
 
-## Task 4: Identifying Hosts (DHCP, NetBIOS, Kerberos)
+## Tâche 4 : Identification des hôtes (DHCP, NetBIOS, Kerberos)
 
-This task involved identifying hosts and users via common protocols.
+Cette tâche consistait à identifier des hôtes et des utilisateurs via des protocoles courants.
 
-### 4.1 What is the MAC address of the host “Galaxy A30”?
+### 4.1 Quelle est l’adresse MAC de l’hôte « Galaxy A30 » ?
 
-I filtered for DHCP hostnames containing “Galaxy” and “A30”:
+J’ai filtré les noms d’hôtes DHCP contenant « Galaxy » et « A30 » :
 
 dhcp.option.hostname contains "Galaxy" and dhcp.option.hostname contains "A30"
 
-Opening the matching packet, I looked into the Ethernet layer and found the MAC address:
 
-Answer: 9a:81:41:cb:96:6c
+En ouvrant le paquet correspondant et en regardant la couche Ethernet, j’ai trouvé l’adresse MAC :
+
+**Réponse :** 9a:81:41:cb:96:6c  
 <img src="screenshots/wireshark10.png" width="600" height="auto">
 
-### 4.2 How many NetBIOS registration requests does the “LIVALJM” workstation have?
+### 4.2 Combien de requêtes d’enregistrement NetBIOS possède la station « LIVALJM » ?
 
-I started with:
+J’ai commencé avec :
 
 nbns.name contains "LIVALJM"
 
-This gave many results, but not all were registration requests. After checking a few packets, I saw that registration requests had flags 0x2810 or 0x2910. So I refined the filter:
+Après analyse, j’ai constaté que les requêtes d’enregistrement avaient les flags `0x2810` ou `0x2910`. J’ai donc affiné :
 
 nbns.name contains "LIVALJM" and nbns.flags in {0x2810 0x2910}
 
-This left me with exactly 16 results, meaning there were 16 registration requests.
+Il restait exactement 16 résultats.
 
-Answer: 16
+**Réponse :** 16  
 <img src="screenshots/wireshark11.png" width="600" height="auto">
 
-### 4.3 Which host requested the IP address “172.16.13.85”?
+### 4.3 Quel hôte a demandé l’adresse IP « 172.16.13.85 » ?
 
-I applied the filter:
+J’ai appliqué le filtre :
 
 dhcp.option.requested_ip_address==172.16.13.85
 
-This narrowed it down to one DHCP request packet. Inside the “Option: (12) Host Name” field, I found the hostname:
+Un seul paquet correspondait. Dans le champ « Option: (12) Host Name », j’ai trouvé le nom d’hôte :
 
-Answer: Galaxy-A12
+**Réponse :** Galaxy-A12  
 <img src="screenshots/wireshark12.png" width="600" height="auto">
 
-### 4.4 What is the IP address of the user "u5"? (Defanged format)
+### 4.4 Quelle est l’adresse IP de l’utilisateur « u5 » ? (Format défang)
 
-I switched to the kerberos.pcap file and filtered:
+Dans le fichier `kerberos.pcap`, j’ai filtré :
 
 kerberos.CNameString=="u5"
 
-The packet showed the source IP address. To present it in defanged format, I ran it through CyberChef with “Defang IP Addresses”.
+Le paquet affichait l’adresse IP source. Je l’ai ensuite défangée avec CyberChef :
 
-Answer: 10[.]1[.]12[.]2
+**Réponse :** 10[.]1[.]12[.]2
 
-### 4.5 What is the hostname of the available host in the Kerberos packets?
+### 4.5 Quel est le nom d’hôte disponible dans les paquets Kerberos ?
 
-To find this, I looked for Kerberos service accounts (with $ at the end). I used:
+J’ai recherché les comptes de service Kerberos (se terminant par `$`) :
 
 kerberos.CNameString contains "$"
 
-It gave exactly one result, and expanding the Kerberos tree revealed the hostname:
+Un seul résultat est apparu, révélant le nom d’hôte :
 
-Answer: xp1$
+**Réponse :** xp1$
 
-## Task 5: Tunneling Traffic (DNS & ICMP)
+## Tâche 5 : Trafic de tunneling (DNS & ICMP)
 
-The last task focused on tunneling detection inside ICMP and DNS traffic.
+Cette tâche portait sur la détection de tunneling dans le trafic ICMP et DNS.
 
-### 5.1 Which protocol is used in ICMP tunneling?
+### 5.1 Quel protocole est utilisé dans le tunneling ICMP ?
 
-I opened the icmp-tunnel.pcap file and inspected the payloads of the ICMP packets. By following one of the streams and checking the raw data, I noticed it was actually carrying SSH traffic inside ICMP.
+En inspectant les charges utiles des paquets ICMP dans `icmp-tunnel.pcap`, j’ai constaté que le trafic encapsulé était en réalité du SSH.
 
-Answer: SSH
+**Réponse :** SSH  
 <img src="screenshots/wireshark13.png" width="600" height="auto">
 
-### 5.2 What is the suspicious main domain address that receives anomalous DNS queries? (Defanged)
+### 5.2 Quelle est l’adresse du domaine principal suspect recevant des requêtes DNS anormales ? (Défang)
 
-I opened the dns.pcap file and applied the filter to see all DNS queries. A lot of results showed up, but one domain stood out because of repeated, long, unusual subdomain queries. The suspicious main domain was dataexfil.com.
+Dans `dns.pcap`, un domaine se distinguait par des sous-domaines longs et inhabituels répétés : `dataexfil.com`. Après défang :
 
-To present it safely, I defanged it:
+**Réponse :** dataexfil[.]com
 
-Answer: dataexfil[.]com
+## Tâche 6 : Analyse des protocoles en clair – FTP
 
-## Task 6: Cleartext Protocol Analysis – FTP
-We investigated cleartext FTP traffic to identify brute force attempts, file transfers, and adversary behavior.
+Nous avons analysé le trafic FTP en clair afin d’identifier des attaques par force brute, des transferts de fichiers et le comportement de l’attaquant.
 
-### 6.1 How many incorrect login attempts are there?
+### 6.1 Combien y a-t-il de tentatives de connexion incorrectes ?
 
-I opened Desktop/exercise-pcaps/ftp/ftp.pcap in Wireshark. Since the task told me error codes for failed logins are 430 and 530, I applied the filter:
+Avec le filtre :
 
 ftp.response.code in {430 530}
 
-Wireshark displayed a huge list of failed login packets. I checked the bottom status bar for the total count and saw it was 737 failed attempts.
+Wireshark indiquait 737 tentatives échouées.
 
-Answer: 737
+**Réponse :** 737  
 <img src="screenshots/wireshark14.png" width="600" height="auto">
 
-### 6.2 What is the size of the file accessed by the "ftp" account?
+### 6.2 Quelle est la taille du fichier accédé par le compte « ftp » ?
 
-I knew from the description that FTP status code 213 shows file status and size. So I applied:
+En filtrant :
 
 ftp.response.code == 213
 
-This gave me 2 results. I right-clicked one, followed the TCP stream, and inside the payload I saw the file size clearly reported as 39424 bytes.
 
-Answer: 39424
+et en suivant le flux TCP, la taille du fichier était clairement indiquée.
+
+**Réponse :** 39424  
 <img src="screenshots/wireshark15.png" width="600" height="auto">
 
-### 6.3 The adversary uploaded a document to the FTP server. What is the filename?
+### 6.3 Quel est le nom du fichier téléversé par l’attaquant ?
 
-While reviewing the same TCP stream, I noticed the STOR command being used to upload a file. Scrolling a bit further showed the filename:
+Dans le même flux TCP, la commande `STOR` indiquait le nom du fichier :
 
-Answer: resume.doc
+**Réponse :** resume.doc
 
-### 6.4 The adversary tried to assign special flags to change the executing permissions of the uploaded file. What is the command used by the adversary?
+### 6.4 Quelle commande l’attaquant a-t-il utilisée pour modifier les permissions du fichier ?
 
-Still in the same stream, near the end of the exchange, I spotted the attacker sending a command to modify file permissions:
+Toujours dans le même flux, j’ai observé la commande :
 
-Answer: chmod 777
+**Réponse :** chmod 777
 
-## Task 7: Cleartext Protocol Analysis – HTTP
+## Tâche 7 : Analyse des protocoles en clair – HTTP
 
-We moved to investigating HTTP traffic for anomalies, specifically looking at user agents and a Log4j exploitation attempt.
+Nous avons ensuite analysé le trafic HTTP, notamment les User-Agents et une tentative d’exploitation Log4j.
 
-### 7.1 Investigate the user agents. What is the number of anomalous “user-agent” types?
+### 7.1 Quel est le nombre de User-Agents anormaux ?
 
-I opened Desktop/exercise-pcaps/http/user-agent.cap and applied:
+Après avoir ajouté le champ User-Agent comme colonne et trié les valeurs, j’ai identifié 6 User-Agents suspects.
 
-http.user_agent
-
-Then I right-clicked the User-Agent field in one packet, added it as a column, and sorted the column. This let me quickly scan through them and count how many unusual or suspicious ones appeared. I found exactly 6 anomalous user agents.
-
-Answer: 6
+**Réponse :** 6  
 <img src="screenshots/wireshark16.png" width="600" height="auto">
 
-### 7.2 What is the packet number with a subtle spelling difference in the user agent field?
+### 7.2 Quel est le numéro du paquet avec une différence d’orthographe subtile dans le User-Agent ?
 
-Using the same User-Agent column view, I carefully scanned for typos. I spotted one with a subtle spelling difference. Checking the frame number, it was packet 52.
+En examinant attentivement les User-Agents, le paquet concerné était le numéro 52.
 
-Answer: 52
+**Réponse :** 52  
 <img src="screenshots/wireshark17.png" width="600" height="auto">
 
-### 7.3 Locate the "Log4j" attack starting phase. What is the packet number?
+### 7.3 Quel est le numéro du paquet correspondant au début de l’attaque Log4j ?
 
-Next, I opened Desktop/exercise-pcaps/http/http.pcapng. The task suggested a Log4j detection filter, so I used:
+Avec le filtre fourni, un seul paquet correspondait :
 
-http.request.method=="POST" and ((ip contains "jndi") or (ip contains "Exploit")) and ((frame contains "jndi") or (frame contains "Exploit")) and ((http.user_agent contains "$") or (http.user_agent contains "=="))
+**Réponse :** 444
 
-This narrowed it to exactly one packet, which was the Log4j exploit attempt.
+### 7.4 Quelle est l’adresse IP contactée par l’attaquant après décodage Base64 ? (Défang)
 
-Answer: 444
+Après décodage du contenu Base64 dans le paquet 444, l’adresse IP obtenue et défangée était :
 
-### 7.4 Locate the "Log4j" attack starting phase and decode the base64 command. What is the IP address contacted by the adversary? (Defanged)
+**Réponse :** 62[.]210[.]130[.]250
 
-In packet 444, I expanded the HTTP details and saw a base64 string inside the User-Agent field. I copied that string into CyberChef, used “From Base64” decoding, and saw a command that included wget to download malware from a server. The IP revealed was 62.210.130.250. I then defanged it for reporting:
+## Tâche 8 : Analyse des protocoles chiffrés – Déchiffrement HTTPS
 
-Answer: 62[.]210[.]130[.]250
+### 8.1 Quel est le numéro de trame du message « Client Hello » vers « accounts.google.com » ?
 
-## Task 8: Encrypted Protocol Analysis – Decrypting HTTPS
+**Réponse :** 16
 
-Here I analyzed HTTPS traffic with TLS decryption using a provided key log file.
+### 8.2 Après déchiffrement, combien y a-t-il de paquets HTTP2 ?
 
-### 8.1 What is the frame number of the “Client Hello” message sent to “accounts.google.com”?
+Après déchiffrement TLS et filtrage sur `http2`, le total était :
 
-I filtered for TLS Client Hello messages directed to the target:
-
-tls.handshake.type==1 and tls.handshake.extensions_server_name contains "accounts.google.com"
-
-Wireshark returned exactly one packet, with frame number 16.
-
-Answer: 16
-
-### 8.2 Decrypt the traffic with the “KeysLogFile.txt” file. What is the number of HTTP2 packets?
-
-I went to Edit → Preferences → Protocols → TLS and set the (Pre)-Master-Secret log filename to the provided KeysLogFile.txt. Once applied, I could decrypt TLS into HTTP2.
-
-Then I filtered with:
-
-http2
-
-The count initially included a few TLS handshake packets. Subtracting those gave the correct result: 115 HTTP2 packets.
-
-Answer: 115
+**Réponse :** 115  
 <img src="screenshots/wireshark18.png" width="600" height="auto">
 
-### 8.3 Go to Frame 322. What is the authority header of the HTTP2 packet? (Defanged)
+### 8.3 Quelle est la valeur de l’en-tête authority du paquet HTTP2 (trame 322) ? (Défang)
 
-I navigated to frame 322, expanded HTTP2 → Stream: Headers → Header: authority, and saw the hostname. I then defanged it:
+**Réponse :** safebrowsing[.]googleapis[.]com
 
-Answer: safebrowsing[.]googleapis[.]com
+### 8.4 Quel est le flag trouvé dans les paquets déchiffrés ?
 
-### 8.4 Investigate the decrypted packets and find the flag! What is the flag?
-
-I went to File → Export Objects → HTTP, scanned the files, and found one suspicious text file at packet 1644. After exporting and opening it, I found the flag:
-
-Answer: FLAG{THM-PACKETMASTER}
+**Réponse :** FLAG{THM-PACKETMASTER}  
 <img src="screenshots/wireshark19.png" width="600" height="auto">
 
-## Task 9: Bonus – Hunt Cleartext Credentials!
+## Tâche 9 : Bonus – Chasse aux identifiants en clair
 
-Wireshark can extract usernames and passwords directly from supported protocols via Tools → Credentials.
+### 9.1 Quel est le numéro du paquet utilisant l’authentification HTTP Basic ?
 
-### 9.1 What is the packet number of the credentials using “HTTP Basic Auth”?
+**Réponse :** 237
 
-I opened Desktop/exercise-pcaps/bonus/Bonus-exercise.pcap and used Tools → Credentials. It listed a single HTTP Basic Auth login at packet 237.
+### 9.2 Quel est le numéro du paquet où un mot de passe vide a été soumis ?
 
-Answer: 237
+**Réponse :** 170
 
-### 9.2 What is the packet number where "empty password" was submitted?
+## Tâche 10 : Bonus – Résultats exploitables
 
-From the same credentials window, I saw most of the others were FTP logins. I filtered with:
+### 10.1 Quelle est la règle IPFirewall pour refuser l’adresse IPv4 source ?
 
-ftp and !ftp.request.arg and ftp.request.command
+**Réponse :** add deny ip from 10.121.70.151 to any in
 
-This showed me exactly one packet with a password field missing. That was packet 170.
+### 10.2 Quelle est la règle IPFirewall pour autoriser une adresse MAC de destination ?
 
-Answer: 170
+**Réponse :** add allow MAC 00:d0:59:aa:af:80 any in
 
-### Task 10: Bonus – Actionable Results!
+## Tâche 11 : Conclusion
 
-Here we used Wireshark’s Firewall ACL Rules feature to generate ready-to-apply rules.
+J’ai terminé avec succès la salle **Wireshark: The Traffic Analysis**.  
+Ces exercices m’ont permis de :
+- Analyser le trafic FTP, HTTP et HTTPS pour détecter des identifiants en clair, des anomalies et des exploits  
+- Détecter une attaque Log4j et décoder des commandes obfusquées  
+- Déchiffrer du trafic TLS/HTTPS et analyser du trafic HTTP2  
+- Extraire automatiquement des identifiants avec Wireshark  
+- Générer des règles de pare-feu directement à partir de paquets suspects  
 
-### 10.1 Select packet number 99. Create a rule for “IPFirewall (ipfw)”. What is the rule for “denying source IPv4 address”?
-
-I selected packet 99, went to Tools → Firewall ACL Rules → IPFirewall (ipfw), and copied the suggested rule. It denied traffic from the source IP:
-
-Answer: add deny ip from 10.121.70.151 to any in
-
-### 10.2 Select packet number 231. Create “IPFirewall” rules. What is the rule for “allowing destination MAC address”?
-
-This time, I selected packet 231 and generated the rules again. For destination MAC-based allow, the rule was:
-
-Answer: add allow MAC 00:d0:59:aa:af:80 any in
-
-## Task 11: Conclusion
-
-I successfully completed the Wireshark: The Traffic Analysis room.
-Throughout these exercises, I:
-Investigated FTP, HTTP, and HTTPS traffic for cleartext credentials, anomalies, and exploits.
-Practiced Log4j detection and decoded obfuscated commands.
-Decrypted TLS/HTTPS traffic using session keys and analyzed HTTP2 traffic.
-Learned to extract credentials automatically with Wireshark.
-Generated firewall rules directly from suspicious packets.
-This reinforced how Wireshark is essential for packet-level analysis, but also why analysts must complement it with IDS/IPS and correlation tools for full SOC operations.
+Cela renforce l’importance de Wireshark pour l’analyse au niveau paquet, tout en montrant la nécessité de le compléter avec des IDS/IPS et des outils de corrélation pour des opérations SOC complètes.
