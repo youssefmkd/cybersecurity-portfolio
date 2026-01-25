@@ -1,140 +1,139 @@
-# 📝 Case Study: Secret Recipe (DFIR)
+# 📝 Étude de cas : Secret Recipe (DFIR)
 
-## 🔹 Overview
-In this case study, I performed **forensics on a Windows workstation** to investigate insider activity and uncover sensitive information.  
-The goal was to reconstruct user behavior, identify suspicious accounts, track network and file activity, and locate sensitive files (e.g., the secret coffee recipe).  
+## 🔹 Aperçu
+Dans cette étude de cas, j’ai réalisé une **analyse forensique sur un poste Windows** pour enquêter sur une activité interne et découvrir des informations sensibles.  
+L’objectif était de reconstruire le comportement des utilisateurs, identifier les comptes suspects, suivre l’activité réseau et fichier, et localiser les fichiers sensibles (par ex. la recette secrète de café).  
 
-**Skills demonstrated:**
-- Registry forensics with **Registry Explorer**
-- User account and system metadata analysis
-- NTUSER.DAT exploration for recent documents and commands
-- Network activity analysis (VPN, DHCP)
-- Reconstruction of user behavior on Windows
+**Compétences démontrées :**
+- Analyse du registre avec **Registry Explorer**  
+- Analyse des comptes utilisateurs et des métadonnées système  
+- Exploration de **NTUSER.DAT** pour les documents récents et commandes exécutées  
+- Analyse de l’activité réseau (VPN, DHCP)  
+- Reconstruction du comportement utilisateur sous Windows  
 
 ---
 
-## 🔍 Key Activities & Highlights
+## 🔍 Activités clés & points forts
 
-### 1. Identify Computer Name
-- Opened **Registry Explorer** and loaded the **SYSTEM hive**  
-- Navigated to `ControlSet001\Control\ComputerName\ComputerName`  
-- **Finding:** Retrieved the **computer name** of the machine
+### 1. Identifier le nom de l’ordinateur
+- Ouvert **Registry Explorer** et chargé la **ruche SYSTEM**  
+- Navigué vers `ControlSet001\Control\ComputerName\ComputerName`  
+- **Résultat :** récupération du **nom de l’ordinateur**
 
 <img src="screenshots/secret-computer-name.png" alt="Computer Name" width="600">
 <img src="screenshots/secret-computer-name1.png" alt="Computer Name" width="600">
 
 ---
 
-### 2. Administrator Account Creation
-- Loaded **SAM hive** in Registry Explorer  
-- Navigated to `SAM\Domains\Account\Users\Names\Administrator`  
-- **Finding:** **Administrator account creation date** identified
+### 2. Création du compte Administrateur
+- Chargé la **ruche SAM** dans Registry Explorer  
+- Navigué vers `SAM\Domains\Account\Users\Names\Administrator`  
+- **Résultat :** date de création du compte **Administrator**
 
 <img src="screenshots/Administrator.png" alt="Administrator Name" width="600">
 <img src="screenshots/Administrator1.png" alt="Administrator Name" width="600">
 
-### 3. Administrator RID
-- In the same location, expanded the columns to see **RID (Relative Identifier)**  
-- **Finding:** RID associated with Administrator retrieved
+### 3. RID Administrateur
+- Même emplacement, colonnes étendues pour voir **RID (Relative Identifier)**  
+- **Résultat :** RID associé à Administrator récupéré
 
 <img src="screenshots/secret-sam-admin.png" alt="Administrator Details" width="600">
 
 ---
 
-### 4. User Accounts & Suspicious Account
-- Expanded `SAM\Domains\Account\Users\Names`  
-- Counted all **user accounts** on the machine  
-- Located suspicious backdoor account with **RID 1013**  
-- **Finding:** Account name of backdoor user retrieved
+### 4. Comptes utilisateurs & compte suspect
+- Étendu `SAM\Domains\Account\Users\Names`  
+- Compté tous les **comptes utilisateurs** sur la machine  
+- Localisé un compte backdoor suspect avec **RID 1013**  
+- **Résultat :** nom du compte backdoor récupéré
 
 <img src="screenshots/secret-sam-users.png" alt="User Accounts" width="600">
 
 ---
 
-### 5. VPN Connections
-- Loaded **SOFTWARE hive**  
-- Navigated to `Microsoft\Windows\NetworkList\KnownNetworks`  
-- Examined **Known Networks tab** to find VPN connections  
-- **Finding:** Name of VPN the host connected to
+### 5. Connexions VPN
+- Chargé la **ruche SOFTWARE**  
+- Navigué vers `Microsoft\Windows\NetworkList\KnownNetworks`  
+- Vérifié l’onglet **Known Networks** pour les VPN  
+- **Résultat :** nom du VPN utilisé par l’hôte
 
 <img src="screenshots/vpnconnection.png" alt="vpn" width="600">
 
-### 6. First VPN Connection Timestamp
-- Expanded **First Connect LOCAL column** in Known Networks  
-- **Finding:** First VPN connection timestamp (YYYY-MM-DD HH:MM:SS)
+### 6. Horodatage de la première connexion VPN
+- Étendu **First Connect LOCAL column** dans Known Networks  
+- **Résultat :** horodatage de la première connexion VPN (AAAA-MM-JJ HH:MM:SS)
 
 ---
 
-### 7. Shared Folders
+### 7. Dossiers partagés
 - SYSTEM hive → `LanmanServer\Shares`  
-- Identified all shared folders on the machine  
-- **Finding:** Path of the **third shared folder**
+- Identification de tous les dossiers partagés sur la machine  
+- **Résultat :** chemin du **troisième dossier partagé**
 
 <img src="screenshots/secret-shares.png" alt="Shared Folders" width="600">
 <img src="screenshots/secret-shares1.png" alt="Shared Folders" width="600">
 
 ---
 
-### 8. Last DHCP IP
+### 8. Dernière IP DHCP
 - SYSTEM hive → `Tcpip\Parameters\Interfaces`  
-- Reviewed DHCP information in the interface entries  
-- **Finding:** Last DHCP IP assigned to the host
+- Vérification des informations DHCP dans les interfaces  
+- **Résultat :** dernière IP DHCP assignée à l’hôte
 
 <img src="screenshots/secret-dhcp.png" alt="DHCP IP" width="600">
 
 ---
 
-### 9. Secret Recipe File Access
-- Loaded **NTUSER.DAT hive**  
-- Navigated to `Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs`  
-- Checked `.pdf` entries for recently opened files  
-- **Finding:** Name of the secret coffee recipe file
+### 9. Accès au fichier Secret Recipe
+- Chargé **NTUSER.DAT hive**  
+- Navigué vers `Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs`  
+- Vérification des entrées `.pdf` pour fichiers récemment ouverts  
+- **Résultat :** nom du fichier contenant la recette secrète de café
 
 <img src="screenshots/secret-recentdocs.png" alt="Secret Recipe File" width="600">
 
 ---
 
-### 10. Commands & File Transfer Tool
+### 10. Commandes & outil de transfert de fichiers
 - NTUSER.DAT → Explorer → WordWheelQuery  
-- Inspected search and run commands executed by user  
-- **Findings:**  
-  - Network enumeration command  
-  - File transfer tool searched  
-  - Recent text file accessed
+- Inspection des commandes exécutées et recherches de l’utilisateur  
+- **Résultats :**  
+  - Commande d’énumération réseau  
+  - Outil de transfert de fichiers recherché  
+  - Fichier texte récent consulté
 
 <img src="screenshots/secret-commands.png" alt="User Commands" width="600">
 
 ---
 
-### 11. UserAssist Program Execution
+### 11. Exécution des programmes via UserAssist
 - NTUSER.DAT → `Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist`  
-- Expanded UserAssist keys to count program executions  
-- **Findings:**  
-  - Powershell execution count  
-  - Network monitoring tool executed  
-  - ProtonVPN focus time (minutes converted to seconds)  
-  - Full path of `everything.exe`
+- Étendu les clés UserAssist pour compter les exécutions de programmes  
+- **Résultats :**  
+  - Nombre d’exécutions de Powershell  
+  - Outil de surveillance réseau exécuté  
+  - Temps d’utilisation de ProtonVPN (minutes converties en secondes)  
+  - Chemin complet de `everything.exe`
 
 <img src="screenshots/secret-userassist.png" alt="UserAssist Analysis" width="600">
 
 ---
 
 ## ✅ Conclusion
-- Verified computer name and administrator account metadata  
-- Identified all user accounts and detected a suspicious backdoor (RID 1013)  
-- Determined VPN connections, first connect timestamp, shared folders, and last DHCP IP  
-- Tracked user activity via RecentDocs and WordWheelQuery in NTUSER.DAT  
-- Monitored executed programs and focus times via UserAssist  
-- Located secret coffee recipe file and reconstructed user behavior  
+- Vérification du nom de l’ordinateur et des métadonnées du compte administrateur  
+- Identification de tous les comptes utilisateurs et détection d’un backdoor suspect (RID 1013)  
+- Détermination des connexions VPN, horodatage de la première connexion, dossiers partagés et dernière IP DHCP  
+- Suivi de l’activité utilisateur via RecentDocs et WordWheelQuery dans NTUSER.DAT  
+- Surveillance des programmes exécutés et temps de focus via UserAssist  
+- Localisation du fichier secret de la recette de café et reconstruction du comportement utilisateur  
 
-**Lessons learned:**
-- Registry hives (SYSTEM, SAM, SOFTWARE, NTUSER) are critical for Windows forensic analysis  
-- Correlating multiple sources gives a complete picture of user activity  
-- Monitoring suspicious accounts, VPN activity, and executed commands is key in DFIR  
-- NTUSER.DAT provides insight into both file access and user interaction
+**Leçons apprises :**
+- Les ruches du registre (SYSTEM, SAM, SOFTWARE, NTUSER) sont cruciales pour l’analyse forensic Windows  
+- Corréler plusieurs sources permet d’obtenir une vue complète de l’activité utilisateur  
+- La surveillance des comptes suspects, de l’activité VPN et des commandes exécutées est essentielle en DFIR  
+- NTUSER.DAT fournit un aperçu des accès aux fichiers et des interactions utilisateur
 
 ---
 
 ## 🔗 Navigation
-- Back to [DFIR Home](../DFIR/README.md)
-
+- Retour à [Accueil DFIR](../DFIR/README.md)
