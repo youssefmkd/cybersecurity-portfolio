@@ -1,12 +1,12 @@
-# 🛡️ SOC Level 1 Capstone Challenges
+# 🛡️ Défis Capstone SOC Niveau 1
 
-## 📖 What are SOC Level 1 Capstone Challenges?
-The **SOC Level 1 Capstone Challenges** are advanced, hands-on scenarios that replicate real-world **Security Operations Center (SOC)** environments.  
-Each challenge focuses on key aspects of **threat detection**, **incident response**, **malware analysis**, and **log correlation** — putting all the skills I gained throughout my SOC Level 1 learning path into practice.
+## 📖 Qu’est-ce que les Défis Capstone SOC Niveau 1 ?
+Les **Défis Capstone SOC Niveau 1** sont des scénarios avancés et pratiques qui reproduisent des environnements réels de **Security Operations Center (SOC)**.  
+Chaque défi se concentre sur des aspects clés de la **détection des menaces**, de la **réponse aux incidents**, de l’**analyse de malware** et de la **corrélation des logs** — mettant en pratique toutes les compétences acquises tout au long du parcours SOC Niveau 1.
 
 ---
 
-## 📌 Modules Completed
+## 📌 Modules Complétés
 - Tempest  
 - Boogeyman 1  
 - Boogeyman 2  
@@ -17,42 +17,34 @@ Each challenge focuses on key aspects of **threat detection**, **incident respon
 
 ---
 
-## 🎯 Skills Gained
-- Conducting **multi-stage SOC investigations** from detection to remediation  
-- Identifying and validating **indicators of compromise (IOCs)**  
-- Performing **malware analysis** and detecting persistence mechanisms  
-- Investigating **ransomware and data exfiltration attempts**  
-- Correlating SIEM alerts with endpoint and network logs  
-- Documenting and reporting **incident findings** in a structured format  
+## 🎯 Compétences Acquises
+- Conduire des **investigations SOC multi-étapes** de la détection à la remédiation  
+- Identifier et valider les **indicateurs de compromission (IOC)**  
+- Réaliser des **analyses de malware** et détecter les mécanismes de persistance  
+- Enquêter sur les **tentatives de ransomware et d’exfiltration de données**  
+- Corréler les alertes SIEM avec les logs des endpoints et du réseau  
+- Documenter et rapporter les **constats d’incident** de manière structurée  
 
 ---
 
-## 📑 Case Studies
+## 📑 Études de Cas
 
-### 1. **Boogeyman Series (1–3): Incident Correlation & Threat Detection**
-In this three-part challenge, I investigated a series of escalating threats inside a simulated enterprise environment.  
-I started by analyzing suspicious logs in the SIEM, uncovering a phishing campaign that led to privilege escalation and lateral movement.  
-Through careful event correlation, I identified persistence mechanisms and traced the attacker’s full kill chain — from **initial access** to **data exfiltration**.  
-[Read Full Case Study →](case-study-boogeyman.md)
-
----
-
-### 2. **Tempest Challenge: Full-Scope Threat Investigation**
-This capstone challenge required performing a complete SOC investigation from alert triage to remediation.  
-I analyzed endpoint activity, reviewed malicious PowerShell execution, and correlated SIEM events to identify command-and-control communication.  
-By following structured IR steps, I isolated the compromised endpoint, extracted IOCs, and recommended mitigation controls.  
-This exercise reinforced my understanding of **real-world SOC workflows** and **incident prioritization**.  
-[Read Full Case Study →](case-study-tempest.md)
+### 1. **Défi Tempest : Investigation complète d’une menace**
+Ce défi Capstone nécessitait de réaliser une investigation SOC complète, depuis le triage des alertes jusqu’à la remédiation.  
+J’ai analysé l’activité des endpoints, examiné l’exécution malveillante de PowerShell et corrélé les événements SIEM pour identifier la communication avec un serveur de commande et contrôle (C2).  
+En suivant des étapes IR structurées, j’ai isolé l’endpoint compromis, extrait les IOC et recommandé des mesures d’atténuation.  
+Cet exercice a renforcé ma compréhension des **flux de travail SOC en conditions réelles** et de la **priorisation des incidents**.  
+[Lire l’Étude de Cas Complète →](case-study-tempest.md)
 
 ---
 
-## ✅ Lessons Learned
-- SOC investigations rely on **precision, patience, and pattern recognition**.  
-- Effective threat response requires understanding both **tactics (TTPs)** and **context** behind alerts.  
-- Documentation and clear communication are just as vital as technical skills.  
-- Capstone exercises revealed how **different attack stages connect** across network and endpoint layers.  
+## ✅ Leçons Apprises
+- Les investigations SOC reposent sur la **précision, la patience et la reconnaissance de motifs**.  
+- Une réponse efficace aux menaces nécessite de comprendre à la fois les **tactiques (TTPs)** et le **contexte** des alertes.  
+- La documentation et la communication claire sont tout aussi importantes que les compétences techniques.  
+- Les exercices Capstone montrent comment **les différentes étapes d’une attaque sont connectées** à travers les couches réseau et endpoints.  
 
 ---
 
 ## 🔗 Navigation
-- Back to [Portfolio Home](../../index.md)
+- Retour à [Portfolio Home](../../index.md)
