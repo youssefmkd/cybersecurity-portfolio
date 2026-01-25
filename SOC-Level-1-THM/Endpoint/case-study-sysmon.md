@@ -1,99 +1,103 @@
-# 📝 Case Study: Sysmon Event Analysis
+# 📝 Étude de cas : Analyse des événements Sysmon
 
-## 🔹 Overview
-This case study explores **Sysmon**, a Windows system monitoring tool that logs detailed events for endpoint and network activity.  
-The objective was to investigate Sysmon logs for USB devices, payloads, scheduled tasks, and network connections to identify suspicious activity and potential compromises.
+## 🔹 Présentation générale
+Cette étude de cas explore **Sysmon**, un outil de surveillance du système Windows qui enregistre des événements détaillés liés à l’activité des endpoints et du réseau.  
+L’objectif était d’analyser les journaux Sysmon concernant les périphériques USB, les charges utiles (payloads), les tâches planifiées et les connexions réseau afin d’identifier des activités suspectes et d’éventuelles compromissions.
 
-**Skills demonstrated:**
-- Sysmon log analysis using PowerShell and Event Viewer
-- USB and process monitoring
-- Payload and scheduled task reconstruction
-- Network traffic and adversary IP identification
-- Windows registry and PowerShell script examination
+**Compétences démontrées :**
+- Analyse des journaux Sysmon avec PowerShell et l’Observateur d’événements  
+- Surveillance des périphériques USB et des processus  
+- Reconstruction de payloads et de tâches planifiées  
+- Analyse du trafic réseau et identification des IP adverses  
+- Examen du registre Windows et de scripts PowerShell  
 
 ---
 
-## 🔍 Key Activities & Highlights
+## 🔍 Activités clés & points marquants
 
-### 1. Cutting Out the Noise
-- I examined the event log `Filtering.evtx` for Event ID 3 (network connections) using PowerShell:  
+### 1. Réduction du bruit
+- J’ai examiné le journal d’événements `Filtering.evtx` pour l’Event ID 3 (connexions réseau) à l’aide de PowerShell :  
   `Get-WinEvent -Path Filtering.evtx -FilterXPath '*/System/EventID=3' | Measure-Object -Line`
 
-**Findings:**  
-- Number of Event ID 3 logs: `73,591`  
-- First network event (UTC): `2021-01-06 01:35:50.464`  
-I used the Event Viewer to confirm the first network event when PowerShell queries felt complex.
+**Résultats :**  
+- Nombre d’événements Event ID 3 : `73,591`  
+- Premier événement réseau (UTC) : `2021-01-06 01:35:50.464`  
+J’ai utilisé l’Observateur d’événements pour confirmer le premier événement réseau lorsque les requêtes PowerShell devenaient trop complexes.
 
 <img src="screenshots/sysmon.png" width="600" height="auto">
 <img src="screenshots/sysmon1.png" width="600" height="auto">
 
 ---
 
-### 2. Practical Investigations
+### 2. Investigations pratiques
 
-#### Investigation 1: USB Device
-- I tracked the USB device calling `svchost.exe` and found the registry key:  
+#### Investigation 1 : Périphérique USB
+- J’ai suivi le périphérique USB appelant `svchost.exe` et identifié la clé de registre :  
   `HKLM\System\CurrentControlSet\Enum\WpdBusEnumRoot\UMB\2&37c186b&0&STORAGE#VOLUME#_??_USBSTOR#DISK&VEN_SANDISK&PROD_U3_CRUZER_MICRO&REV_8.01#4054910EF19005B3&0#\FriendlyName`
   <img src="screenshots/sysmon3.png" width="600" height="auto">
-- The device name was: `\Device\HarddiskVolume3`
+- Le nom du périphérique était : `\Device\HarddiskVolume3`
   <img src="screenshots/sysmon4.png" width="600" height="auto">
-- The first process executed was: `rundll32.exe`  
-I worked chronologically through the logs to identify these events.
+- Le premier processus exécuté était : `rundll32.exe`  
+J’ai travaillé de manière chronologique dans les journaux pour identifier ces événements.
 
+---
 
-
-
-#### Investigation 2: Payload Analysis
-- I located the full path of the payload:  
+#### Investigation 2 : Analyse du payload
+- J’ai localisé le chemin complet du payload :  
   `C:\Users\IEUser\AppData\Local\Microsoft\Windows\Temporary Internet Files\Content.IE5\S97WTYG7\update.hta`
   <img src="screenshots/sysmon5.png" width="600" height="auto">
-- The payload masked itself as:  
+- Le payload se masquait sous :  
   `C:\Users\IEUser\Downloads\update.html`
   <img src="screenshots/sysmon6.png" width="600" height="auto">
-- The signed binary executing the payload was:  
+- Le binaire signé exécutant le payload était :  
   `C:\Windows\System32\mshta.exe`
   <img src="screenshots/sysmon7.png" width="600" height="auto">
-- I identified the adversary IP as: `10.0.2.18`
+- J’ai identifié l’IP de l’adversaire comme étant : `10.0.2.18`
   <img src="screenshots/sysmon8.png" width="600" height="auto">
-- The back connect port was: `4443`
+- Le port de connexion retour (back connect) était : `4443`
 
-#### Investigation 3.1: Endpoint Connection
-- I found the adversary IP: `172.30.1.253`
+---
+
+#### Investigation 3.1 : Connexion endpoint
+- J’ai identifié l’IP de l’adversaire : `172.30.1.253`
   <img src="screenshots/sysmon9.png" width="600" height="auto">
-- Hostname of affected endpoint: `DESKTOP-O153T4R`
-- Hostname of C2 server: `empirec2`
-- Registry location used by PowerShell payload:  
+- Nom d’hôte de l’endpoint affecté : `DESKTOP-O153T4R`
+- Nom d’hôte du serveur C2 : `empirec2`
+- Emplacement du registre utilisé par le payload PowerShell :  
   `HKLM\SOFTWARE\Microsoft\Network\debug`
   <img src="screenshots/sysmon10.png" width="600" height="auto">
-- The PowerShell launch code used was:  
+- La commande PowerShell utilisée au lancement était :  
   `"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -c \"$x=$((gp HKLM:Software\Microsoft\Network debug).debug);start -Win Hidden -A \\\"-enc $x\\\" powershell\";exit;"`  
-I followed the logs sequentially to find the PowerShell command.
+J’ai suivi les journaux séquentiellement pour retrouver cette commande PowerShell.
 
-#### Investigation 3.2: Scheduled Task
-- I identified the adversary IP: `172.168.103.188`
+---
+
+#### Investigation 3.2 : Tâche planifiée
+- J’ai identifié l’IP de l’adversaire : `172.168.103.188`
   <img src="screenshots/sysmon11.png" width="600" height="auto">
-- Payload location: `c:\users\q\AppData:blah.txt`
+- Emplacement du payload : `c:\users\q\AppData:blah.txt`
   <img src="screenshots/sysmon12.png" width="600" height="auto">
-- The full command to create the scheduled task was:  
+- La commande complète utilisée pour créer la tâche planifiée était :  
   `"C:\WINDOWS\system32\schtasks.exe" /Create /F /SC DAILY /ST 09:00 /TN Updater /TR "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NonI -W hidden -c \"IEX ([Text.Encoding]::UNICODE.GetString([Convert]::FromBase64String($(cmd /c ''more < c:\users\q\AppData:blah.txt''))))\""`
-- I determined that the suspicious process accessed by schtasks.exe was: `lsass.exe`
+- J’ai déterminé que le processus suspect accédé par `schtasks.exe` était : `lsass.exe`
 
-#### Investigation 4: Network Connections
-- I identified the adversary IP: `172.30.1.253`
+---
+
+#### Investigation 4 : Connexions réseau
+- J’ai identifié l’IP de l’adversaire : `172.30.1.253`
   <img src="screenshots/sysmon13.png" width="600" height="auto">
-- The adversary port was: `80`
-- The C2 infrastructure used by the adversary was: `Empire`
+- Le port utilisé par l’adversaire était : `80`
+- L’infrastructure C2 utilisée par l’adversaire était : `Empire`
 
 ---
 
 ## ✅ Conclusion
-- I used Sysmon logs to track USB, process, and network activities.  
-- I identified suspicious payloads, scheduled tasks, and C2 communications.  
-- This exercise helped me correlate Sysmon event logs with registry entries, PowerShell executions, and network indicators.  
-- I learned the importance of using Event Viewer and PowerShell for detailed analysis when GUI or XPath queries are preferred.
+- J’ai utilisé les journaux Sysmon pour suivre les activités USB, processus et réseau.  
+- J’ai identifié des payloads suspects, des tâches planifiées et des communications C2.  
+- Cet exercice m’a permis de corréler les événements Sysmon avec des entrées du registre, des exécutions PowerShell et des indicateurs réseau.  
+- J’ai compris l’importance d’utiliser l’Observateur d’événements et PowerShell pour des analyses détaillées, notamment lorsque les requêtes GUI ou XPath sont privilégiées.
 
 ---
 
 ## 🔗 Navigation
-- Back to [Endpoint Security Monitoring Home](../README.md)
-
+- Retour à l’[Accueil de la surveillance de la sécurité des endpoints](../README.md)
