@@ -1,48 +1,47 @@
-# 🕵️‍♂️ Phishing Analysis & Prevention
+# 🕵️‍♂️ Analyse et Prévention du Phishing
 
-## 📖 What is Phishing Analysis & Prevention?
-**Phishing Analysis & Prevention** focuses on identifying, analyzing, and mitigating phishing attacks.  
-It involves understanding email threats, analyzing suspicious messages, extracting Indicators of Compromise (IOCs), and implementing strategies to prevent phishing incidents in an organizational environment.  
+## 📖 Qu’est-ce que l’Analyse et la Prévention du Phishing ?
+**L’Analyse et la Prévention du Phishing** consiste à identifier, analyser et atténuer les attaques de phishing.  
+Elle implique la compréhension des menaces par email, l’analyse des messages suspects, l’extraction des Indicateurs de Compromission (IOC) et la mise en œuvre de stratégies pour prévenir les incidents de phishing dans un environnement organisationnel.  
 
 ---
 
-## 📌 Modules Completed
-- Phishing Analysis Fundamentals  
-- Phishing Emails in Action  
-- Phishing Analysis Tools  
-- Phishing Prevention  
+## 📌 Modules Complétés
+- Fondamentaux de l’Analyse du Phishing  
+- Emails de Phishing en Action  
+- Outils d’Analyse du Phishing  
+- Prévention du Phishing  
 - The Greenholt Phish  
 - Snapped Phish-ing Line  
 - Phishing Unfolding  
 
 ---
 
-## 🎯 Skills Gained
-- Analyzing suspicious emails and identifying malicious payloads  
-- Extracting **Indicators of Compromise (IOCs)** from email headers, attachments, and links  
-- Using phishing analysis tools for investigation  
-- Understanding phishing campaigns and attack patterns  
-- Implementing technical and user-based **prevention strategies**  
-- Performing end-to-end phishing investigations and reporting findings  
+## 🎯 Compétences Acquises
+- Analyse des emails suspects et identification des charges malveillantes  
+- Extraction des **Indicateurs de Compromission (IOC)** depuis les en-têtes, pièces jointes et liens  
+- Utilisation des outils d’analyse de phishing pour l’investigation  
+- Compréhension des campagnes de phishing et des modèles d’attaque  
+- Mise en œuvre de stratégies de **prévention techniques et utilisateurs**  
+- Réalisation d’enquêtes complètes sur le phishing et reporting des conclusions  
 
 ---
 
-## 📑 Case Studies
+## 📑 Études de Cas
 1. **The Greenholt Phish**  
-   Analyzed a simulated phishing campaign to identify malicious emails, extract IOCs, and recommend mitigation strategies.  
-   [Read Full Case Study →](case-study-greenholt.md)  
+   Analyse d’une campagne de phishing simulée pour identifier les emails malveillants, extraire les IOC et recommander des stratégies de mitigation.  
+   [Lire l’Étude de Cas Complète →](case-study-greenholt.md)  
 
 ---
 
-## ✅ Lessons Learned
-- Phishing campaigns often leverage **social engineering** and require careful scrutiny of headers and content.  
-- Extracting IOCs (URLs, attachments, sender info) is critical for defense and remediation.  
-- Analysis tools accelerate detection but require proper interpretation.  
-- User awareness and technical controls (email filters, SPF/DKIM/DMARC) are essential for prevention.  
-- Case studies helped develop practical experience in **detecting, analyzing, and mitigating phishing attacks**.  
+## ✅ Leçons Apprises
+- Les campagnes de phishing exploitent souvent **l’ingénierie sociale** et nécessitent une analyse minutieuse des en-têtes et du contenu.  
+- L’extraction des IOC (URLs, pièces jointes, informations de l’expéditeur) est cruciale pour la défense et la remédiation.  
+- Les outils d’analyse accélèrent la détection mais nécessitent une interprétation correcte.  
+- La sensibilisation des utilisateurs et les contrôles techniques (filtres email, SPF/DKIM/DMARC) sont essentiels pour la prévention.  
+- Les études de cas ont permis d’acquérir une expérience pratique dans la **détection, l’analyse et l’atténuation des attaques de phishing**.  
 
 ---
 
 ## 🔗 Navigation
-- Back to [Portfolio Home](../../index.md)  
-
+- Retour à [Portfolio Home](../../index.md)
