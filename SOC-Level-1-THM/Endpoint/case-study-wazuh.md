@@ -1,136 +1,135 @@
-# 📝 Case Study: Wazuh Endpoint Detection & Monitoring
+# 📝 Étude de cas : Détection et supervision des endpoints avec Wazuh
 
-## 🔹 Overview
-This case study focuses on **Wazuh**, an endpoint detection and response platform that also acts as a SIEM.  
-I deployed a Wazuh management server, connected multiple agents, and investigated collected logs and security events to understand how Wazuh centralizes monitoring and detection.  
+## 🔹 Présentation générale
+Cette étude de cas se concentre sur **Wazuh**, une plateforme de détection et de réponse sur les endpoints (EDR) qui agit également comme un **SIEM**.  
+J’ai déployé un serveur de gestion Wazuh, connecté plusieurs agents et analysé les journaux collectés ainsi que les événements de sécurité afin de comprendre comment Wazuh centralise la supervision et la détection.
 
-**Skills demonstrated:**  
-- Deploying Wazuh management and agent nodes  
-- Investigating Windows and Linux endpoint activity  
-- Auditing commands and monitoring suspicious behavior  
-- Using the Wazuh API for system queries  
-- Generating reports and analyzing alerts  
+**Compétences démontrées :**  
+- Déploiement du serveur de gestion Wazuh et des agents  
+- Analyse de l’activité des endpoints Windows et Linux  
+- Audit des commandes et surveillance des comportements suspects  
+- Utilisation de l’API Wazuh pour les requêtes système  
+- Génération de rapports et analyse des alertes  
 
 ---
 
-## 🔍 Key Activities & Highlights
+## 🔍 Activités clés & points marquants
 
 ### 1. Introduction
-The first task was to familiarize myself with Wazuh terminology and history. I read the introductory notes and understood its architecture.
+La première tâche consistait à me familiariser avec la terminologie et l’historique de Wazuh. J’ai étudié les notes d’introduction et compris son architecture.
 
-**Findings:**  
-- **Wazuh release year:** `2015` – Knowing the release year helps contextualize its maturity compared to other SIEMs and EDR tools.  
-- **Monitored device term:** `Agent` – Each endpoint that reports activity is an agent; understanding this helps identify the scope of monitoring.  
-- **Management device term:** `Manager` – The centralized server that collects data from agents and applies analysis rules.  
-
----
-
-### 2. Deploy Wazuh Server
-For this step, I connected to the TryHackMe network using my OpenVPN profile and accessed the Wazuh server via the provided IP.  
-Once connected, I logged into the Wazuh GUI with the credentials provided in the task. This step was crucial because without a functioning management server, none of the agents or security events could be monitored.
-
-**Observation:**  
-- This reinforced my understanding that a Wazuh manager is necessary to interpret all endpoint data.  
+**Résultats :**  
+- **Année de sortie de Wazuh :** `2015` – Connaître l’année de sortie permet de situer sa maturité par rapport à d’autres outils SIEM et EDR.  
+- **Terme pour un équipement surveillé :** `Agent` – Chaque endpoint qui remonte des événements est appelé agent.  
+- **Terme pour l’équipement de gestion :** `Manager` – Serveur centralisé qui collecte les données des agents et applique les règles d’analyse.  
 
 ---
 
-### 3. Wazuh Agents
-I clicked the Wazuh icon → “Agents” to view all connected agents. Wazuh lists each agent and shows its current connection status.
+### 2. Déploiement du serveur Wazuh
+Pour cette étape, je me suis connecté au réseau TryHackMe via mon profil OpenVPN et j’ai accédé au serveur Wazuh grâce à l’adresse IP fournie.  
+Une fois connecté, je me suis authentifié sur l’interface graphique Wazuh avec les identifiants fournis. Cette étape était essentielle, car sans serveur de gestion opérationnel, aucun agent ni événement de sécurité ne peut être supervisé.
 
-**Findings:**  
-- **Number of agents:** `2` – These represent the devices actively reporting to the manager.  
-- **Status:** `disconnected` – This indicates that the agents were not actively reporting at the time, possibly due to network issues or configuration delays.
+**Observation :**  
+- Cela a renforcé ma compréhension du rôle central du **Wazuh Manager** dans l’interprétation des données des endpoints.
+
+---
+
+### 3. Agents Wazuh
+J’ai cliqué sur l’icône Wazuh → **Agents** afin d’afficher tous les agents connectés. Wazuh liste chaque agent et indique son état de connexion.
+
+**Résultats :**  
+- **Nombre d’agents :** `2` – Représentent les endpoints remontant leurs données au manager.  
+- **Statut :** `disconnected` – Indique que les agents ne remontaient pas activement leurs journaux à ce moment-là, probablement à cause d’un problème réseau ou de configuration.
 
 <img src="screenshots/wazuh.png" width="600" height="auto">
 
-**Reflection:**  
-- Monitoring agent connectivity is vital; disconnected agents can result in blind spots in security monitoring.
+**Analyse :**  
+- La supervision de la connectivité des agents est cruciale : des agents déconnectés créent des angles morts dans la surveillance de sécurité.
 
 ---
 
-### 4. Wazuh Vulnerability Assessment & Security Events
-Next, I analyzed the agent named `AGENT-001`. I navigated to **Security events** and adjusted the time filter to “Years ago” to ensure I captured all historical alerts.
+### 4. Évaluation des vulnérabilités & événements de sécurité
+J’ai ensuite analysé l’agent nommé `AGENT-001`. Je me suis rendu dans **Security events** et j’ai ajusté le filtre temporel sur *“Years ago”* afin d’inclure tous les événements historiques.
 
-**Findings:**  
-- **Security Event alerts:** `196` – These alerts represent detected anomalies, suspicious activity, or policy violations on the monitored agent.
+**Résultats :**  
+- **Alertes d’événements de sécurité :** `196` – Ces alertes représentent des anomalies, des activités suspectes ou des violations de politique détectées sur l’agent.
 
 <img src="screenshots/wazuh1.png" width="600" height="auto">
 
-**Reflection:**  
-- This task showed me how Wazuh centralizes alerting and makes it easy to review security events over time.  
-- Filtering and adjusting time ranges are critical for full visibility in investigations.
+**Analyse :**  
+- Cette étape m’a montré comment Wazuh centralise les alertes et facilite leur analyse dans le temps.  
+- Le filtrage et l’ajustement des plages temporelles sont essentiels pour obtenir une visibilité complète lors d’une investigation.
 
 ---
 
-### 5. Collecting Windows Logs with Wazuh
-Wazuh collects system logs from endpoints to detect suspicious activity. I verified which tools Wazuh uses for Windows:
+### 5. Collecte des journaux Windows avec Wazuh
+Wazuh collecte les journaux système des endpoints afin de détecter des activités suspectes. J’ai vérifié quels outils étaient utilisés pour Windows.
 
-**Findings:**  
-- **Tool:** `Sysmon` – Installed on the agent, it records detailed events like process creation, network connections, and registry changes.  
-- **Log repository:** `Event Viewer` – Sysmon writes events here, allowing Wazuh to query and analyze them centrally.
+**Résultats :**  
+- **Outil :** `Sysmon` – Installé sur l’agent, il enregistre des événements détaillés (création de processus, connexions réseau, modifications du registre).  
+- **Dépôt des journaux :** `Event Viewer` – Sysmon écrit ses événements ici, permettant à Wazuh de les analyser de manière centralisée.
 
-**Reflection:**  
-- This highlighted the importance of collecting Windows logs for real-time threat detection and historical investigation.
-
----
-
-### 6. Collecting Linux Logs with Wazuh
-I explored how Linux endpoints are monitored. The readings emphasized monitoring command execution and system activity.
-
-**Findings:**  
-- **Rules path:** `/var/ossec/ruleset/rules` – Defines the alerts and policies applied to collected logs.  
-- **Monitoring tool:** `Auditd` – Captures commands and actions performed on Linux systems.  
-- **Auditd rules path:** `/etc/audit/rules.d/audit.rules` – Where rules for auditing are stored.
-
-**Reflection:**  
-- Knowing these paths is critical when tuning Wazuh to ensure all relevant events are captured without generating excessive noise.
+**Analyse :**  
+- Cela met en évidence l’importance de la collecte des journaux Windows pour la détection des menaces en temps réel et l’analyse forensique.
 
 ---
 
-### 7. Wazuh API
-I explored the Wazuh API to interact programmatically with the server. The API allows retrieving information, performing actions, and integrating Wazuh into scripts or external systems.
+### 6. Collecte des journaux Linux avec Wazuh
+J’ai étudié la supervision des endpoints Linux. Les ressources mettaient l’accent sur le suivi des commandes exécutées et de l’activité système.
 
-**Findings:**  
-- **Standard tool for API requests:** `curl` – Used on Linux or Windows (via WSL or Git Bash) to make HTTP requests.  
-- **HTTP method for retrieval:** `GET`  
-- **HTTP method for actions:** `PUT` – Used for configuration changes or triggering tasks.  
-- **Wazuh server version:** `v4.2.5` – Confirmed via API console query.
+**Résultats :**  
+- **Chemin des règles :** `/var/ossec/ruleset/rules` – Définit les règles d’alerte et les politiques appliquées aux journaux collectés.  
+- **Outil de surveillance :** `Auditd` – Capture les commandes et actions effectuées sur les systèmes Linux.  
+- **Chemin des règles Auditd :** `/etc/audit/rules.d/audit.rules`
 
-**Reflection:**  
-- Learning API access is important for automation and integrating Wazuh into other security workflows.
+**Analyse :**  
+- Connaître ces emplacements est essentiel pour ajuster Wazuh afin de capter les événements pertinents sans générer trop de bruit.
 
 ---
 
-### 8. Generating Reports with Wazuh
-I generated a security events report for analysis:
+### 7. API Wazuh
+J’ai exploré l’API Wazuh pour interagir programmatiquement avec le serveur. L’API permet de récupérer des informations, d’effectuer des actions et d’intégrer Wazuh à des scripts ou systèmes externes.
 
-Steps:
-1. Navigate: Wazuh logo → Modules → Security Event → Generate report  
-2. Download report: Wazuh logo → Management → Reporting → Actions → Download  
+**Résultats :**  
+- **Outil standard pour les requêtes API :** `curl`  
+- **Méthode HTTP pour la récupération :** `GET`  
+- **Méthode HTTP pour les actions :** `PUT`  
+- **Version du serveur Wazuh :** `v4.2.5` – Confirmée via une requête API.
 
-**Findings:**  
-- **Agent with most alerts:** `agent-001` – This agent generated the majority of security events, indicating higher activity or potential misconfigurations.
+**Analyse :**  
+- L’accès API est crucial pour l’automatisation et l’intégration de Wazuh dans des workflows de sécurité avancés.
+
+---
+
+### 8. Génération de rapports avec Wazuh
+J’ai généré un rapport d’événements de sécurité pour analyse.
+
+**Étapes :**
+1. Wazuh → Modules → Security Event → Generate report  
+2. Wazuh → Management → Reporting → Actions → Download  
+
+**Résultats :**  
+- **Agent générant le plus d’alertes :** `agent-001` – Cet agent concentrait la majorité des événements de sécurité, indiquant une activité élevée ou une configuration à analyser.
 
 <img src="screenshots/wazuh2.png" width="600" height="auto">
 
-**Reflection:**  
-- Reports provide a holistic view of endpoint activity and are essential for compliance, audits, and incident investigations.
+**Analyse:**  
+- Les rapports offrent une vue globale de l’activité des endpoints et sont essentiels pour la conformité, les audits et les investigations d’incidents.
 
 ---
 
 ## ✅ Conclusion
-- I successfully deployed Wazuh and connected agents for centralized monitoring.  
-- I explored Windows and Linux logs, monitored agents’ status, and used the API to retrieve system information.  
-- Generating reports demonstrated the aggregation of events and identification of the most active endpoints.  
-- This room gave me hands-on experience with **EDR functionality, SIEM integration, and endpoint threat detection**.  
+- J’ai déployé Wazuh avec succès et connecté des agents pour une supervision centralisée.  
+- J’ai analysé les journaux Windows et Linux, surveillé l’état des agents et utilisé l’API pour récupérer des informations système.  
+- La génération de rapports a démontré la capacité de Wazuh à agréger les événements et à identifier les endpoints les plus actifs.  
+- Cette étude m’a apporté une expérience pratique en **EDR, intégration SIEM et détection des menaces sur les endpoints**.
 
-**Takeaways:**  
-- Wazuh is a versatile platform for real-time monitoring, alerting, and reporting.  
-- Understanding agent-manager relationships is critical for incident response.  
-- API and report features allow analysts to automate workflows and produce actionable insights.  
+**Points clés :**  
+- Wazuh est une plateforme polyvalente pour la supervision, l’alerte et le reporting en temps réel.  
+- La compréhension de la relation agent–manager est essentielle pour la réponse à incident.  
+- L’API et les fonctionnalités de reporting permettent d’automatiser les analyses et de produire des résultats exploitables.
 
 ---
 
 ## 🔗 Navigation
-- Back to [Endpoint Security Monitoring Home](../README.md)
-
+- Retour à l’[Accueil de la surveillance de la sécurité des endpoints](../README.md)
