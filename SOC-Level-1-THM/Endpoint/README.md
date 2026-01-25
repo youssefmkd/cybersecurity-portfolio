@@ -1,59 +1,55 @@
-# 🛡️ Endpoint Security Monitoring
+# 🛡️ Surveillance de la sécurité des endpoints
 
-## 📖 What is Endpoint Security Monitoring?
-**Endpoint Security Monitoring** involves continuously observing endpoints such as workstations, servers, and devices for malicious activity, unauthorized access, or policy violations.  
-It combines log analysis, behavioral monitoring, and security tools to detect and respond to threats at the endpoint level.  
+## 📖 Qu’est-ce que la surveillance de la sécurité des endpoints ?
+La **surveillance de la sécurité des endpoints** consiste à observer en continu les endpoints tels que les postes de travail, les serveurs et les appareils afin de détecter toute activité malveillante, tout accès non autorisé ou toute violation des politiques de sécurité.  
+Elle combine l’analyse des journaux, la surveillance comportementale et des outils de sécurité pour détecter et répondre aux menaces au niveau des endpoints.
 
 ---
 
-## 📌 Modules Completed
-- Intro to Endpoint Security  
-- Core Windows Processes  
+## 📌 Modules complétés
+- Introduction à la sécurité des endpoints  
+- Processus Windows essentiels  
 - Sysinternals  
-- Windows Event Logs  
+- Journaux d’événements Windows  
 - Sysmon  
-- Osquery: The Basics  
+- Osquery : les bases  
 - Wazuh  
 - Monday Monitor  
 - Retracted  
 
 ---
 
-## 🎯 Skills Gained
-- Analyzing **core Windows processes** to identify malicious behavior  
-- Using **Sysinternals** to inspect running processes, services, and network activity  
-- Monitoring and investigating events through **Windows Event Logs** and **Sysmon**  
-- Querying endpoint artifacts using **Osquery**  
-- Collecting and analyzing endpoint logs with **Wazuh** for intrusion detection  
-- Establishing endpoint monitoring workflows and generating actionable alerts  
+## 🎯 Compétences acquises
+- Analyse des **processus Windows essentiels** afin d’identifier des comportements malveillants  
+- Utilisation de **Sysinternals** pour inspecter les processus en cours, les services et l’activité réseau  
+- Surveillance et investigation des événements via les **journaux d’événements Windows** et **Sysmon**  
+- Interrogation des artefacts des endpoints à l’aide de **Osquery**  
+- Collecte et analyse des journaux des endpoints avec **Wazuh** pour la détection d’intrusions  
+- Mise en place de workflows de surveillance des endpoints et génération d’alertes exploitables  
 
 ---
 
-## 📑 Case Studies
-1. **Sysinternals for Threat Hunting**  
-   Leveraged Sysinternals tools to analyze running processes, network connections, and persistence techniques.  
-   [Read Full Case Study →](case-study-sysinternals.md)  
+## 📑 Études de cas
 
-2. **Sysmon Event Analysis**  
-   Built detections and investigated suspicious behavior using Sysmon logs.  
-   [Read Full Case Study →](case-study-sysmon.md)  
+1. **Analyse des événements Sysmon**  
+   Création de détections et investigation de comportements suspects à partir des journaux Sysmon.  
+   [Lire l’étude de cas complète →](case-study-sysmon.md)  
 
-3. **Endpoint Detection with Wazuh**  
-   Used Wazuh to collect and analyze endpoint logs for intrusion detection and monitoring.  
-   [Read Full Case Study →](case-study-wazuh.md)  
+2. **Détection des endpoints avec Wazuh**  
+   Utilisation de Wazuh pour collecter et analyser les journaux des endpoints afin d’assurer la détection et la surveillance des intrusions.  
+   [Lire l’étude de cas complète →](case-study-wazuh.md)  
 
 ---
 
-## ✅ Lessons Learned
-- Continuous monitoring of endpoints is crucial for early detection of threats.  
-- Sysinternals provides deep visibility into processes, registry activity, and network connections.  
-- Sysmon logs allow for the creation of targeted detection rules to identify suspicious behavior.  
-- Osquery enables querying endpoint artifacts efficiently across multiple systems.  
-- Wazuh integrates logs, alerts, and detection rules to improve overall endpoint security posture.  
-- Combining multiple tools increases detection accuracy and supports incident response workflows.  
+## ✅ Leçons retenues
+- La surveillance continue des endpoints est essentielle pour une détection précoce des menaces.  
+- Sysinternals offre une visibilité approfondie sur les processus, l’activité du registre et les connexions réseau.  
+- Les journaux Sysmon permettent de créer des règles de détection ciblées pour identifier des comportements suspects.  
+- Osquery permet d’interroger efficacement les artefacts des endpoints sur plusieurs systèmes.  
+- Wazuh centralise les journaux, les alertes et les règles de détection afin d’améliorer la posture globale de sécurité des endpoints.  
+- La combinaison de plusieurs outils augmente la précision de la détection et soutient les workflows de réponse à incident.  
 
 ---
 
 ## 🔗 Navigation
-- Back to [Portfolio Home](../../index.md)
-
+- Retour à l’[Accueil du portfolio](../../index.md)
