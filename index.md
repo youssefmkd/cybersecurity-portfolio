@@ -14,6 +14,10 @@ Chaque projet met en avant mes compétences techniques, mon processus de résolu
 
 ## 📂 Sections principales
 
+### [Architecture Cloud Sécurisée & Gouvernance des Identités](Cloud-Security-Architecture/README.md)
+
+Projet pratique couvrant la conception, le déploiement et la sécurisation d'une infrastructure cloud multi-tiers. Les travaux réalisés incluent la gestion des identités, le contrôle d'accès, la protection des données, la supervision de la posture de sécurité et la résilience des services face aux menaces modernes.
+
 ### [Surveillance SOC Niveau 1 & Réponse aux Incidents – Labs Pratiques](SOC-Level-1-THM/README.md)
 
 Labs pratiques axés sur **la surveillance SIEM, le triage des alertes, la chasse aux menaces, la réponse aux incidents (DFIR) et les workflows SOC Niveau 1**.
