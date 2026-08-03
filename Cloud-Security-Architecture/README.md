@@ -21,7 +21,7 @@ Elle comprend notamment :
 - Une gestion centralisée des identités
 - Des mécanismes de chiffrement et de supervision
 
-<p align="center"> <img src="screenshots/Architecture.png" width="100%"> </p>
+<p align="center"> <img src="screenshots/Architecture.png" width="600"> </p>
 
 ---
 
