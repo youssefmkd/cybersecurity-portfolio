@@ -33,10 +33,10 @@ Cette approche permet de limiter la surface d'attaque et de contrôler les commu
 <p align="center"> <img src="screenshots/Architecture.png" width="800"> </p>
 *Figure 1 — Architecture globale de l'infrastructure cloud conçue avec Microsoft Visio.*
 
-<p> <img src="screenshots/1-1.png" width="500"> </p>
+<p> <img src="screenshots/1-1.png" width="600"> </p>
 *Figure 2 — Configuration des règles de sécurité entrantes du Network Security Group associé à la ressource SQL.*
 
-<p> <img src="screenshots/1-2.png" width="500"> </p>
+<p> <img src="screenshots/1-2.png" width="600"> </p>
 *Figure 3 — Règle de sécurité permettant l'accès RDP depuis la JumpBox.*
 
 ### Résultat
@@ -54,7 +54,7 @@ J'ai notamment utilisé Network Watcher pour consulter les informations relative
 
 Cette approche permet d'améliorer la visibilité sur le comportement du réseau et facilite l'identification d'éventuels problèmes de connectivité ou de configurations réseau incorrectes.
 
-<p> <img src="screenshots/2-1.png" width="500"> </p>
+<p> <img src="screenshots/2-1.png" width="600"> </p>
 *Figure 4 — Analyse des flux réseau à l'aide de Network Watcher Flow Logs.*
 
 ### Résultat
@@ -72,13 +72,13 @@ Cette architecture permet de séparer le point d'accès public du serveur Web et
 
 J'ai également vérifié le bon fonctionnement du serveur Web IIS hébergé sur une machine virtuelle Windows Server.
 
-<p> <img src="screenshots/4-1.png" width="500"> </p>
+<p> <img src="screenshots/4-1.png" width="600"> </p>
 *Figure 5 — Vue d'ensemble de l'Application Gateway utilisée comme point d'entrée de l'application.*
 
-<p> <img src="screenshots/4-2.png" width="500"> </p>
+<p> <img src="screenshots/4-2.png" width="600"> </p>
 *Figure 6 — Vérification de l'état de santé du backend associé à l'Application Gateway.*
 
-<p> <img src="screenshots/4-3.png" width="500"> </p>
+<p> <img src="screenshots/4-3.png" width="600"> </p>
 *Figure 7 — Page Web IIS accessible depuis le serveur Windows Server après déploiement de l'application.*
 
 ### Résultat
@@ -101,10 +101,10 @@ J'ai notamment travaillé sur :
 
 Cette approche permet de suivre la posture globale de l'environnement et d'identifier les domaines nécessitant une amélioration.
 
-<p> <img src="screenshots/5-1.png" width="500"> </p>
+<p> <img src="screenshots/5-1.png" width="600"> </p>
 *Figure 8 — Configuration des plans de protection disponibles dans Microsoft Defender for Cloud.*
 
-<p> <img src="screenshots/5-2.png" width="500"> </p>
+<p> <img src="screenshots/5-2.png" width="600"> </p>
 *Figure 9 — Évaluation de la posture de sécurité de l'environnement avec Microsoft Defender for Cloud.*
 
 ### Résultat
@@ -122,10 +122,10 @@ J'ai également vérifié le chiffrement d'une machine virtuelle à l'aide d'Azu
 
 Cette approche permet de renforcer la confidentialité des données au repos et d'améliorer la gestion sécurisée des éléments cryptographiques.
 
-<p> <img src="screenshots/6-1.png" width="500"> </p>
+<p> <img src="screenshots/6-1.png" width="600"> </p>
 *Figure 10 — Azure Key Vault kv-securelab-2026 utilisé pour la gestion sécurisée des clés et secrets.*
 
-<p> <img src="screenshots/6-2.png" width="500"> </p>
+<p> <img src="screenshots/6-2.png" width="600"> </p>
 *Figure 11 — Vérification de l'état du chiffrement de la machine virtuelle web-vm à l'aide de la commande az vm encryption show.*
 
 ### Résultat
@@ -139,7 +139,7 @@ J'ai également travaillé sur la configuration d'un réseau virtuel dédié à 
 
 La configuration d'un réseau virtuel constitue une base essentielle pour contrôler les communications entre les différentes ressources et appliquer des mécanismes de sécurité adaptés.
 
-<p> <img src="screenshots/7-1.png" width="500"> </p>
+<p> <img src="screenshots/7-1.png" width="600"> </p>
 *Figure 12 — Vue d'ensemble du réseau virtuel onprem0vnet utilisé dans l'environnement.*
 
 ### Résultat
@@ -157,7 +157,7 @@ J'ai créé et utilisé un groupe dédié à la protection des identités afin d
 
 Cette approche permet d'appliquer les contrôles de sécurité de manière ciblée et de renforcer progressivement la gouvernance des identités.
 
-<p> <img src="screenshots/8-1.png" width="500"> </p>
+<p> <img src="screenshots/8-1.png" width="600"> </p>
 *Figure 13 — Groupe Identity Protection utilisé pour cibler les utilisateurs concernés par les politiques de protection des identités.*
 
 ### Résultat
@@ -177,10 +177,10 @@ J'ai notamment configuré :
 
 Cette approche s'inscrit dans une logique Zero Trust, où les accès ne sont pas considérés comme fiables par défaut et doivent être évalués selon le contexte et le niveau de risque.
 
-<p> <img src="screenshots/8-2.png" width="500"> </p>
+<p> <img src="screenshots/8-2.png" width="600"> </p>
 *Figure 14 — Politique Conditional Access basée sur le risque de connexion (Sign-in Risk).*
 
-<p> <img src="screenshots/8-3.png" width="500"> </p>
+<p> <img src="screenshots/8-3.png" width="600"> </p>
 *Figure 15 — Politique Conditional Access basée sur le risque utilisateur (User Risk).*
 
 ### Résultat
@@ -206,16 +206,16 @@ Cette mise en œuvre m'a permis de travailler sur :
 -  L'interrogation des API Microsoft Graph
 - L'analyse des données de risque disponibles
 
-<p> <img src="screenshots/8-4.png" width="500"> </p>
+<p> <img src="screenshots/8-4.png" width="600"> </p>
 *Figure 16 — Vue d'ensemble de l'application AADIP Risk Event API enregistrée dans Microsoft Entra ID.*
 
-<p> <img src="screenshots/8-5.png" width="500"> </p>
+<p> <img src="screenshots/8-5.png" width="600"> </p>
 *Figure 17 — Configuration des certificats et secrets utilisés pour l'authentification de l'application.*
 
-<p> <img src="screenshots/8-6.png" width="500"> </p>
+<p> <img src="screenshots/8-6.png" width="600"> </p>
 *Figure 18 — Permission Microsoft Graph IdentityRiskEvent.Read.All accordée à l'application pour accéder aux informations relatives aux événements de risque d'identité.*
 
-<p> <img src="screenshots/8-7.png" width="500"> </p>
+<p> <img src="screenshots/8-7.png" width="600"> </p>
 *Figure 19 — Requête PowerShell vers l'API Microsoft Graph riskDetections pour interroger les événements de risque d'identité disponibles.*
 
 ### Résultat
@@ -235,7 +235,7 @@ Ce rôle permet de gérer les machines virtuelles tout en limitant les permissio
 
 Cette approche permet d'appliquer une séparation des responsabilités et de limiter les privilèges accordés aux utilisateurs selon leurs besoins opérationnels.
 
-<p> <img src="screenshots/8-8.png" width="500"> </p>
+<p> <img src="screenshots/8-8.png" width="600"> </p>
 *Figure 20 — Attribution du rôle Virtual Machine Contributor à l'utilisateur Evan Green au niveau de la ressource.*
 
 ### Résultat
@@ -258,10 +258,10 @@ J'ai notamment réalisé :
 
 Cette protection complète les mécanismes de sécurité réseau déjà mis en place dans l'infrastructure.
 
-<p> <img src="screenshots/9-1.png" width="500"> </p>
+<p> <img src="screenshots/9-1.png" width="600"> </p>
 *Figure 21 — Vue d'ensemble du plan DDoS Protection ddos-lab-plan.*
 
-<p> <img src="screenshots/9-2.png" width="500"> </p>
+<p> <img src="screenshots/9-2.png" width="600"> </p>
 *Figure 22 — Configuration de la protection DDoS appliquée au réseau virtuel ra-tier-vnet.*
 
 ### Résultat
